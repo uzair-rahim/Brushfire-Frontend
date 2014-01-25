@@ -6,13 +6,13 @@ define([
 	'utils',
 	'marionette',
 	'hbs!templates/template-view-find-business'
-], function($, Cookie, Vldt, App, Utils, Marionette, TemplateViewLogin){
+], function($, Cookie, Vldt, App, Utils, Marionette, TemplateViewBusiness){
 	'use strict';
 
 	var ViewFindBusiness = Marionette.ItemView.extend({
 		tagName : 'div',
 		className : 'app-layout',
-		template: TemplateViewLogin,
+		template: TemplateViewBusiness,
 		events : {
 			"click #find" : "findBusiness",
 			"click #add-business" : "addBusiness"
@@ -65,7 +65,7 @@ define([
 		},
 
 		addBusiness : function(){
-			App.router.controller.logout();
+			App.router.controller.addbusiness();
 		}
 		
 	});

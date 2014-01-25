@@ -1,15 +1,20 @@
 <style type="text/css">
-	.panel-container{
+	.content-wrapper{
 		display: block;
-		margin: auto;
 		width: 100%;
-		margin: 10px auto;
 		max-width: 600px;
 		min-width: 320px;
+		height: 100%;
+		margin: auto;
+	}
+	.panel-container{
+		display: block;
+		width: 100%;
 	}
 	.panel{
 		display: block;
 		float: left;
+		margin: 10px;
 		width: calc(100% - 20px);
 		border-radius: 4px;
 		border: 1px solid #b6b9bd;
@@ -121,15 +126,10 @@
 	}
 
 	@media screen and (max-width: 620px){
-		.panel-container{
-			margin: 10px;
-		}
+		
 	}
 
 	@media screen and (max-width: 600px){
-		.panel-container{
-			margin:10px; 
-		}
 		.panel .body .manual{
 			width: 100%;
 			border-right: none;
@@ -149,43 +149,51 @@
 			margin-bottom: 10px;
 		}
 	}
+
+	@media screen and (max-height: 480px){
+		.app-layout{
+			overflow-y: auto;
+		}
+	}
 </style>
 <div id="modal-loading" class="loading modal-bg ease-out"></div>
-<h1 id="brushfire">Brushfire</h1>
-<div class="panel-container">
-	<div class="panel">
-		<div class="head">Sign Up</div>
-		<div class="body">
-			<div class="manual">
-				<div class="field-container floating">
-					<label for="firstname">First Name</label>
-					<input type="text" placeholder="First Name" id="firstname" value="Uzair"/>
+<div class="content-wrapper">
+	<h1 id="brushfire">Brushfire</h1>
+	<div class="panel-container">
+		<div class="panel">
+			<div class="head">Sign Up</div>
+			<div class="body">
+				<div class="manual">
+					<div class="field-container floating">
+						<label for="firstname">First Name</label>
+						<input type="text" placeholder="First Name" id="firstname" value="Uzair"/>
+					</div>
+					<div class="field-container floating">
+						<label for="lastname">Last Name</label>
+						<input type="text" placeholder="Last Name" id="lastname" value="Rahim"/>
+					</div>
+					<div class="field-container">
+						<label for="emailaddress">Email Address</label>
+						<input type="text" placeholder="Email Address" id="emailaddress" value="uzair.rahim@redbookconnect.com"/>
+					</div>
+					<div class="field-container">
+						<label for="password">Password</label>
+						<input type="password" placeholder="Password" id="password" value="password"/>
+					</div>
+					<div class="link-container">
+						<button class="primary" id="register">Sign Up</button>
+					</div>
 				</div>
-				<div class="field-container floating">
-					<label for="lastname">Last Name</label>
-					<input type="text" placeholder="Last Name" id="lastname" value="Rahim"/>
-				</div>
-				<div class="field-container">
-					<label for="emailaddress">Email Address</label>
-					<input type="text" placeholder="Email Address" id="emailaddress" value="uzair.rahim@redbookconnect.com"/>
-				</div>
-				<div class="field-container">
-					<label for="password">Password</label>
-					<input type="password" placeholder="Password" id="password" value="password"/>
-				</div>
-				<div class="link-container">
-					<button class="primary" id="register">Sign Up</button>
+				<div class="hotschedules">
+					<div class="container">
+					<label>Or</label>
+						<button class="green">Sign Up With HotSchedules</button>
+					</div>
 				</div>
 			</div>
-			<div class="hotschedules">
-				<div class="container">
-				<label>Or</label>
-					<button class="green">Sign Up With HotSchedules</button>
-				</div>
+			<div class="foot">
+				<a class="left" id="cancel">Never mind, don't sign up</a>
 			</div>
-		</div>
-		<div class="foot">
-			<a class="left" id="cancel">Never mind, don't sign up</a>
 		</div>
 	</div>
 </div>

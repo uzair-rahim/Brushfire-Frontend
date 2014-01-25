@@ -44,62 +44,46 @@
 		clear: both;
 		width: 100%;
 	}
-	.panel .body .manual{
+	.panel .body .full{
 		display: block;
 		float: left;
-		width: 62%;
+		width: 100%;
 		height: 100%;
 		padding: 10px 0;
-		border-right: 1px dotted #cccccc;
 		overflow: hidden;
 	}
-	.panel .body .manual .field-container{
+	.panel .body .full .field-container{
 		display: block;
 		float: left;
 		width: calc(100% - 40px);
 		margin: 10px 0 0 10px;
 	}
-	.panel .body .manual .field-container label{
+	.panel .body .full .field-container.floating{
+		width: calc(50.8% - 40px);
+		margin: 10px 20px 0 10px;
+	}
+	.panel .body .full .field-container label{
 		font-weight: bold;
 	}
-	.panel .body .manual .link-container{
+	.panel .body .full .link-container{
 		display: block;
 		float: left;
 		width: 100%;
 		margin: 10px 0 10px 10px;
 	}
-	.panel .body .manual .link-container button{
+	.panel .body .full .link-container button{
 		float: right
 	}
-	.panel .body .manual .link-container a{
+	.panel .body .full .link-container a{
 		line-height: 20px;
 		margin: 10px 0 0 0;
 		float: left;
 		color: #7d7d7d;
 	}
-	.panel .body .manual .link-container a:hover{
+	.panel .body .full .link-container a:hover{
 		color: #555555;
 	}
-	.panel .body .hotschedules{
-		display: block;
- 		float: left;
-		width: calc(38% - 2px);
-		height: 100%;
-		padding: 20px 0;
-		border-left: 1px dotted #ffffff;
-		overflow: hidden;
-	}
 
-	.panel .body .hotschedules .container{
-		width: 198px;
-		margin: auto;
-		margin-top: 48px;
-		text-align: center;
-	}
-	.panel .body .hotschedules .container label{
-		font-weight: bold;
-		margin: 0 0 5px 0;
-	}
 	.panel .foot{
 		display: block;
 		float: left;
@@ -120,24 +104,21 @@
 	.panel .foot .left:hover{
 		color: #555555;
 	}
+
+	p{
+		color: #626970;
+		line-height: 14px;
+		margin:10px;
+	}
+
 	@media screen and (max-width: 620px){
 		
 	}
 
 	@media screen and (max-width: 600px){
-		.panel .body .manual{
-			width: 100%;
-			border-right: none;
-			border-bottom: 1px dotted #dddddd;
-		}
-		.panel .body .hotschedules{
-			width: 100%;
-			border-left: none;
-			border-top: 1px dotted #ffffff;
-		}
-		.panel .body .hotschedules .container{
-			margin-top: 0;
-			margin-bottom: 10px;
+		.panel .body .full .field-container.floating{
+			width: calc(100% - 40px);
+			margin: 10px 0 0 10px;
 		}
 	}
 
@@ -146,38 +127,55 @@
 			overflow-y: auto;
 		}
 	}
-
 </style>
 <div id="modal-loading" class="loading modal-bg ease-out"></div>
 <div class="content-wrapper">
 	<h1 id="brushfire">Brushfire</h1>
 	<div class="panel-container">
 		<div class="panel">
-			<div class="head">Have and account? Sign In</div>
+			<div class="head">Add Your Business</div>
 			<div class="body">
-				<div class="manual">
-					<div class="field-container">
-						<label for="emailaddress">Email Address</label>
-						<input type="text" placeholder="Email Address" id="emailaddress" value="uzair.rahim@redbookconnect.com"/>
+				<div class="full">
+					<p>Add information about your business below. We review  each submission, which may take  a few days. If your listing is approved, you will be able to create a fan page for your business.</p>
+					<div class="field-container floating">
+						<label for="name">Business Name</label>
+						<input type="text" placeholder="Business Name" id="name"/>
 					</div>
-					<div class="field-container">
-						<label for="password">Password</label>
-						<input type="password" placeholder="Password" id="password" value="password"/>
+					<div class="field-container floating">
+						<label for="emailaddress">Email Address</label>
+						<input type="text" placeholder="Email Address" id="emailaddress"/>
+					</div>
+					<div class="field-container floating">
+						<label for="streetaddress">Street Address</label>
+						<input type="text" placeholder="Street Address" id="streetaddress"/>
+					</div>
+					<div class="field-container floating">
+						<label for="city">City</label>
+						<input type="text" placeholder="City" id="city"/>
+					</div>
+					<div class="field-container floating">
+						<label for="state">State</label>
+						<input type="text" placeholder="State" id="state"/>
+					</div>
+					<div class="field-container floating">
+						<label for="zip">Zip</label>
+						<input type="text" placeholder="Zip" id="zip"/>
+					</div>
+					<div class="field-container floating">
+						<label for="country">Country</label>
+						<input type="text" placeholder="Country" id="country"/>
+					</div>
+					<div class="field-container floating">
+						<label for="phone">Phone</label>
+						<input type="text" placeholder="Phone" id="phone"/>
 					</div>
 					<div class="link-container">
-					<a href="#">Forgot Password?</a>
-						<button class="primary" id="login">Sign In</button>
-					</div>
-				</div>
-				<div class="hotschedules">
-					<div class="container">
-					<label>Or</label>
-						<button class="green">Sign In With HotSchedules</button>
+						<button class="primary" id="add-business">Add My Business</button>
 					</div>
 				</div>
 			</div>
 			<div class="foot">
-				<a class="left" id="signup">Don't have an account? Sign Up Free</a>
+				<a class="left" id="dont-add">Never mind, don't add business</a>
 			</div>
 		</div>
 	</div>

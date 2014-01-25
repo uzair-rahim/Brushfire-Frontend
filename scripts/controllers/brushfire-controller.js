@@ -6,12 +6,13 @@ define([
 		'scripts/views/view-login',
 		'scripts/views/view-register',
 		'scripts/views/view-find-business',
+		'scripts/views/view-add-business',
 		'scripts/views/view-profile',
 		'scripts/views/view-jobs',
 		'scripts/collections/collection-jobs',
 		'scripts/layouts/layout-app'
 	],
-	function($, App, Utils, Marionette, ViewLogin, ViewRegister,ViewFindBusiness, ViewProfile, ViewJobs, CollectionJobs, LayoutApp){
+	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewProfile, ViewJobs, CollectionJobs, LayoutApp){
 		'use strict';
 
 		var AppController = Marionette.Controller.extend({
@@ -28,6 +29,9 @@ define([
 					break;
 					case 'findbusiness':
 						this.findbusiness();
+					break;
+					case 'addbusiness':
+						this.addbusiness();
 					break;
 					case 'profile':
 						if(Utils.checkSession()){
@@ -67,6 +71,13 @@ define([
 				console.log('Brushfire routed to find your business...');
 				App.setSessionView('findbusiness');
 				var view = new ViewFindBusiness();
+				App.body.show(view);
+			},
+
+			addbusiness : function(){
+				console.log('Brushfire routed to add your business...');
+				App.setSessionView('addbusiness');
+				var view = new ViewAddBusiness();
 				App.body.show(view);
 			},
 

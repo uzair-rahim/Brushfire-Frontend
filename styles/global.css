@@ -118,8 +118,8 @@ h1#brushfire
 {
 	display: block;
 	width: 220px;
-	padding: 0;
-	margin: 25px auto 100px auto;
+	padding: 25px 0;
+	margin: 0 auto;
 	text-indent: 60px;
 	line-height: 60px;
 	border: none;
@@ -129,12 +129,13 @@ h1#brushfire
 	overflow: hidden;
 	background-image: url('../images/logo-bf-60.png');
 	background-repeat: no-repeat;
-	background-position: 0 0;
+	background-position: 0 25px;
 }
 
 @media screen and (max-width: 620px){
 		h1#brushfire{
-			margin: 10px auto;
+			padding: 10px 0;
+			background-position: 0 10px;
 		}
 	}
 
@@ -3961,5 +3962,9 @@ table.data td.action
 label.bad{
 	color: #bf2b1b;
 	background: none;
+}
+
+a{
+	color: #628195;
 }
 

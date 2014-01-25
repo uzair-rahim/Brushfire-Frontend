@@ -16,6 +16,7 @@ define([
 				'jobs'			: 'jobs',
 				'register'		: 'register',
 				'findbusiness'	: 'findbusiness',
+				'addbusiness'	: 'addbusiness',
 				'logout'		: 'logout'
 			}
 
