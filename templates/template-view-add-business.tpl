@@ -63,7 +63,24 @@
 		margin: 10px 20px 0 10px;
 	}
 	.panel .body .full .field-container label{
+		float: left;
+		clear: both;
 		font-weight: bold;
+	}
+	.panel .body .full .field-container .btn-group{
+		float: left;
+		clear: both;
+		width: calc(100% + 20px);
+		margin: 2px 0 0 0;
+	}
+	.panel .body .full .field-container .btn-group button{
+		width: 100%;
+	}
+	.panel .body .full .field-container .btn-group button:before{
+		margin-right: 0;
+	}
+	.panel .body .full .field-container .btn-group .dropDown-menu{
+		width: 100%;
 	}
 	.panel .body .full .link-container{
 		display: block;
@@ -155,7 +172,60 @@
 					</div>
 					<div class="field-container floating">
 						<label for="state">State</label>
-						<input type="text" placeholder="State" id="state"/>
+						<div class="btn-group">
+							<button class="dropDown">Select State</button>
+							<ul class="dropDown-menu">
+								<li><a>Alabama</a></li>
+								<li><a>Alaska</a></li>
+								<li><a>Arizona</a></li>
+								<li><a>Arkansas</a></li>
+								<li><a>California</a></li>
+								<li><a>Colorado</a></li>
+								<li><a>Connecticut</a></li>
+								<li><a>Delaware</a></li>
+								<li><a>Florida</a></li>
+								<li><a>Georgia</a></li>
+								<li><a>Hawaii</a></li>
+								<li><a>Idaho</a></li>
+								<li><a>Illinois</a></li>
+								<li><a>Iowa</a></li>
+								<li><a>Kansas</a></li>
+								<li><a>Kentucky</a></li>
+								<li><a>Louisiana</a></li>
+								<li><a>Maine</a></li>
+								<li><a>Maryland</a></li>
+								<li><a>Massachusetts</a></li>
+								<li><a>Michigan</a></li>
+								<li><a>Minnesota</a></li>
+								<li><a>Mississippi</a></li>
+								<li><a>Missouri</a></li>
+								<li><a>Montana</a></li>
+								<li><a>Nebraska</a></li>
+								<li><a>Nevada</a></li>
+								<li><a>New Hampshire</a></li>
+								<li><a>New Jersey</a></li>
+								<li><a>New Mexico</a></li>
+								<li><a>New York</a></li>
+								<li><a>North Carolina</a></li>
+								<li><a>North Dakota</a></li>
+								<li><a>Ohio</a></li>
+								<li><a>Oklahoma</a></li>
+								<li><a>Oregon</a></li>
+								<li><a>Pennsylvania</a></li>
+								<li><a>Rhode Island</a></li>
+								<li><a>South Carolina</a></li>
+								<li><a>South Dakota</a></li>
+								<li><a>Tennessee</a></li>
+								<li><a>Texas</a></li>
+								<li><a>Utah</a></li>
+								<li><a>Vermont</a></li>
+								<li><a>Virginia</a></li>
+								<li><a>Washington</a></li>
+								<li><a>West Virginia</a></li>
+								<li><a>Wisconsin</a></li>
+								<li><a>Wyoming</a></li>
+							</ul>
+						</div>
 					</div>
 					<div class="field-container floating">
 						<label for="zip">Zip</label>
@@ -163,7 +233,12 @@
 					</div>
 					<div class="field-container floating">
 						<label for="country">Country</label>
-						<input type="text" placeholder="Country" id="country"/>
+						<div class="btn-group">
+							<button class="dropDown">Select Country</button>
+							<ul class="dropDown-menu">
+								<li><a>United States of America</a></li>
+							</ul>
+						</div>
 					</div>
 					<div class="field-container floating">
 						<label for="phone">Phone</label>

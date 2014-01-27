@@ -97,7 +97,7 @@
 	.panel .body .hotschedules .container{
 		width: 202px;
 		margin: auto;
-		margin-top: 64px;
+		margin-top: 70px;
 		text-align: center;
 	}
 	.panel .body .hotschedules .container label{
@@ -124,6 +124,22 @@
 	.panel .foot .left:hover{
 		color: #555555;
 	}
+	#modal-hotschedules .modal.window{
+		width: 100%;
+		max-width: 400px;
+		min-width: 280px;
+	}
+	#modal-hotschedules .field-container{
+		width: calc(100% - 20px);
+		margin: 0 0 10px 0;
+	}
+	#modal-hotschedules .field-container label{
+		font-weight: bold;
+	}
+	#modal-hotschedules .link-container button{
+		margin: 0 0 0 10px;
+		float: right;
+	}
 
 	@media screen and (max-width: 620px){
 		
@@ -148,6 +164,10 @@
 			margin-top: 0;
 			margin-bottom: 10px;
 		}
+		#modal-hotschedules .modal.window{
+			margin: 0 10px;
+			width: calc(100% - 40px);
+		}
 	}
 
 	@media screen and (max-height: 480px){
@@ -157,6 +177,23 @@
 	}
 </style>
 <div id="modal-loading" class="loading modal-bg ease-out"></div>
+<div id="modal-hotschedules" class="modal-bg ease-out">
+	<div class="modal window">
+		<h1>Sign Up With HotSchedules</h1>
+		<div class="field-container">
+			<label for="hsusername">Username</label>
+			<input type="text" id="hsusername" placeholder="Username"/>
+		</div>
+		<div class="field-container">
+			<label for="hspassword">Password</label>
+			<input type="text" id="hspassword" placeholder="Password"/>
+		</div>
+		<div class="link-container">
+			<button id="cancelhs">Cancel</button>
+			<button class="primary" id="authorizehs">Authorize</button>
+		</div>
+	</div>
+</div>
 <div class="content-wrapper">
 	<h1 id="brushfire">Brushfire</h1>
 	<div class="panel-container">
@@ -187,7 +224,7 @@
 				<div class="hotschedules">
 					<div class="container">
 					<label>Or</label>
-						<button class="green">Sign Up With HotSchedules</button>
+						<button class="green" id="signup-hotschedules">Sign Up With HotSchedules</button>
 					</div>
 				</div>
 			</div>

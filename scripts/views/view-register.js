@@ -17,7 +17,9 @@ define([
 		events : {
 			'keypress button' 				: 'register', 
 			'click #register' 				: 'register',
-			'click #cancel'   				: 'cancel'
+			'click #cancel'   				: 'cancel',
+			"click #signup-hotschedules"	: "signUpHS",
+			"click #cancelhs"				: "cancelHS"
 		},
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
@@ -108,6 +110,12 @@ define([
 		cancel : function(){
 			console.log('Cancel register...');
 			App.router.controller.index();
+		},
+		signUpHS : function(){
+			$("#modal-hotschedules").addClass("show");
+		},
+		cancelHS : function(){
+			$("#modal-hotschedules").removeClass("show");	
 		},
 		createSession : function(response) {
 			var authsession = {

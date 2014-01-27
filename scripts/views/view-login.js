@@ -15,9 +15,11 @@ define([
 		className : 'app-layout',
 		template: TemplateViewLogin,
 		events : {
-			'keypress button'	: "login", 
-			'click #login' 		: "login",
-			'click #signup'		: "register"
+			"keypress button"				: "login", 
+			"click #login"					: "login",
+			"click #signup"					: "register",
+			"click #signin-hotschedules"	: "signInHS",
+			"click #cancelhs"				: "cancelHS"
 		},
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
@@ -112,6 +114,12 @@ define([
 		},
 		register : function(){
 			App.router.controller.register();
+		},
+		signInHS : function(){
+			$("#modal-hotschedules").addClass("show");
+		},
+		cancelHS : function(){
+			$("#modal-hotschedules").removeClass("show");	
 		},
 		createSession : function(response) {
 			var authsession = {
