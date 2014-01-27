@@ -3968,3 +3968,11 @@ a{
 	color: #628195;
 }
 
+.modal-bg{
+	visibility: visible;
+	pointer-events: none;
+}
+
+.show.modal-bg{
+	pointer-events: auto;
+}

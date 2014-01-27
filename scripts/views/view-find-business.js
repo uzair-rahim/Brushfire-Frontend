@@ -14,8 +14,11 @@ define([
 		className : 'app-layout',
 		template: TemplateViewBusiness,
 		events : {
-			"click #find" : "findBusiness",
-			"click #add-business" : "addBusiness"
+			"click #find" 				: "findBusiness",
+			"click #add-business" 		: "addBusiness",
+			"click .already-claimed"	: "alreadyClaimed",
+			"click #modal-claimed"		: "hideModal",
+			"click .claimedSignin"		: "signin"
 		},
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
@@ -66,6 +69,21 @@ define([
 
 		addBusiness : function(){
 			App.router.controller.addbusiness();
+		},
+
+		alreadyClaimed : function(){
+			$("#modal-claimed").addClass("show");
+		},
+
+		hideModal : function(event){
+			if(!$(event.target).closest("a").length){
+				$("#modal-claimed").removeClass("show");
+			}
+			
+		},
+
+		signin : function(){
+			App.router.controller.index();
 		}
 		
 	});

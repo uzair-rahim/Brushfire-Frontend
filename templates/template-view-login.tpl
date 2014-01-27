@@ -10,6 +10,7 @@
 	.panel-container{
 		display: block;
 		width: 100%;
+		float: left;
 	}
 	.panel{
 		display: block;
@@ -136,10 +137,6 @@
 		margin: 0 0 0 10px;
 		float: right;
 	}
-	@media screen and (max-width: 620px){
-		
-	}
-
 	@media screen and (max-width: 600px){
 		.panel .body .manual{
 			width: 100%;
@@ -160,13 +157,11 @@
 			width: calc(100% - 40px);
 		}
 	}
-
 	@media screen and (max-height: 480px){
 		.app-layout{
 			overflow-y: auto;
 		}
 	}
-
 </style>
 <div id="modal-loading" class="loading modal-bg ease-out"></div>
 <div id="modal-hotschedules" class="modal-bg ease-out">
@@ -181,7 +176,7 @@
 			<input type="text" id="hspassword" placeholder="Password"/>
 		</div>
 		<div class="link-container">
-			<button id="cancelhs">Cancel</button>
+			<button id="cancelHS">Cancel</button>
 			<button class="primary" id="authorizehs">Authorize</button>
 		</div>
 	</div>
@@ -209,7 +204,7 @@
 				<div class="hotschedules">
 					<div class="container">
 					<label>Or</label>
-						<button class="green" id="signin-hotschedules">Sign In With HotSchedules</button>
+						<button class="green" id="signinHS">Sign In With HotSchedules</button>
 					</div>
 				</div>
 			</div>

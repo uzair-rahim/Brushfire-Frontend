@@ -15,11 +15,11 @@ define([
 		className : 'app-layout',
 		template: TemplateViewRegister,
 		events : {
-			'keypress button' 				: 'register', 
-			'click #register' 				: 'register',
-			'click #cancel'   				: 'cancel',
-			"click #signup-hotschedules"	: "signUpHS",
-			"click #cancelhs"				: "cancelHS"
+			'keypress button' 	: 'register', 
+			'click #register' 	: 'register',
+			'click #cancel'   	: 'cancel',
+			"click #signupHS"	: "signupHS",
+			"click #cancelHS"	: "cancelHS"
 		},
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
@@ -111,7 +111,7 @@ define([
 			console.log('Cancel register...');
 			App.router.controller.index();
 		},
-		signUpHS : function(){
+		signupHS : function(){
 			$("#modal-hotschedules").addClass("show");
 		},
 		cancelHS : function(){

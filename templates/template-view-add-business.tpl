@@ -10,6 +10,7 @@
 	.panel-container{
 		display: block;
 		width: 100%;
+		float: left;
 	}
 	.panel{
 		display: block;
@@ -127,18 +128,12 @@
 		line-height: 14px;
 		margin:10px;
 	}
-
-	@media screen and (max-width: 620px){
-		
-	}
-
 	@media screen and (max-width: 600px){
 		.panel .body .full .field-container.floating{
 			width: calc(100% - 40px);
 			margin: 10px 0 0 10px;
 		}
 	}
-
 	@media screen and (max-height: 480px){
 		.app-layout{
 			overflow-y: auto;

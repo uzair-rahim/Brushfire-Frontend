@@ -10,6 +10,7 @@
 	.panel-container{
 		display: block;
 		width: 100%;
+		float: left;
 	}
 	.panel{
 		display: block;
@@ -209,9 +210,23 @@
 	#add-business{
 		display: none;
 	}
-
-	@media screen and (max-width: 620px){
-		
+	#modal-claimed .modal.window{
+		width: 100%;
+		max-width: 390px;
+		min-width: 280px;
+	}
+	#modal-claimed .modal.window p{
+		font-size: 14px;
+		line-height: 18px;
+		color:#666666;
+	}
+	#modal-claimed .modal.window p span{
+		font-weight: bold;
+		font-size: 16px;
+		color:#444444;
+	}
+	#modal-claimed .modal.window p a{
+		font-size: 14px;
 	}
 
 	@media screen and (max-width: 600px){
@@ -219,8 +234,11 @@
 			width: calc(100% - 40px);
 			margin: 10px 0 0 10px;
 		}
+		#modal-claimed .modal.window{
+			margin: 0 10px;
+			width: calc(100% - 40px);
+		}
 	}
-
 	@media screen and (max-width: 520px){
 		.business-search-result li .action a{
 			line-height: 54px;
@@ -231,7 +249,6 @@
 			margin-top: 14px;
 		}
 	}
-
 	@media screen and (max-height: 480px){
 		.app-layout{
 			overflow-y: auto;
@@ -239,6 +256,13 @@
 	}
 </style>
 <div id="modal-loading" class="loading modal-bg ease-out"></div>
+<div id="modal-claimed" class="modal-bg ease-out">
+	<div class="modal window">
+		<h1>Already Claimed</h1>
+		<p><span>Jimmy John’s</span><br/>601 W Martin Luther King Jr Blvd Austin, TX is already claimed. What can you do?</p>
+		<p>Is this your business? <a href="#" class="claimedSignin">Sign In</a><br/><a href="#">Request</a> admin access to this page<br/>If you think this business is falsely claimed, <a href="#">report here</a></p>
+	</div>
+</div>
 <div class="content-wrapper">
 	<h1 id="brushfire">Brushfire</h1>
 	<div class="panel-container">
