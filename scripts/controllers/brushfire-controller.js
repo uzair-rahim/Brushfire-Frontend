@@ -7,12 +7,13 @@ define([
 		'scripts/views/view-register',
 		'scripts/views/view-find-business',
 		'scripts/views/view-add-business',
+		'scripts/views/view-account-verification',
 		'scripts/views/view-profile',
 		'scripts/views/view-jobs',
 		'scripts/collections/collection-jobs',
 		'scripts/layouts/layout-app'
 	],
-	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewProfile, ViewJobs, CollectionJobs, LayoutApp){
+	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewProfile, ViewJobs, CollectionJobs, LayoutApp){
 		'use strict';
 
 		var AppController = Marionette.Controller.extend({
@@ -32,6 +33,9 @@ define([
 					break;
 					case 'addbusiness':
 						this.addbusiness();
+					break;
+					case 'accountverification':
+						this.accountverification();
 					break;
 					case 'profile':
 						if(Utils.checkSession()){
@@ -78,6 +82,13 @@ define([
 				console.log('Brushfire routed to add your business...');
 				App.setSessionView('addbusiness');
 				var view = new ViewAddBusiness();
+				App.body.show(view);
+			},
+
+			accountverification : function(){
+				console.log('Brushfire routed to account verification...');
+				App.setSessionView('accountverification');
+				var view = new ViewAccountVerification();
 				App.body.show(view);
 			},
 

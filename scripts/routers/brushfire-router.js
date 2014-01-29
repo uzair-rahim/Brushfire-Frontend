@@ -10,14 +10,15 @@ define([
 			controller : new AppController(),
 
 			appRoutes : {
-				'' 				: 'session',
-				'index' 		: 'index',
-				'profile'		: 'profile',
-				'jobs'			: 'jobs',
-				'register'		: 'register',
-				'findbusiness'	: 'findbusiness',
-				'addbusiness'	: 'addbusiness',
-				'logout'		: 'logout'
+				'' 						: 'session',
+				'index' 				: 'index',
+				'profile'				: 'profile',
+				'jobs'					: 'jobs',
+				'register'				: 'register',
+				'findbusiness'			: 'findbusiness',
+				'addbusiness'			: 'addbusiness',
+				'accountverification'	: 'accountverification',
+				'logout'				: 'logout'
 			}
 
 		});

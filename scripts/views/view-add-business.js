@@ -27,7 +27,7 @@ define([
 		},
 
 		addBusiness : function(){
-			App.router.controller.logout();
+			App.router.controller.accountverification();
 		}
 		
 	});
