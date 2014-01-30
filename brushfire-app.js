@@ -30,6 +30,9 @@ define([
 		});
 
 		App.on('start', function(){
+			Utils.showDropdown();
+			Utils.hideDropdown();
+			Utils.selectDropdown();
 			console.log('Brushfire started...');
 		});
 

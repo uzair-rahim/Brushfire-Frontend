@@ -133,6 +133,27 @@ define([
 				}
 			},
 
+			// Save Search Terms for Find Business screen
+			setSearchTerms : function(options){
+				if(!$.cookie("brushfiresearch")){
+					$.cookie("brushfiresearch", JSON.stringify(options));
+				}
+			},
+
+			// Get Search Terms for Find Business screen
+			getSearchTerms : function(){
+				if($.cookie("brushfiresearch")){
+					var brushfiresearch = JSON.parse($.cookie("brushfiresearch"));
+					return brushfiresearch;
+				}
+				return false;
+			},
+
+			// Delete Search Terms
+			deleteSearchTerms : function(){
+				$.removeCookie("brushfiresearch");
+			},
+
 			// Set subheader breadcrumb
 			setBreadcrumb : function(options){
 				console.log("Set breadcrumb...");
@@ -153,6 +174,29 @@ define([
 					}
 				}
 				
+			},
+
+			// Custom Dropdown - Show
+			showDropdown : function(){
+				$(document).delegate("button.dropDown", "click", function(){
+					$(this).next(".dropDown-menu").css("display", "block");
+				});
+			},
+
+			// Custom Dropdown - Hide
+			hideDropdown : function(){
+				$(document).on("click", function(event){
+					if(!$(event.target).hasClass("dropDown")){
+						$(".dropDown-menu").css("display", "none");	
+					}
+				});
+			},
+
+			// Custom Dropdown - Select
+			selectDropdown : function(){
+				$(document).delegate("ul.dropDown-menu li a", "click", function(){
+					$(this).parent().parent().prev(".dropDown").text($(this).text());
+				});
 			}
 
 		});

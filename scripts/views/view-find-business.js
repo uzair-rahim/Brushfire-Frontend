@@ -5,8 +5,9 @@ define([
 	'app',
 	'utils',
 	'marionette',
+	'scripts/collections/collection-businesses',
 	'hbs!templates/template-view-find-business'
-], function($, Cookie, Vldt, App, Utils, Marionette, TemplateViewBusiness){
+], function($, Cookie, Vldt, App, Utils, Marionette, CollectionBusinesses, TemplateViewBusiness){
 	'use strict';
 
 	var ViewFindBusiness = Marionette.ItemView.extend({
@@ -18,13 +19,26 @@ define([
 			"click #add-business" 		: "addBusiness",
 			"click .already-claimed"	: "alreadyClaimed",
 			"click #modal-claimed"		: "hideModal",
-			"click .claimedSignin"		: "signin"
+			"click .claimedSignin"		: "signin",
+			"click .claim"				: "claimBusiness"
 		},
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Find Business initialized...");
+			Utils.deleteSearchTerms();
+		},
+		onRender : function(){
+			var search = Utils.getSearchTerms();
+			$("#name").val(search.name);
+			$("#address").val(search.address);
+			$(".search-result p span.name").text(search.name);
+			$(".search-result p span.address").text(search.address);
 		},
 		findBusiness : function(){
+
+			var that = this;
+			Utils.deleteSearchTerms()
+
 			console.log("Find business...");
 
 			$("input").removeClass("error");
@@ -58,32 +72,48 @@ define([
 				return false;
 
 			}else{
-				$(".search-result").css("display", "block");
-				$(".search-result p span.name").text($("#name").val());
-				$(".search-result p span.address").text($("#address").val());
 
-				$("#add-business").css("display", "block");
+				var businessName = $("#name").val();
+				var businessAddress = $("#address").val();
+
+				Utils.setSearchTerms({name: businessName, address:businessAddress});
+
+				var businesses = new CollectionBusinesses({name : businessName, address : businessAddress});
+
+				businesses.fetch({
+					success : function(response){
+						that.model = response.models[0].attributes.businesses;
+						that.render();
+					},
+					error : function(){
+
+					}
+				});
+
 			}
 			
 		},
-
 		addBusiness : function(){
 			App.router.controller.addbusiness();
 		},
-
 		alreadyClaimed : function(){
 			$("#modal-claimed").addClass("show");
 		},
-
 		hideModal : function(event){
 			if(!$(event.target).closest("a").length){
 				$("#modal-claimed").removeClass("show");
 			}
-			
 		},
-
 		signin : function(){
 			App.router.controller.index();
+		},
+		claimBusiness : function(){
+			App.router.controller.accountverification();
+		},
+		serializeData : function(){
+			var jsonObject = new Object();
+				jsonObject.businesses = this.model;
+			return jsonObject;
 		}
 		
 	});

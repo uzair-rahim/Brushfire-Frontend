@@ -1449,7 +1449,7 @@ button.dropDown:focus,
 .dropDown:focus + ul,
 table .dropDown:focus + ul
 {
-	display: block;
+	/*display: block;*/
 }
 
 #nav-menu:hover .dropDown + ul

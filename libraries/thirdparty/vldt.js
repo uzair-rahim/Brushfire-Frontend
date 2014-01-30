@@ -6,6 +6,7 @@ var vldt = new function(){
 	this.email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
 	this.numeric = /^[0-9]$/;
 	this.phone = /^[0-9]{10}$/;
+	this.zip = /^[0-9]{5}$/;
 
 	this.valid = false;
 	this.response = new Object();
@@ -53,6 +54,9 @@ var vldt = new function(){
 				break;
 				case "required" :
 					this.response[keys[i]] = this.isRequired($(keys[i]).val());
+				break;
+				case "zip" :
+					this.response[keys[i]] = this.isZip($(keys[i]).val());
 				break;
 			}
 		}
@@ -113,6 +117,10 @@ var vldt = new function(){
 
 	this.isRequired = function(val){
 		return val.length > 0;
+	};
+
+	this.isZip = function(val){
+		return this.zip.test(val);
 	};
 
 }

@@ -1,4 +1,7 @@
 <style type="text/css">
+	.app-layout{
+		overflow-y: auto;
+	}
 	.content-wrapper{
 		display: block;
 		width: 100%;
@@ -20,7 +23,7 @@
 		border-radius: 4px;
 		border: 1px solid #b6b9bd;
 		background-color: #f8f8f8;
-		box-shadow: 0 4px 10px 0 rgba(0,0,0,0.20);
+		box-shadow: 0 4px 10px 0 rgba(0,0,0,0.05);
 		overflow: hidden;
 	}
 	.panel .head{
@@ -97,6 +100,7 @@
 		overflow: hidden;
 	}
 	.panel .foot .left{
+		float: left;
 		line-height: 40px;
 		color: #7d7d7d;
 		text-shadow: 0 1px 0 #ffffff;
@@ -113,7 +117,6 @@
 	}
 
 	.panel .body .full.search-result{
-		display: none;
 		padding-top: 0;
 	}
 
@@ -206,10 +209,6 @@
 		font-size: 12px;
 		color: #666666;
 	}
-
-	#add-business{
-		display: none;
-	}
 	#modal-claimed .modal.window{
 		width: 100%;
 		max-width: 390px;
@@ -273,7 +272,7 @@
 					<p>Is your business already on Brushfire? Search now. Or create a new page if we don’t have it.</p>
 					<div class="field-container floating">
 						<label for="name">Business Name</label>
-						<input type="text" placeholder="Business Name" id="name" value="Jimmy's John"/>
+						<input type="text" placeholder="Business Name" id="name" value="Jimmy John's"/>
 					</div>
 					<div class="field-container floating">
 						<label for="address">Business Address</label>
@@ -283,38 +282,47 @@
 						<button class="primary" id="find">Find My Business</button>
 					</div>
 				</div>
-				<div class="full search-result">
-					<p>Business Matches for <span class="name">"Jimmy's John"</span> near <span class="address">"Austin"</span></p>
-					<ul class="business-search-result">
-						<li class="no-result">
-							<div class="info">
-								<div class="line1">Sorry, there were no matches</div>
-								<div class="line2">Please try adjusting your search</div>
-							</div>
-						</li>
-						<li>
-							<div class="info">
-								<div class="line1">Jimmy's John</div>
-								<div class="line2">601 W Martin Luther King Jr Blvd Austin, TX</div>
-							</div>
-							<div class="action">
-								<a href="#" id="" class="already-claimed">Already Claimed</a>
-							</div>
-						</li>
-						<li>
-							<div class="info">
-								<div class="line1">Jimmy's John</div>
-								<div class="line2">3203 Red River St Austin, TX</div>
-							</div>
-							<div class="action">
-								<button id="" class="claim">Claim</button>
-							</div>
-						</li>
-					</ul>
-				</div>
+				{{#if_not_eq businesses undefined}}
+					<div class="full search-result">
+						<p>Business Matches for <span class="name"></span> near <span class="address"></span></p>
+						<ul class="business-search-result">
+							{{#if_gt businesses.length 0}}
+								{{#each businesses}}
+									<li>
+										<div class="info">
+											<div class="line1">{{this.name}}</div>
+											<div class="line2">{{this.location.address.[0]}} {{this.location.city}}</div>
+										</div>
+										<div class="action">
+											<button id="{{this.id}}" class="claim">Claim</button>
+										</div>
+									</li>
+								{{/each}}
+								<li>
+									<div class="info">
+										<div class="line1">Jimmy's John</div>
+										<div class="line2">601 W Martin Luther King Jr Blvd Austin, TX</div>
+									</div>
+									<div class="action">
+										<a href="#" id="" class="already-claimed">Already Claimed</a>
+									</div>
+								</li>
+							{{else}}
+								<li class="no-result">
+									<div class="info">
+										<div class="line1">Sorry, there were no matches</div>
+										<div class="line2">Please try adjusting your search</div>
+									</div>
+								</li>
+							{{/if_gt}}
+						</ul>
+					</div>
+				{{/if_not_eq}}
 			</div>
 			<div class="foot">
+			{{#if_not_eq businesses undefined}}
 				<a class="left" id="add-business">Can't find your business? Add now</a>
+			{{/if_not_eq}}
 			</div>
 		</div>
 	</div>

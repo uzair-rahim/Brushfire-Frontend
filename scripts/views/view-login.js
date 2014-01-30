@@ -15,7 +15,6 @@ define([
 		className : 'app-layout',
 		template: TemplateViewLogin,
 		events : {
-			"keypress button"	: "login", 
 			"click #login"		: "login",
 			"click #signup"		: "register",
 			"click #signinHS"	: "signinHS",

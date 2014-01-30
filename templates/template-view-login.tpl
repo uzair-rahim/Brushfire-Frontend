@@ -20,7 +20,7 @@
 		border-radius: 4px;
 		border: 1px solid #b6b9bd;
 		background-color: #f8f8f8;
-		box-shadow: 0 4px 10px 0 rgba(0,0,0,0.20);
+		box-shadow: 0 4px 10px 0 rgba(0,0,0,0.05);
 		overflow: hidden;
 	}
 	.panel .head{
