@@ -8,7 +8,7 @@ define([
 				emailaddress: null,
 				password 	: null
 			},
-			initialzie : function(){
+			initialize : function(){
 				console.log('Login model initialzie...')
 			}
 

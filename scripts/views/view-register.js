@@ -123,6 +123,11 @@ define([
 				guid : response.attributes.guid
 			}
 			Utils.createSession(authsession);
+		},
+		serializeData : function(){
+			var jsonObject = new Object();
+				jsonObject.language = App.getLanguage();
+			return jsonObject;
 		}
 	});
 

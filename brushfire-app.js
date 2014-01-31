@@ -7,12 +7,15 @@ define([
 		'backbone',
 		'wreqr',
 		'marionette',
-		'Handlebars'
+		'Handlebars',
+		'scripts/models/model-language'
 	],
-	function($, Cookie, _, Modernizr, Utils, Backbone, Wreqr, Marionette, Handlebars){
+	function($, Cookie, _, Modernizr, Utils, Backbone, Wreqr, Marionette, Handlebars, ModelLanguage){
 		'use strict';
 
 		var App = new Marionette.Application();
+			App.AppLanguage = new Object();
+
 
 		App.addInitializer(function(options){
 			console.log('Brushfire add initializer...');
@@ -27,6 +30,17 @@ define([
 			if(Backbone.history){
 				Backbone.history.start();
 			}
+
+			var language = new ModelLanguage();
+				language.fetch({
+					success : function(response){
+						App.AppLanguage = response.attributes;
+					},
+					error : function(){
+						console.log("Error loading language pack...");
+					}
+				});
+
 		});
 
 		App.on('start', function(){
@@ -107,6 +121,12 @@ define([
 		// Remove last viewed view
 		App.removeSessionView = function(){
 			$.removeCookie("brushfireview");
+		}
+
+		//Get Language Pack
+		App.getLanguage = function(){
+			console.log(App.AppLanguage);
+			return App.AppLanguage;
 		}
 
 		return App;

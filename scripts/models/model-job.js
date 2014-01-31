@@ -9,7 +9,7 @@ define([
 				shifts		: null,
 				createdby	: null
 			},
-			initialzie : function(){
+			initialize : function(){
 				console.log('Job model initialzie...')
 			}
 

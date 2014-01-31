@@ -5,11 +5,17 @@ define([
 		var Business = Backbone.Model.extend({
 			url : '',
 			defaults : {
-				id		: null,
-				name	: null,
-				address : null
+				id			 : null,
+				name		 : null,
+				emailaddress : null,
+				street		 : null,
+				city		 : null,
+				state		 : null,
+				zip			 : null,
+				country		 : null,
+				phone		 : null
 			},
-			initialzie : function(){
+			initialize : function(){
 				console.log('Business model initialzie...')
 			}
 

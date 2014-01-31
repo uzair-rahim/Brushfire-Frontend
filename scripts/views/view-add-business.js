@@ -90,6 +90,19 @@ define([
 				return false;
 
 			}else{
+
+				var business = new Object();
+					business.name = $("#name").val();
+					business.email = $("#emailaddress").val();
+					business.street = $("#streetaddress").val();
+					business.city = $("#city").val();
+					business.state = $("#state").attr("data-dropdown");
+					business.zip = $("#zip").val();
+					business.phone = $("#phone").val();
+					business.country = $("#country").attr("data-dropdown");
+
+					console.log(business);
+
 				App.router.controller.accountverification();	
 			}
 			

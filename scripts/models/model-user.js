@@ -10,7 +10,7 @@ define([
 				emailaddress: null,
 				password 	: null
 			},
-			initialzie : function(){
+			initialize : function(){
 				console.log('User model initialzie...')
 			}
 
