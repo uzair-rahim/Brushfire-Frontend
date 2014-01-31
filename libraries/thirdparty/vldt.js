@@ -31,6 +31,9 @@ var vldt = new function(){
 				case "alphanumeric" :
 					this.response[keys[i]] = this.isAlphaNumeric($(keys[i]).val());
 				break;
+				case "dropdown" :
+					this.response[keys[i]] = this.isDropdown($(keys[i]).attr("data-dropdown"));
+				break;
 				case "date" :
 					this.response[keys[i]] = this.isDate($(keys[i]).val());
 				break;
@@ -86,6 +89,10 @@ var vldt = new function(){
 	this.isAlphaNumeric = function(val){
 		return this.alphanumeric.test(val);
 	}
+
+	this.isDropdown = function(val){
+		return val !== undefined;
+	};
 
 	this.isDate = function(val){
 		return this.date.test(val);

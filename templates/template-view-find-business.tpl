@@ -106,7 +106,20 @@
 		text-shadow: 0 1px 0 #ffffff;
 		margin: 0 0 0 10px;
 	}
-	.panel .foot .left:hover{
+	.panel .foot .right{
+		float: right;
+		line-height: 40px;
+		color: #7d7d7d;
+		text-shadow: 0 1px 0 #ffffff;
+		margin: 0 10px 0 0;
+	}
+	.panel .foot .left:before{
+		content: "Can't find your business? Add Now";
+	}
+	.panel .foot .right:before{
+		content: "Skip, I am an hourly employee";
+	}
+	.panel .foot a:hover{
 		color: #555555;
 	}
 
@@ -237,6 +250,12 @@
 			margin: 0 10px;
 			width: calc(100% - 40px);
 		}
+		.panel .foot .left:before{
+			content: "Add Business"
+		}
+		.panel .foot .right:before{
+			content: "Skip"
+		}
 	}
 	@media screen and (max-width: 520px){
 		.business-search-result li .action a{
@@ -259,7 +278,7 @@
 	<div class="modal window">
 		<h1>Already Claimed</h1>
 		<p><span>Jimmy John’s</span><br/>601 W Martin Luther King Jr Blvd Austin, TX is already claimed. What can you do?</p>
-		<p>Is this your business? <a href="#" class="claimedSignin">Sign In</a><br/><a href="#">Request</a> admin access to this page<br/>If you think this business is falsely claimed, <a href="#">report here</a></p>
+		<p>Is this your business? <a class="claimedSignin">Sign In</a><br/><a>Request</a> admin access to this page<br/>If you think this business is falsely claimed, <a>report here</a></p>
 	</div>
 </div>
 <div class="content-wrapper">
@@ -272,11 +291,11 @@
 					<p>Is your business already on Brushfire? Search now. Or create a new page if we don’t have it.</p>
 					<div class="field-container floating">
 						<label for="name">Business Name</label>
-						<input type="text" placeholder="Business Name" id="name" value="Jimmy John's"/>
+						<input type="text" placeholder="Business Name" id="name"/>
 					</div>
 					<div class="field-container floating">
 						<label for="address">Business Address</label>
-						<input type="text" placeholder="Business Address" id="address" value="Austin"/>
+						<input type="text" placeholder="Business Address" id="address"/>
 					</div>
 					<div class="link-container">
 						<button class="primary" id="find">Find My Business</button>
@@ -304,7 +323,7 @@
 										<div class="line2">601 W Martin Luther King Jr Blvd Austin, TX</div>
 									</div>
 									<div class="action">
-										<a href="#" id="" class="already-claimed">Already Claimed</a>
+										<a id="" class="already-claimed">Already Claimed</a>
 									</div>
 								</li>
 							{{else}}
@@ -321,8 +340,9 @@
 			</div>
 			<div class="foot">
 			{{#if_not_eq businesses undefined}}
-				<a class="left" id="add-business">Can't find your business? Add now</a>
+				<a class="left" id="add-business"></a>
 			{{/if_not_eq}}
+				<a class="right" id="skip"></a>
 			</div>
 		</div>
 	</div>

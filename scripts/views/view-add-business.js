@@ -35,7 +35,9 @@ define([
 			$("label[for=emailaddress]").text("Email Address");
 			$("label[for=streetaddress]").text("Street Address");
 			$("label[for=city]").text("City");
+			$("label[for=state]").text("State");
 			$("label[for=zip]").text("Zip");
+			$("label[for=country]").text("Country");
 			$("label[for=phone]").text("Phone");
 
 			var vldtFind = vldt.validate({
@@ -43,6 +45,8 @@ define([
 				"#emailaddress"		: "email",
 				"#streetaddress"	: "required",
 				"#city"				: "required",
+				"#state"			: "dropdown",
+				"#country"			: "dropdown",
 				"#zip"				: "zip",
 				"#phone"			: "phone"
 			});
@@ -67,8 +71,14 @@ define([
 							case "#city":
 								$("label[for=city]").addClass("bad").text("City is required");
 							break;
+							case "#state":
+								$("label[for=state]").addClass("bad").text("State is required");
+							break;
 							case "#zip":
 								$("label[for=zip]").addClass("bad").text("Zip is required");
+							break;
+							case "#country":
+								$("label[for=country]").addClass("bad").text("Country is required");
 							break;
 							case "#phone":
 								$("label[for=phone]").addClass("bad").text("Phone is required");

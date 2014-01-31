@@ -190,14 +190,14 @@
 				<div class="manual">
 					<div class="field-container">
 						<label for="emailaddress">Email Address</label>
-						<input type="text" placeholder="Email Address" id="emailaddress" value="uzair.rahim@redbookconnect.com"/>
+						<input type="text" placeholder="Email Address" id="emailaddress"/>
 					</div>
 					<div class="field-container">
 						<label for="password">Password</label>
-						<input type="password" placeholder="Password" id="password" value="password"/>
+						<input type="password" placeholder="Password" id="password"/>
 					</div>
 					<div class="link-container">
-					<a href="#">Forgot Password?</a>
+					<a>Forgot Password?</a>
 						<button class="primary" id="login">Sign In</button>
 					</div>
 				</div>

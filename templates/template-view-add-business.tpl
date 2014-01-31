@@ -173,57 +173,57 @@
 					<div class="field-container floating">
 						<label for="state">State</label>
 						<div class="btn-group">
-							<button class="dropDown">Select State</button>
+							<button id="state" class="dropDown">Select State</button>
 							<ul class="dropDown-menu">
-								<li><a>Alabama</a></li>
-								<li><a>Alaska</a></li>
-								<li><a>Arizona</a></li>
-								<li><a>Arkansas</a></li>
-								<li><a>California</a></li>
-								<li><a>Colorado</a></li>
-								<li><a>Connecticut</a></li>
-								<li><a>Delaware</a></li>
-								<li><a>Florida</a></li>
-								<li><a>Georgia</a></li>
-								<li><a>Hawaii</a></li>
-								<li><a>Idaho</a></li>
-								<li><a>Illinois</a></li>
-								<li><a>Iowa</a></li>
-								<li><a>Kansas</a></li>
-								<li><a>Kentucky</a></li>
-								<li><a>Louisiana</a></li>
-								<li><a>Maine</a></li>
-								<li><a>Maryland</a></li>
-								<li><a>Massachusetts</a></li>
-								<li><a>Michigan</a></li>
-								<li><a>Minnesota</a></li>
-								<li><a>Mississippi</a></li>
-								<li><a>Missouri</a></li>
-								<li><a>Montana</a></li>
-								<li><a>Nebraska</a></li>
-								<li><a>Nevada</a></li>
-								<li><a>New Hampshire</a></li>
-								<li><a>New Jersey</a></li>
-								<li><a>New Mexico</a></li>
-								<li><a>New York</a></li>
-								<li><a>North Carolina</a></li>
-								<li><a>North Dakota</a></li>
-								<li><a>Ohio</a></li>
-								<li><a>Oklahoma</a></li>
-								<li><a>Oregon</a></li>
-								<li><a>Pennsylvania</a></li>
-								<li><a>Rhode Island</a></li>
-								<li><a>South Carolina</a></li>
-								<li><a>South Dakota</a></li>
-								<li><a>Tennessee</a></li>
-								<li><a>Texas</a></li>
-								<li><a>Utah</a></li>
-								<li><a>Vermont</a></li>
-								<li><a>Virginia</a></li>
-								<li><a>Washington</a></li>
-								<li><a>West Virginia</a></li>
-								<li><a>Wisconsin</a></li>
-								<li><a>Wyoming</a></li>
+								<li><a id="AL">Alabama</a></li>
+								<li><a id="AK">Alaska</a></li>
+								<li><a id="AZ">Arizona</a></li>
+								<li><a id="AR">Arkansas</a></li>
+								<li><a id="CA">California</a></li>
+								<li><a id="CO">Colorado</a></li>
+								<li><a id="CT">Connecticut</a></li>
+								<li><a id="DE">Delaware</a></li>
+								<li><a id="FL">Florida</a></li>
+								<li><a id="GA">Georgia</a></li>
+								<li><a id="HI">Hawaii</a></li>
+								<li><a id="ID">Idaho</a></li>
+								<li><a id="IL">Illinois</a></li>
+								<li><a id="IA">Iowa</a></li>
+								<li><a id="KS">Kansas</a></li>
+								<li><a id="KY">Kentucky</a></li>
+								<li><a id="LA">Louisiana</a></li>
+								<li><a id="NE">Maine</a></li>
+								<li><a id="MD">Maryland</a></li>
+								<li><a id="MA">Massachusetts</a></li>
+								<li><a id="MI">Michigan</a></li>
+								<li><a id="MN">Minnesota</a></li>
+								<li><a id="MS">Mississippi</a></li>
+								<li><a id="MO">Missouri</a></li>
+								<li><a id="MT">Montana</a></li>
+								<li><a id="NE">Nebraska</a></li>
+								<li><a id="NV">Nevada</a></li>
+								<li><a id="NH">New Hampshire</a></li>
+								<li><a id="NJ">New Jersey</a></li>
+								<li><a id="NM">New Mexico</a></li>
+								<li><a id="NY">New York</a></li>
+								<li><a id="NC">North Carolina</a></li>
+								<li><a id="ND">North Dakota</a></li>
+								<li><a id="OH">Ohio</a></li>
+								<li><a id="OK">Oklahoma</a></li>
+								<li><a id="OR">Oregon</a></li>
+								<li><a id="PA">Pennsylvania</a></li>
+								<li><a id="RI">Rhode Island</a></li>
+								<li><a id="SC">South Carolina</a></li>
+								<li><a id="SD">South Dakota</a></li>
+								<li><a id="TN">Tennessee</a></li>
+								<li><a id="TX">Texas</a></li>
+								<li><a id="UT">Utah</a></li>
+								<li><a id="VT">Vermont</a></li>
+								<li><a id="VA">Virginia</a></li>
+								<li><a id="WA">Washington</a></li>
+								<li><a id="WV">West Virginia</a></li>
+								<li><a id="WI">Wisconsin</a></li>
+								<li><a id="WY">Wyoming</a></li>
 							</ul>
 						</div>
 					</div>
@@ -234,9 +234,9 @@
 					<div class="field-container floating">
 						<label for="country">Country</label>
 						<div class="btn-group">
-							<button class="dropDown">Select Country</button>
+							<button id="country" class="dropDown">Select Country</button>
 							<ul class="dropDown-menu">
-								<li><a>United States of America</a></li>
+								<li><a id="US">United States of America</a></li>
 							</ul>
 						</div>
 					</div>

@@ -20,7 +20,8 @@ define([
 			"click .already-claimed"	: "alreadyClaimed",
 			"click #modal-claimed"		: "hideModal",
 			"click .claimedSignin"		: "signin",
-			"click .claim"				: "claimBusiness"
+			"click .claim"				: "claimBusiness",
+			"click #skip"				: "skip"
 		},
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
@@ -109,6 +110,9 @@ define([
 		},
 		claimBusiness : function(){
 			App.router.controller.accountverification();
+		},
+		skip : function(){
+			App.router.controller.profile();
 		},
 		serializeData : function(){
 			var jsonObject = new Object();

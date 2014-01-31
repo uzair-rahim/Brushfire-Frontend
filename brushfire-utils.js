@@ -195,7 +195,12 @@ define([
 			// Custom Dropdown - Select
 			selectDropdown : function(){
 				$(document).delegate("ul.dropDown-menu li a", "click", function(){
-					$(this).parent().parent().prev(".dropDown").text($(this).text());
+					var button = $(this).parent().parent().prev(".dropDown");
+					var text = $(this).text();
+					var value = $(this).attr("id");
+
+					button.text(text);
+					button.attr("data-dropdown", value);
 				});
 			}
 

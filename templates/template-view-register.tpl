@@ -198,19 +198,19 @@
 				<div class="manual">
 					<div class="field-container floating">
 						<label for="firstname">First Name</label>
-						<input type="text" placeholder="First Name" id="firstname" value="Uzair"/>
+						<input type="text" placeholder="First Name" id="firstname"/>
 					</div>
 					<div class="field-container floating">
 						<label for="lastname">Last Name</label>
-						<input type="text" placeholder="Last Name" id="lastname" value="Rahim"/>
+						<input type="text" placeholder="Last Name" id="lastname"/>
 					</div>
 					<div class="field-container">
 						<label for="emailaddress">Email Address</label>
-						<input type="text" placeholder="Email Address" id="emailaddress" value="uzair.rahim@redbookconnect.com"/>
+						<input type="text" placeholder="Email Address" id="emailaddress"/>
 					</div>
 					<div class="field-container">
 						<label for="password">Password</label>
-						<input type="password" placeholder="Password" id="password" value="password"/>
+						<input type="password" placeholder="Password" id="password" />
 					</div>
 					<div class="link-container">
 						<button class="primary" id="register">Sign Up</button>
