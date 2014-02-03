@@ -55,6 +55,11 @@ define([
 		},
 		updatePPA : function(event){
 			$("button#ppa").text(event.target.text);
+		},
+		serializeData : function(){
+			var jsonObject = new Object();
+				jsonObject.language = App.Language;
+			return jsonObject;
 		}
 	});
 

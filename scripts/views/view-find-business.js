@@ -117,6 +117,7 @@ define([
 		serializeData : function(){
 			var jsonObject = new Object();
 				jsonObject.businesses = this.model;
+				jsonObject.language = App.Language;
 			return jsonObject;
 		}
 		

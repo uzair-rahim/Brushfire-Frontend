@@ -182,23 +182,23 @@
 	</div>
 </div>
 <div class="content-wrapper">
-	<h1 id="brushfire">Brushfire</h1>
+	<h1 id="brushfire">{{language.appName}}</h1>
 	<div class="panel-container">
 		<div class="panel">
 			<div class="head">Have and account? Sign In</div>
 			<div class="body">
 				<div class="manual">
 					<div class="field-container">
-						<label for="emailaddress">Email Address</label>
+						<label for="emailaddress">{{language.emailAddr}}</label>
 						<input type="text" placeholder="Email Address" id="emailaddress"/>
 					</div>
 					<div class="field-container">
-						<label for="password">Password</label>
+						<label for="password">{{language.password}}</label>
 						<input type="password" placeholder="Password" id="password"/>
 					</div>
 					<div class="link-container">
 					<a>Forgot Password?</a>
-						<button class="primary" id="login">Sign In</button>
+						<button class="primary" id="login">{{language.signIn}}</button>
 					</div>
 				</div>
 				<div class="hotschedules">
@@ -209,7 +209,7 @@
 				</div>
 			</div>
 			<div class="foot">
-				<a class="left" id="signup">Don't have an account? Sign Up Free</a>
+				<a class="left" id="signup">{{language.signUpNow}}</a>
 			</div>
 		</div>
 	</div>

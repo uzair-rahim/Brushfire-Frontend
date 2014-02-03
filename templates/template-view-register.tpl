@@ -190,26 +190,26 @@
 	</div>
 </div>
 <div class="content-wrapper">
-	<h1 id="brushfire">Brushfire</h1>
+	<h1 id="brushfire">{{language.appName}}</h1>
 	<div class="panel-container">
 		<div class="panel">
 			<div class="head">Sign Up</div>
 			<div class="body">
 				<div class="manual">
 					<div class="field-container floating">
-						<label for="firstname">First Name</label>
+						<label for="firstname">{{language.firstName}}</label>
 						<input type="text" placeholder="First Name" id="firstname"/>
 					</div>
 					<div class="field-container floating">
-						<label for="lastname">Last Name</label>
+						<label for="lastname">{{language.lastName}}</label>
 						<input type="text" placeholder="Last Name" id="lastname"/>
 					</div>
 					<div class="field-container">
-						<label for="emailaddress">Email Address</label>
+						<label for="emailaddress">{{language.emailAddr}}</label>
 						<input type="text" placeholder="Email Address" id="emailaddress"/>
 					</div>
 					<div class="field-container">
-						<label for="password">Password</label>
+						<label for="password">{{language.password}}</label>
 						<input type="password" placeholder="Password" id="password" />
 					</div>
 					<div class="link-container">
@@ -224,7 +224,7 @@
 				</div>
 			</div>
 			<div class="foot">
-				<a class="left" id="cancel">Never mind, don't sign up</a>
+				<a class="left" id="cancel">{{language.cancelSignUp}}</a>
 			</div>
 		</div>
 	</div>

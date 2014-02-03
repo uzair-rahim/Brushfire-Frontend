@@ -106,6 +106,11 @@ define([
 				App.router.controller.accountverification();	
 			}
 			
+		},
+		serializeData : function(){
+			var jsonObject = new Object();
+				jsonObject.language = App.Language;
+			return jsonObject;
 		}
 		
 	});

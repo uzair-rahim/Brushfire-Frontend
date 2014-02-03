@@ -23,6 +23,11 @@ define([
 
 		continue : function(){
 			App.router.controller.profile();
+		},
+		serializeData : function(){
+			var jsonObject = new Object();
+				jsonObject.language = App.Language;
+			return jsonObject;
 		}
 		
 	});

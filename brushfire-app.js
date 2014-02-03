@@ -14,8 +14,7 @@ define([
 		'use strict';
 
 		var App = new Marionette.Application();
-			App.AppLanguage = new Object();
-
+			App.Language =  new Object();
 
 		App.addInitializer(function(options){
 			console.log('Brushfire add initializer...');
@@ -25,22 +24,13 @@ define([
 			body : "body"
 		});
 
+		App.on('initialize:before', function(){
+			console.log('Brushfire before initialized...');
+			App.getLanguagePack();
+		});
+
 		App.on('initialize:after', function(){
 			console.log('Brushfire initialized...');
-			if(Backbone.history){
-				Backbone.history.start();
-			}
-
-			var language = new ModelLanguage();
-				language.fetch({
-					success : function(response){
-						App.AppLanguage = response.attributes;
-					},
-					error : function(){
-						console.log("Error loading language pack...");
-					}
-				});
-
 		});
 
 		App.on('start', function(){
@@ -123,10 +113,24 @@ define([
 			$.removeCookie("brushfireview");
 		}
 
-		//Get Language Pack
-		App.getLanguage = function(){
-			console.log(App.AppLanguage);
-			return App.AppLanguage;
+		// Load Language Pack
+		App.getLanguagePack = function(){
+			var modelLanguage = new ModelLanguage({language : "en"});
+			modelLanguage.fetch({
+				success : function(response){
+					App.Language = response.attributes.items;
+					App.startApp();
+				},
+				error : function(){
+					console.log("Error loading language pack...");
+				}
+			});
+		}
+
+		App.startApp = function(){
+			if(Backbone.history){
+				Backbone.history.start();
+			}
 		}
 
 		return App;

@@ -7,7 +7,7 @@ define([
 		var BrushfireUtils = Backbone.Model.extend({
 
 			// STATIC VARIABLES
-			APPLICATION_TITLE: 'Brushfire',
+			APP_TITLE: 'Brushfire',
 
 			// Show toast
 			showToast : function(options){

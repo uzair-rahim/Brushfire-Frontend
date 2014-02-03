@@ -126,7 +126,7 @@ define([
 		},
 		serializeData : function(){
 			var jsonObject = new Object();
-				jsonObject.language = App.getLanguage();
+				jsonObject.language = App.Language;
 			return jsonObject;
 		}
 	});

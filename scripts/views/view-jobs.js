@@ -52,6 +52,7 @@ define([
 		serializeData : function(){
 			var jsonObject = new Object();
 				jsonObject.jobs = this.model;
+				jsonObject.language = App.Language;
 			return jsonObject;
 		}
 

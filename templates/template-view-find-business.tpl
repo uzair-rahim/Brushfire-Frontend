@@ -282,7 +282,7 @@
 	</div>
 </div>
 <div class="content-wrapper">
-	<h1 id="brushfire">Brushfire</h1>
+	<h1 id="brushfire">{{language.appName}}</h1>
 	<div class="panel-container">
 		<div class="panel">
 			<div class="head">Find Your Business</div>

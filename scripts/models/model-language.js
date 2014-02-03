@@ -5,13 +5,10 @@ define([
 		var Language = Backbone.Model.extend({
 			urlRoot : '/brushfire/services/rest/i18n/',
 			language: "en",
-			defaults : {
-				ln : "en"
-			},
-			initialize : function(ln){
-				console.log('Language model initialzie...');
-				if(typeof ln !== "undefined"){
-					this.language = ln;
+			initialize : function(options){
+				console.log('Language model initialized...');
+				if(typeof options.language !== "undefined"){
+					this.language = options.language;
 				}
 			},
 			url : function(){
