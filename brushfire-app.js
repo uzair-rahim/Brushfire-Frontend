@@ -115,7 +115,8 @@ define([
 
 		// Load Language Pack
 		App.getLanguagePack = function(){
-			var modelLanguage = new ModelLanguage({language : "en"});
+			var ln = navigator.language;
+			var modelLanguage = new ModelLanguage({language : ln});
 			modelLanguage.fetch({
 				success : function(response){
 					App.Language = response.attributes.items;

@@ -159,7 +159,7 @@
 						<input type="text" placeholder="Business Name" id="name"/>
 					</div>
 					<div class="field-container floating">
-						<label for="emailaddress">Email Address</label>
+						<label for="emailaddress">{{language.emailAddress}}</label>
 						<input type="text" placeholder="Email Address" id="emailaddress"/>
 					</div>
 					<div class="field-container floating">

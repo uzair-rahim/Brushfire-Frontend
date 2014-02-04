@@ -71,7 +71,7 @@ define([
 				var that = this;
 				var modeluser = new ModelUser();
 
-				/* 
+				
 				modeluser.save({
 						firstname		: $("#firstname").val(),
 						lastname		: $("#lastname").val(),
@@ -88,7 +88,7 @@ define([
 							}else{
 								console.log("User successfuly registered!");
 								that.createSession(response);
-								App.router.controller.profile();
+								App.router.controller.findbusiness();
 							}
 
 					},
@@ -100,10 +100,7 @@ define([
 						});
 					}
 				});
-				*/
-
-				App.router.controller.findbusiness();
-
+				
 			}
 		},
 		cancel : function(){

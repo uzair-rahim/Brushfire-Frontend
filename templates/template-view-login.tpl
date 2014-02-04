@@ -185,11 +185,11 @@
 	<h1 id="brushfire">{{language.appName}}</h1>
 	<div class="panel-container">
 		<div class="panel">
-			<div class="head">Have and account? Sign In</div>
+			<div class="head">Have an account? Sign In</div>
 			<div class="body">
 				<div class="manual">
 					<div class="field-container">
-						<label for="emailaddress">{{language.emailAddr}}</label>
+						<label for="emailaddress">{{language.emailAddress}}</label>
 						<input type="text" placeholder="Email Address" id="emailaddress"/>
 					</div>
 					<div class="field-container">

@@ -205,7 +205,7 @@
 						<input type="text" placeholder="Last Name" id="lastname"/>
 					</div>
 					<div class="field-container">
-						<label for="emailaddress">{{language.emailAddr}}</label>
+						<label for="emailaddress">{{language.emailAddress}}</label>
 						<input type="text" placeholder="Email Address" id="emailaddress"/>
 					</div>
 					<div class="field-container">
