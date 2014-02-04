@@ -194,7 +194,7 @@ define([
 
 			// Custom Dropdown - Select
 			selectDropdown : function(){
-				$(document).delegate("ul.dropDown-menu li a", "click", function(){
+				$(document).delegate("ul.dropDown-menu:not(#nav-extras-dropdown, #notifications-dropdown) li a", "click", function(){
 					var button = $(this).parent().parent().prev(".dropDown");
 					var text = $(this).text();
 					var value = $(this).attr("id");

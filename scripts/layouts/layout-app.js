@@ -20,30 +20,15 @@ define([
 				body	: "#app-body"
 			},
 			events : {
-				"click #nav-menu li a"	: "changeView",
-				"click #nav-extras"		: "showMoreOptions", 
-				"click #logout"			: "logout"
-			},
-			onShow : function(){
-				console.log("Layout Application onShow...");
-				$(document).click(function(event){
-					var target = $(event.target).is("#nav-extras");
-					if(!target){
-						$("#nav-extras-dropdown").css("display", "none");
-					}
-				});
+				"click #nav-menu li a"		: "changeView",
+				"click #profile-settings"	: "profileSettings",
+				"click #logout"				: "logout"
 			},
 			changeView : function(event){
 				var menuItem = $(event.target).data("menu");
 				console.log("Change view to "+menuItem+"...");
 
 				switch(menuItem){
-					case "profile":
-						var view = new ViewProfile();
-						this.body.show(view);
-						App.setSessionView('profile');
-						Utils.setBreadcrumb({"Profile" : " "});
-					break;
 					case "jobs":
 						var that = this;
 						var jobs = new CollectionJobs({owner:Utils.getGUID()});
@@ -54,16 +39,24 @@ define([
 								}
 							});
 
-						App.setSessionView('jobs');						
+						App.setSessionView('jobs');
 						Utils.setBreadcrumb({"Jobs": " "});
 					break;
 				}
 			},
-			showMoreOptions : function(){
-				$("#nav-extras-dropdown").css("display", "block");
+			profileSettings : function(){
+				var view = new ViewProfile();
+				this.body.show(view);
+				App.setSessionView('profile');
+				Utils.setBreadcrumb({"Profile" : " "});
 			},
 			logout : function(){
 				App.router.controller.logout();
+			},
+			serializeData : function(){
+				var jsonObject = new Object();
+					jsonObject.language = App.Language;
+				return jsonObject;
 			}
 		});
 
