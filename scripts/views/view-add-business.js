@@ -20,6 +20,7 @@ define([
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Add Business initialized...");
+			App.setSessionView('addbusiness');
 		},
 
 		dontAddBusiness : function(){

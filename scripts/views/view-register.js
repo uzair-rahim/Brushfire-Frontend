@@ -23,6 +23,7 @@ define([
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Register initialized...");
+			App.setSessionView('register');
 		},
 		register : function(){
 			console.log("Register...");

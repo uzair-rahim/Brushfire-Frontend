@@ -221,6 +221,7 @@
 								<li><a id="VT">Vermont</a></li>
 								<li><a id="VA">Virginia</a></li>
 								<li><a id="WA">Washington</a></li>
+								<li><a id="WA">Washington DC</a></li>
 								<li><a id="WV">West Virginia</a></li>
 								<li><a id="WI">Wisconsin</a></li>
 								<li><a id="WY">Wyoming</a></li>

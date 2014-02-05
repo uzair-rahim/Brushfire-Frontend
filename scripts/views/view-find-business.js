@@ -27,6 +27,7 @@ define([
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Find Business initialized...");
 			Utils.deleteSearchTerms();
+			App.setSessionView('findbusiness');
 		},
 		onRender : function(){
 			var search = Utils.getSearchTerms();

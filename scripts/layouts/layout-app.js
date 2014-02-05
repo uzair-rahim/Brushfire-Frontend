@@ -3,12 +3,14 @@ define([
 	'app',
 	'utils',
 	'marionette',
+	'scripts/views/view-account',
 	'scripts/views/view-profile',
 	'scripts/views/view-jobs',
+	'scripts/views/view-network',
 	'scripts/collections/collection-jobs',
 	'hbs!templates/template-layout-app'
 	],
-	function($, App, Utils, Marionette, ViewProfile, ViewJobs, CollectionJobs, TemplateLayoutApp){
+	function($, App, Utils, Marionette, ViewAccount, ViewProfile, ViewJobs, ViewNetwork, CollectionJobs, TemplateLayoutApp){
 		'use strict';
 
 		var LayoutApp = Marionette.Layout.extend({
@@ -21,6 +23,7 @@ define([
 			},
 			events : {
 				"click #nav-menu li a"		: "changeView",
+				"click #account-settings"	: "accountSettings",
 				"click #profile-settings"	: "profileSettings",
 				"click #logout"				: "logout"
 			},
@@ -38,17 +41,21 @@ define([
 									that.body.show(view);
 								}
 							});
-
-						App.setSessionView('jobs');
-						Utils.setBreadcrumb({"Jobs": " "});
+					break;
+					case "network":
+						var that = this;
+						var view = new ViewNetwork();
+							this.body.show(view);
 					break;
 				}
+			},
+			accountSettings : function(){
+				var view = new ViewAccount();
+				this.body.show(view);
 			},
 			profileSettings : function(){
 				var view = new ViewProfile();
 				this.body.show(view);
-				App.setSessionView('profile');
-				Utils.setBreadcrumb({"Profile" : " "});
 			},
 			logout : function(){
 				App.router.controller.logout();

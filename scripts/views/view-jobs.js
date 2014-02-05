@@ -22,6 +22,8 @@ define([
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Jobs initialized...");
+			App.setSessionView('jobs');
+			Utils.setBreadcrumb({"Jobs": " "});
 		},
 		createAJob : function(){
 			$("#modal-job h1").html("Create A Job");

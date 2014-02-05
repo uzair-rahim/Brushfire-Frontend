@@ -12,8 +12,10 @@ define([
 			appRoutes : {
 				'' 						: 'session',
 				'index' 				: 'index',
+				'account'				: 'account',
 				'profile'				: 'profile',
 				'jobs'					: 'jobs',
+				'network'				: 'network',
 				'register'				: 'register',
 				'findbusiness'			: 'findbusiness',
 				'addbusiness'			: 'addbusiness',

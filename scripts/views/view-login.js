@@ -23,6 +23,7 @@ define([
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Login initialized...");
+			App.setSessionView('index');
 		},
 		login : function(){
 			console.log("Login...");
