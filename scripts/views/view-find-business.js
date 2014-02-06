@@ -5,9 +5,10 @@ define([
 	'app',
 	'utils',
 	'marionette',
+	'scripts/models/model-business',
 	'scripts/collections/collection-businesses',
 	'hbs!templates/template-view-find-business'
-], function($, Cookie, Vldt, App, Utils, Marionette, CollectionBusinesses, TemplateViewBusiness){
+], function($, Cookie, Vldt, App, Utils, Marionette, ModelBusiness, CollectionBusinesses, TemplateViewBusiness){
 	'use strict';
 
 	var ViewFindBusiness = Marionette.ItemView.extend({
@@ -109,8 +110,31 @@ define([
 		signin : function(){
 			App.router.controller.index();
 		},
-		claimBusiness : function(){
-			App.router.controller.accountverification();
+		claimBusiness : function(event){
+			var business = $(event.target).next(".data-yelp");
+			var businessObject 				= new Object();
+				businessObject.userGuid 	= Utils.getGUID();
+				businessObject.sourceName 	= $(business).find("input[name='name']").val();
+				businessObject.sourceId 	= $(business).find("input[name='id']").val();
+				businessObject.address1 	= $(business).find("input[name='address1']").val();
+				businessObject.address2 	= $(business).find("input[name='address2']").val();
+				businessObject.city 		= $(business).find("input[name='city']").val();
+				businessObject.state 		= $(business).find("input[name='state']").val();
+				businessObject.zip 			= $(business).find("input[name='zip']").val();
+				businessObject.phone 		= $(business).find("input[name='phone']").val();
+				businessObject.country 		= $(business).find("input[name='country']").val();
+			
+			var modelBusiness = new ModelBusiness();	
+				modelBusiness.save(businessObject, {
+					success : function(){
+						console.log("Business successfully saved...");
+						App.router.controller.accountverification();
+					},
+					error : function(){
+						console.log("Error saving business...");
+					}
+				});
+			
 		},
 		skip : function(){
 			App.router.controller.profile();

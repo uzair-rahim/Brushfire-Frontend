@@ -313,7 +313,18 @@
 											<div class="line2">{{this.location.address.[0]}} {{this.location.city}}</div>
 										</div>
 										<div class="action">
-											<button id="{{this.id}}" class="claim">Claim</button>
+											<button class="claim">Claim</button>
+											<div class="data-yelp">
+												<input type="hidden" name="name" value="{{this.name}}"/>
+												<input type="hidden" name="id" value="{{this.id}}"/>
+												<input type="hidden" name="address1" value="{{this.location.address.[0]}}"/>
+												<input type="hidden" name="address2" value="{{this.location.address.[1]}}"/>
+												<input type="hidden" name="city" value="{{this.location.city}}"/>
+												<input type="hidden" name="state" value="{{this.location.stateCode}}"/>
+												<input type="hidden" name="zip" value="{{this.location.postalCode}}"/>
+												<input type="hidden" name="country" value="{{this.location.countryCode}}"/>
+												<input type="hidden" name="phone" value="{{this.phone}}"/>
+											</div>
 										</div>
 									</li>
 								{{/each}}

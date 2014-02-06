@@ -5,8 +5,9 @@ define([
 	'app',
 	'utils',
 	'marionette',
+	'scripts/models/model-business',
 	'hbs!templates/template-view-add-business'
-], function($, Cookie, Vldt, App, Utils, Marionette, TemplateAddBusiness){
+], function($, Cookie, Vldt, App, Utils, Marionette, ModelBusiness, TemplateAddBusiness){
 	'use strict';
 
 	var ViewAddBusiness = Marionette.ItemView.extend({
@@ -92,19 +93,28 @@ define([
 
 			}else{
 
-				var business = new Object();
-					business.name = $("#name").val();
-					business.email = $("#emailaddress").val();
-					business.street = $("#streetaddress").val();
-					business.city = $("#city").val();
-					business.state = $("#state").attr("data-dropdown");
-					business.zip = $("#zip").val();
-					business.phone = $("#phone").val();
-					business.country = $("#country").attr("data-dropdown");
+				var business 			= new Object();
+					business.userGuid 	= Utils.getGUID();
+					business.sourceName = $("#name").val();
+					business.email 		= $("#emailaddress").val();
+					business.address1	= $("#streetaddress").val();
+					business.city 		= $("#city").val();
+					business.state 		= $("#state").attr("data-dropdown");
+					business.zip 		= $("#zip").val();
+					business.phone 		= $("#phone").val();
+					business.country 	= $("#country").attr("data-dropdown");
 
-					console.log(business);
-
-				App.router.controller.accountverification();	
+					var modelBusiness = new ModelBusiness();
+					
+					//modelBusiness.save(business, {
+					//	success : function(){
+					//		console.log("Business successfully saved...");
+							App.router.controller.accountverification();
+					//	},
+					//	error : function(){
+					//		console.log("Error saving business...")
+					//	}
+					//});
 			}
 			
 		},
