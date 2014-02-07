@@ -102,12 +102,11 @@
 
 	}
 	@media screen and (max-height: 480px){
-		.app-layout{
+		#app-layout{
 			overflow-y: auto;
 		}
 	}
 </style>
-<div id="modal-loading" class="loading modal-bg ease-out"></div>
 <div class="content-wrapper">
 	<h1 id="brushfire">Brushfire</h1>
 	<div class="panel-container">
@@ -127,4 +126,3 @@
 		</div>
 	</div>
 </div>
-<div id="app-toasts" class="app-toasts"></div>

@@ -13,7 +13,7 @@ define([
 
 	var ViewFindBusiness = Marionette.ItemView.extend({
 		tagName : 'div',
-		className : 'app-layout',
+		className : '',
 		template: TemplateViewBusiness,
 		events : {
 			"click #find" 				: "findBusiness",
@@ -28,7 +28,7 @@ define([
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Find Business initialized...");
 			Utils.deleteSearchTerms();
-			App.setSessionView('findbusiness');
+			App.setSessionView('findBusiness');
 		},
 		onRender : function(){
 			var search = Utils.getSearchTerms();
@@ -97,7 +97,7 @@ define([
 			
 		},
 		addBusiness : function(){
-			App.router.controller.addbusiness();
+			App.router.controller.addBusiness();
 		},
 		alreadyClaimed : function(){
 			$("#modal-claimed").addClass("show");
@@ -128,7 +128,7 @@ define([
 				modelBusiness.save(businessObject, {
 					success : function(){
 						console.log("Business successfully saved...");
-						App.router.controller.accountverification();
+						App.router.controller.accountVerification();
 					},
 					error : function(){
 						console.log("Error saving business...");

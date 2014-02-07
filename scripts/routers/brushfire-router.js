@@ -15,9 +15,9 @@ define([
 				'jobs'					: 'jobs',
 				'network'				: 'network',
 				'register'				: 'register',
-				'findbusiness'			: 'findbusiness',
-				'addbusiness'			: 'addbusiness',
-				'accountverification'	: 'accountverification',
+				'findBusiness'			: 'findBusiness',
+				'addBusiness'			: 'addBusiness',
+				'accountVerification'	: 'accountVerification',
 				'logout'				: 'logout'
 			}
 

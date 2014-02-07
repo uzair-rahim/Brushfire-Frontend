@@ -9,7 +9,7 @@ define([
 				password 	: null
 			},
 			initialize : function(){
-				console.log('Login model initialzie...')
+				console.log('Login model initialize...')
 			}
 
 		});

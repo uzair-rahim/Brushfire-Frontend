@@ -15,11 +15,11 @@ define([
 
 		var LayoutApp = Marionette.Layout.extend({
 			tagName : 'div',
-			className : 'app-layout',
+			className : '',
 			template : TemplateLayoutApp,
 			regions : {
-				header  : "#app-header",
-				body	: "#app-body"
+				appHeader  : "#app-header",
+				appBody	: "#app-body"
 			},
 			events : {
 				"click #nav-menu li a"		: "changeView",
@@ -38,24 +38,24 @@ define([
 							jobs.fetch({
 								success : function(collection, response){
 									var view = new ViewJobs({model:response});
-									that.body.show(view);
+									that.appBody.show(view);
 								}
 							});
 					break;
 					case "network":
 						var that = this;
 						var view = new ViewNetwork();
-							this.body.show(view);
+							this.appBody.show(view);
 					break;
 				}
 			},
 			accountSettings : function(){
 				var view = new ViewAccount();
-				this.body.show(view);
+				this.appBody.show(view);
 			},
 			profileSettings : function(){
 				var view = new ViewProfile();
-				this.body.show(view);
+				this.appBody.show(view);
 			},
 			logout : function(){
 				App.router.controller.logout();

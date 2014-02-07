@@ -268,12 +268,11 @@
 		}
 	}
 	@media screen and (max-height: 480px){
-		.app-layout{
+		#app-layout{
 			overflow-y: auto;
 		}
 	}
 </style>
-<div id="modal-loading" class="loading modal-bg ease-out"></div>
 <div id="modal-claimed" class="modal-bg ease-out">
 	<div class="modal window">
 		<h1>Already Claimed</h1>
@@ -358,4 +357,3 @@
 		</div>
 	</div>
 </div>
-<div id="app-toasts" class="app-toasts"></div>

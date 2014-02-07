@@ -6,7 +6,6 @@
 		float: right;
 	}
 </style>
-<div id="modal-loading" class="loading modal-bg ease-out"></div>
 <div id="app-header">
 	<div id="header-nav">
 		<a id="app-logo" class="bf"></a>
@@ -46,4 +45,3 @@
 	</div>
 </div>
 <div id="app-body"></div>
-<div id="app-toasts" class="app-toasts"></div>

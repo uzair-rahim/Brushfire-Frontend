@@ -12,7 +12,7 @@ define([
 
 	var ViewLogin = Marionette.ItemView.extend({
 		tagName : 'div',
-		className : 'app-layout',
+		className : '',
 		template: TemplateViewLogin,
 		events : {
 			"click #login"		: "login",

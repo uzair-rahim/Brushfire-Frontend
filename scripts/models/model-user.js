@@ -11,7 +11,7 @@ define([
 				password 	: null
 			},
 			initialize : function(){
-				console.log('User model initialzie...')
+				console.log('User model initialize...')
 			}
 
 		});

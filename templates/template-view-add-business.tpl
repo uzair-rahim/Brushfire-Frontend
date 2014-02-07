@@ -140,12 +140,11 @@
 		}
 	}
 	@media screen and (max-height: 480px){
-		.app-layout{
+		#app-layout{
 			overflow-y: auto;
 		}
 	}
 </style>
-<div id="modal-loading" class="loading modal-bg ease-out"></div>
 <div class="content-wrapper">
 	<h1 id="brushfire">Brushfire</h1>
 	<div class="panel-container">
@@ -221,7 +220,7 @@
 								<li><a id="VT">Vermont</a></li>
 								<li><a id="VA">Virginia</a></li>
 								<li><a id="WA">Washington</a></li>
-								<li><a id="WA">Washington DC</a></li>
+								<li><a id="WD">Washington DC</a></li>
 								<li><a id="WV">West Virginia</a></li>
 								<li><a id="WI">Wisconsin</a></li>
 								<li><a id="WY">Wyoming</a></li>
@@ -256,4 +255,3 @@
 		</div>
 	</div>
 </div>
-<div id="app-toasts" class="app-toasts"></div>
