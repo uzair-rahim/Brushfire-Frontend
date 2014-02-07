@@ -6,9 +6,7 @@ define([
 		'use strict';
 	
 		var AppRouter = Marionette.AppRouter.extend({
-
 			controller : new AppController(),
-
 			appRoutes : {
 				'' 						: 'session',
 				'index' 				: 'index',
@@ -24,8 +22,6 @@ define([
 			}
 
 		});
-
 		return AppRouter;
-
 	}
 );

@@ -96,8 +96,10 @@ define([
 				var business 			= new Object();
 					business.userGuid 	= Utils.getGUID();
 					business.sourceName = $("#name").val();
+					business.sourceId 	= "non-yelp-id";
 					business.email 		= $("#emailaddress").val();
 					business.address1	= $("#streetaddress").val();
+					business.address2	= "";
 					business.city 		= $("#city").val();
 					business.state 		= $("#state").attr("data-dropdown");
 					business.zip 		= $("#zip").val();
@@ -106,15 +108,15 @@ define([
 
 					var modelBusiness = new ModelBusiness();
 					
-					//modelBusiness.save(business, {
-					//	success : function(){
-					//		console.log("Business successfully saved...");
+					modelBusiness.save(business, {
+						success : function(){
+							console.log("Business successfully saved...");
 							App.router.controller.accountverification();
-					//	},
-					//	error : function(){
-					//		console.log("Error saving business...")
-					//	}
-					//});
+						},
+						error : function(){
+							console.log("Error saving business...")
+						}
+					});
 			}
 			
 		},
