@@ -17,7 +17,7 @@ define([
 				country		: null
 			},
 			initialize : function(){
-				console.log('Business model initialzie...');
+				console.log('Business model initialize...');
 			}
 
 		});

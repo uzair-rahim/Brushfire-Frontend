@@ -21,8 +21,9 @@ define([
 		});
 
 		App.addRegions({
-			body 	: "body",
-			layout	: "#app-layout"
+			body 		: "body",
+			content		: "#app-content",
+			settings	: "#app-settings"
 		});
 
 		App.on('initialize:before', function(){

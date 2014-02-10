@@ -158,7 +158,7 @@
 		}
 	}
 	@media screen and (max-height: 480px){
-		#app-layout{
+		#app{
 			overflow-y: auto;
 		}
 	}

@@ -73,7 +73,6 @@ br
 #app
 {
  	display: block;
-	position: static;
 	width: 100%;
 	height: 100%;
  	background: #fcfeff;
@@ -81,26 +80,51 @@ br
  	z-index: auto;
 }
 
-#app-body
+#app-layout
 {
-	display: block;
-	position: absolute;
-	overflow: hidden;
-	overflow-y: auto;
-	height: calc(100% - 80px);
-	width: calc(100% - 10px);
-	padding: 5px;
-	background:#fcfeff;
+ 	display: block;
+	width: 200%;
+	height: 100%;
+ 	background: #fcfeff;
+ 	overflow: hidden;
+ 	z-index: auto;
 }
 
-#app-layout
+#app-content
 {
 	display: block;
 	float: left;
-	width: 100%;
+	width: 50%;
 	height: 100%;
 	overflow: hidden;
-	background: #fcfeff;
+}
+
+#app-settings
+{
+	display: block;
+	float: left;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	background: #0c0c0c;
+	background: -moz-linear-gradient(top, #282828 0%, #0c0c0c 80%, #232323 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#282828), color-stop(80%,#0c0c0c), color-stop(100%,#232323));
+	background: -webkit-linear-gradient(top, #282828 0%,#0c0c0c 80%,#232323 100%);
+	background: -o-linear-gradient(top, #282828 0%,#0c0c0c 80%,#232323 100%);
+	background: -ms-linear-gradient(top, #282828 0%,#0c0c0c 80%,#232323 100%);
+	background: linear-gradient(to bottom, #282828 0%,#0c0c0c 80%,#232323 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0c0c0c', endColorstr='#232323',GradientType=0 );
+}
+
+#app-body
+{
+	display: block;
+	overflow: hidden;
+	overflow-y: auto;
+	height: calc(100% - 80px);
+	width: calc(100% - 20px);
+	padding: 10px;
+	background:#fcfeff;
 }
 
 .app-toasts

@@ -93,7 +93,7 @@ define([
 									break;
 								case 0:
 									that.createSession(response);
-									App.router.controller.profile();
+									App.router.controller.jobs();
 									break;
 								default:
 									break;				
