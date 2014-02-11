@@ -16,11 +16,19 @@ define([
 				
 			},
 			events : {
-				"click #goback" : "backToSettings"
+				"click .close"					: "backToApp",
+				"click #settings-list ul li a"	: "selectSetting"
 			},
-			backToSettings : function(){
+			backToApp : function(){
 				var width = $(window).width();
 				$("#app").animate( { scrollLeft: -width }, 150 );
+			},
+			selectSetting : function(event){
+				$("#settings-list ul li a").removeClass("selected");
+				var link = $(event.target);
+					link.addClass("selected");
+				
+				$(".form-header .heading").text(link.text());
 			},
 			serializeData : function(){
 				var jsonObject = new Object();

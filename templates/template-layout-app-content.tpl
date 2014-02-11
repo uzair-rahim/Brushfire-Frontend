@@ -24,6 +24,9 @@
 					<li><a id="settings">{{language.settings}}</a></li>
 					<li class="divider"></li>
 					<li><a id="logout">{{language.signOut}}</a></li>
+					<li class="divider"></li>
+					<li><a id="help">Help</a></li>
+					<li><a id="report-problem">Report a Problem</a></li>
 				</ul>
 			</div>
 		</div>
