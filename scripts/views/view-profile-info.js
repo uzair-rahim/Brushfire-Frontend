@@ -1,33 +1,33 @@
+
 define([
 	'jquery',
 	'vldt',
 	'app',
 	'utils',
 	'marionette',
-	'hbs!templates/template-view-profile'
-],function($, Vldt, App, Utils, Marionette, TemplateViewProfile){
+	'hbs!templates/template-view-profile-info'
+],function($, Vldt, App, Utils, Marionette, TemplateViewProfileInfo){
 	'use strict';
 
-	var ViewProfile = Marionette.ItemView.extend({
+	var ViewProfileInfo = Marionette.ItemView.extend({
 		tagName: 'div',
 		className : '',
-		template : TemplateViewProfile,
+		template : TemplateViewProfileInfo,
 		events : {
 			
 		},
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Profile initialized...");
-			App.setSessionView('profile');
-			Utils.setBreadcrumb({"Profile Settings" : " "});
 		},
 		serializeData : function(){
 			var jsonObject = new Object();
+				jsonObject.employerProfiles = this.model;
 				jsonObject.language = App.Language;
 			return jsonObject;
 		}
 	});
 
-	return ViewProfile;
+	return ViewProfileInfo;
 	
 });

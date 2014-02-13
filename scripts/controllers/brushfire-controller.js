@@ -10,11 +10,13 @@ define([
 		'scripts/views/view-account-verification',
 		'scripts/views/view-jobs',
 		'scripts/views/view-network',
+		'scripts/views/view-profile-info',
 		'scripts/collections/collection-jobs',
+		'scripts/collections/collection-employer-profiles',
 		'scripts/layouts/layout-app-content',
 		'scripts/layouts/layout-app-settings',
 	],
-	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewJobs, ViewNetwork, CollectionJobs, LayoutAppContent, LayoutAppSettings){
+	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewJobs, ViewNetwork, ViewProfile, CollectionJobs, CollectionEmployerProfiles, LayoutAppContent, LayoutAppSettings){
 		'use strict';
 
 		var AppController = Marionette.Controller.extend({
@@ -121,6 +123,18 @@ define([
 			settings : function(){
 				var layoutAppSettings = new LayoutAppSettings();
 				App.settings.show(layoutAppSettings);
+
+				var employerProfiles = new CollectionEmployerProfiles({guid : '982C2997-A95A-4625-BCAF-E6D285F162E9'});
+				employerProfiles.fetch({
+					success : function(response){
+						var modelProfiles = response.models[0].attributes;
+						var viewProfile = new ViewProfile({model : modelProfiles});
+						layoutAppSettings.body.show(viewProfile);
+					},
+					error : function(){
+						console.log("Error fetching employer profiles...")
+					}
+				});
 			},
 
 			logout : function(){

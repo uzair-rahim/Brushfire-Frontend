@@ -1,113 +1,159 @@
 <style type="text/css">
-	#settings-list{
+	#settings-menu{
 		display: block;
 		float: left;
 		width: 190px;
-		height:100%;
+		height: 100%;
+	}
+	#settings-menu h1{
+		display: block;
+		float: left;
+		clear: both;
+		margin: 30px 0 0 20px;
+		color: #959ba2;
+		font-size: 20px;
+		font-weight: normal;
+		line-height: 22px;
+	}
+	#settings-menu .menu-section{
+		display: block;
+		float: left;
+		clear: both;
+		margin: 34px 0 0 20px;
+		width: 140px;
+		height: 100%;
+	}
+	#settings-menu .menu-section label{
+		display: block;
+		float: left;
+		clear: both;
+		width: 100%;
+		line-height: 18px;
+		font-size: 11px;
+		color: #959ba2;
+		text-indent: 2px;
+		text-transform: uppercase;
+		border-bottom: 1px solid #e0e0e0;
+	}
+	#settings-menu .menu-section ul{
+		display: block;
+		float: left;
+		clear: both;
+		width: 100%;
+	}
+	#settings-menu .menu-section ul li{
+		display: block;
+		float: left;
+		clear: both;
+		width: 100%;
+		height: 100%;
+		margin: 10px 0 0 0;
+	}
+	#settings-menu .menu-section ul li a{
+		display: block;
+		float: left;
+		clear: both;
+		width: 140px;
+		color: #2d3c4b;
+		font-size: 12px;
+		line-height: 16px;
+		text-indent: 6px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
 	}
 
-	#settings-list h1{
+	#settings-menu .menu-section ul li a.selected,
+	#settings-menu .menu-section ul li a:hover{
+		color: #4ea6e5;	
+	}
+
+	#settings-menu .menu-section ul li span{
 		display: block;
 		float: left;
 		clear: both;
-		margin: 20px 30px;
-		line-height: 30px;
-		color: #666666;
-		font-size: 18px;
-		font-weight: lighter;
+		width: 140px;
+		color: #959ba2;
+		font-size: 12px;
+		line-height: 16px;
+		text-indent: 6px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
 	}
-	#settings-list ul{
-		display: block;
+
+	#settings-menu .menu-section button{
 		float: left;
 		clear: both;
-		width: 100%;
-		margin: 10px 0 0 30px;
+		width: 130px;
+		margin: 20px 0 0 5px;
 	}
-	#settings-list ul li{
-		display: block;
-		float: left;
-		clear: both;
-		width: 100%;
-	}
-	#settings-list ul li a{
-		line-height: 25px;
-		color: #666666;
-	}
-	#settings-list ul li a.selected,
-	#settings-list ul li a:hover{
-		color: #222222;
-	}
-	#settings-form{
+
+	#settings-content{
 		display: block;
 		float: left;
 		width: calc(100% - 190px);
-		height:100%;
-		line-height: 14px;
+		height: 100%;
 	}
-	#settings-form .form-header{
+	#settings-head{
 		display: block;
 		float: left;
-		width: calc(100% - 60px);
-		margin: 15px 30px;
+		clear: both;
+		margin: 25px 0 0 0;
+		width: calc(100% - 20px);
+		height: 34px;
 		border-bottom: 1px solid #e0e0e0;
 	}
-	#settings-form .form-header .heading{
+	#settings-head h1{
 		display: block;
 		float: left;
-		line-height: 40px;
-		color: #333333;
+		clear: both;
+		margin: 0 0 0 2px;
+		color: #2d3c4b;
 		font-size: 18px;
-		font-weight: lighter;
+		font-weight: normal;
+		line-height: 34px;
 	}
-	#settings-form .form-header .close{
+	#settings-head button#closeSettings{
 		float: right;
-		font-size: 14px;
-		line-height: 14px;
-		padding: 15px 6px 0 0;
-		color: #888888;
+		margin: 0;
+		line-height: 12px;
 	}
-	@media screen and (max-width: 600px){
-		#settings-list{
-			clear: both;
-			width: 100%;
-		}
-
-		#settings-list h1{
-			margin: 20px;
-		}
-
-		#settings-list ul{
-			margin: 0 0 0 20px;
-		}
-
-		#settings-list ul li{
-			clear: none;
-			width: auto;
-			margin: 0 20px 0 0;
-		}
-
-		#settings-form{
-			clear: both;
-			width: 100%;
-			
-		}
-
-		#settings-form .form-header{
-			width: calc(100% - 40px);
-			margin: 20px;
-		}
+	#settings-body{
+		display: block;
+		float: left;
+		clear: both;
+		width: calc(100% - 20px);
+		height: 100%;
 	}
 </style>
-<div id="settings-list">
+<div id="settings-menu">
 	<h1>Settings</h1>
-	<ul>
-		<li><a class="selected">Account Settings</a></li>
-		<li><a>Profile Settings</a></li>
-	</ul>
-</div>
-<div id="settings-form">
-	<div class="form-header">
-		<div class="heading">Account Settings</div>
-		<div class="close">x</div>
+	<div class="menu-section">
+		<label>General</label>
+		<ul>
+			<li><a>Account Settings</a></li>
+		</ul>
 	</div>
+	<div class="menu-section">
+		<label>Profiles</label>
+		<ul>
+			<li>
+				<a class="selected">Hopdoddy Burgers & Burger</a>
+				<span>1400 S Congress Ave. Austin, TX 78704</span>
+			</li>
+			<li>
+				<a>Hopdoddy Burgers & Burger</a>
+				<span>2438 A West Anderson Lane Austin, TX 78625</span>
+			</li>
+		</ul>
+		<button>Add New Profile</button>
+	</div>
+</div>
+<div id="settings-content">
+	<div id="settings-head">
+		<h1>Profile Settings</h1>
+		<button id="closeSettings">Close</button>
+	</div>
+	<div id="settings-body"></div>
 </div>
