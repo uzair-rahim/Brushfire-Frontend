@@ -8,7 +8,7 @@
 	ul.pills li{
 		display: block;
 		float: left;
-		margin: 0 20px 0 0;
+		margin: 0 10px 0 0;
 	}
 	ul.pills li a{
 		display: block;
@@ -51,7 +51,7 @@
 		display: block;
 		float: left;
 		clear: both;
-		margin: 20px 0 2px 10px;
+		margin: 20px 0 2px 15px;
 		color: #2d3c4b;
 		font-size: 22px;
 		font-weight: bold;
@@ -61,19 +61,19 @@
 		display: block;
 		float: left;
 		clear: both;
-		margin: 0 0 0 10px;
+		margin: 0 0 0 15px;
 		color: #959ba2;
 		font-size: 16px;
 		line-height: 18px;
 	}
-	div.editable-list{
+	div.editable-list-container{
 		display: block;
 		float: left;
 		clear: both;
 		width: 100%;
 		margin: 10px 0 0 0;
 	}
-	div.editable-list > label{
+	div.editable-list-container > label{
 		display: block;
 		float: left;
 		clear: both;
@@ -83,14 +83,14 @@
 		font-weight: bold;
 		text-transform: uppercase;
 	}
-	div.editable-list ul{
+	div.editable-list-container ul.editable-list{
 		display: block;
 		float: left;
 		clear: both;
 		width: 100%;
 		margin: 10px 0;
 	}
-	div.editable-list ul li{
+	div.editable-list-container ul.editable-list > li{
 		display: block;
 		float: left;
 		clear: both;
@@ -98,10 +98,10 @@
 		height: 100%;
 		border-bottom:1px dotted #bfbfbf;
 	}
-	div.editable-list ul li:hover{
+	div.editable-list-container ul.editable-list > li:hover{
 		background-color: #f9f9f9;
 	}
-	div.editable-list ul li label{
+	div.editable-list-container ul.editable-list > li label{
 		display: block;
 		float: left;
 		width: 80px;
@@ -111,7 +111,7 @@
 		font-weight: bold;
 		line-height: 30px;
 	}
-	div.editable-list ul li span{
+	div.editable-list-container ul.editable-list > li span{
 		display: block;
 		float: left;
 		margin: 0 0 0 2px;
@@ -119,11 +119,11 @@
 		font-size: 12px;
 		line-height: 30px;
 	}
-	div.editable-list ul li span.empty{
+	div.editable-list-container ul.editable-list > li span.empty{
 		color: #b1b1b1;
 		font-style: italic;
 	}
-	div.editable-list ul li a{
+	div.editable-list-container ul.editable-list > li a{
 		display: block;
 		float: right;
 		margin: 0 2px 0 0;
@@ -131,9 +131,27 @@
 		color: #4ea6e5;
 		line-height: 30px;
 	}
-	div.editable-list ul li:hover a,
-	div.editable-list ul li a:hover{
+	div.editable-list-container ul.editable-list > li:hover a,
+	div.editable-list-container ul.editable-list > li a:hover{
 		text-decoration: underline;
+	}
+	div.editable-list-container ul.editable-list > li ul{
+		display: block;
+		float: left;
+		margin: 5px 0;
+	}
+	div.editable-list-container ul.editable-list > li ul li{
+		display: block;
+		float: left;
+		clear: both;
+		text-align: left;
+		line-height: 20px;
+		width: 140px;
+	}
+	div.editable-list-container ul.editable-list > li ul li span{
+		display: inline;
+		float: right;
+		line-height: 20px;
 	}
 </style>
 <ul class="pills">
@@ -143,45 +161,54 @@
 <div class="profile-cover">
 	<div class="profile-map"></div>
 	<div class="profile-info">
-		<div class="name">{{employerProfiles.name}}</div>
-		<div class="address">{{employerProfiles.location.address1}}, {{employerProfiles.location.city}} {{employerProfiles.location.state}} {{employerProfiles.location.zip}}</div>
+		<div class="name">{{employerProfileInfo employerProfile "name" "value"}}</div>
+		<div class="address">{{employerProfileInfo employerProfile "address" "value"}}</div>
 	</div>
 </div>
-<div class="editable-list">
+<div class="editable-list-container">
 	<label>Profile Info</label>
-	<ul>
+	<ul class="editable-list">
 		<li>
 			<label>Name</label>
-			<span>{{employerProfiles.name}}</span>
+			<span class='{{employerProfileInfo employerProfile "name"}}'>{{employerProfileInfo employerProfile "name" "value"}}</span>
 			<a>Edit</a>
 		</li>
 		<li>
 			<label>Address</label>
-			<span>{{employerProfiles.location.address1}}, {{employerProfiles.location.city}} {{employerProfiles.location.state}} {{employerProfiles.location.zip}}</span>
+			<span class='{{employerProfileInfo employerProfile "address"}}'>{{employerProfileInfo employerProfile "address" "value"}}</span>
 			<a>Edit</a>
 		</li>
 		<li>
 			<label>Description</label>
-			<span class="empty">Tell us a little about your store.</span>
+			<span class='{{employerProfileInfo employerProfile "description"}}'>{{employerProfileInfo employerProfile "description" "value"}}</span>
 			<a>Edit</a>
 		</li>
 		<li>
 			<label>Website</label>
-			<span>{{employerProfiles.url}}</span>
+			<span class='{{employerProfileInfo employerProfile "website"}}'>{{employerProfileInfo employerProfile "website" "value"}}</span>
 			<a>Edit</a>
 		</li>
 		<li>
 			<label>Email</label>
-			<span>congress.ave@hopdoddy.com</span>
+			<span class='{{employerProfileInfo employerProfile "email"}}'>{{employerProfileInfo employerProfile "email" "value"}}</span>
 			<a>Edit</a>
 		</li>
 		<li>
 			<label>Phone</label>
-			<span>{{employerProfiles.phone}}</span>
+			<span class='{{employerProfileInfo employerProfile "phone"}}'>{{employerProfileInfo employerProfile "phone" "value"}}</span>
 			<a>Edit</a>
 		</li>
 		<li>
 			<label>Hours</label>
+			<ul>
+				<li>Mon: <span>9:00AM to 9:00PM</span></li>
+				<li>Tue: <span>9:00AM to 9:00PM</span></li>
+				<li>Wed: <span>9:00AM to 9:00PM</span></li>
+				<li>Thu: <span>9:00AM to 9:00PM</span></li>
+				<li>Fri: <span>9:00AM to 9:00PM</span></li>
+				<li>Sat: <span>9:00AM to 9:00PM</span></li>
+				<li>Sun: <span>9:00AM to 9:00PM</span></li>
+			</ul>
 			<a>Edit</a>
 		</li>
 	</ul>

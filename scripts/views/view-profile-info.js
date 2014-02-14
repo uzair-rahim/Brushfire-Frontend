@@ -22,7 +22,7 @@ define([
 		},
 		serializeData : function(){
 			var jsonObject = new Object();
-				jsonObject.employerProfiles = this.model;
+				jsonObject.employerProfile = this.model;
 				jsonObject.language = App.Language;
 			return jsonObject;
 		}

@@ -138,14 +138,12 @@
 	<div class="menu-section">
 		<label>Profiles</label>
 		<ul>
-			<li>
-				<a class="selected">Hopdoddy Burgers & Burger</a>
-				<span>1400 S Congress Ave. Austin, TX 78704</span>
-			</li>
-			<li>
-				<a>Hopdoddy Burgers & Burger</a>
-				<span>2438 A West Anderson Lane Austin, TX 78625</span>
-			</li>
+			{{#each employerProfiles}}
+				<li>
+					<a class="selected">{{this.attributes.name}}</a>
+					<span>{{this.attributes.location.address1}}</span>
+				</li>
+			{{/each}}
 		</ul>
 		<button>Add New Profile</button>
 	</div>
