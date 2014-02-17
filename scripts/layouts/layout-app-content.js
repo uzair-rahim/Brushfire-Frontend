@@ -24,6 +24,13 @@ define([
 				"click #settings"		: "settings",
 				"click #logout"			: "logout"
 			},
+			onShow : function(){
+				var user = Utils.getUser();
+				var employerIds = user.employerIds;
+				if(employerIds === null){
+					Utils.showSettings();
+				}
+			},
 			changeView : function(event){
 				var menuItem = $(event.target).data("menu");
 				console.log("Change view to "+menuItem+"...");
@@ -47,8 +54,7 @@ define([
 				}
 			},
 			settings : function(){
-				var width = $(window).width();
-				$("#app").animate( { scrollLeft: width }, 150 );
+				Utils.showSettings();
 			},
 			logout : function(){
 				App.router.controller.logout();

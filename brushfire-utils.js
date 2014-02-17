@@ -97,7 +97,8 @@ define([
 				var defaults = {
 					firstname	: " ",
 					lastname	: " ",
-					guid 		: " "
+					guid 		: " ",
+					employerIds : " "
 				}
 
 				for(var key in defaults){
@@ -120,6 +121,17 @@ define([
 			deleteSession : function(){
 				console.log("Delete session...");
 				$.removeCookie("brushfiresession");
+			},
+
+			// Get User
+			getUser : function(){
+				var brushfiresession = $.cookie("brushfiresession");
+				if(brushfiresession !== undefined){
+					var userObject = JSON.parse($.cookie("brushfiresession"));
+					return userObject; 
+				}else{
+					return false;
+				}
 			},
 
 			// Get User GUID 
@@ -202,6 +214,17 @@ define([
 					button.text(text);
 					button.attr("data-dropdown", value);
 				});
+			},
+
+			// Show/Hide Settings
+			showSettings : function(){
+				var width = $(window).width();
+				$("#app").animate( { scrollLeft: width }, 150 );
+			},
+
+			hideSettings : function(){
+				var width = $(window).width();
+				$("#app").animate( { scrollLeft: -width }, 150 );
 			}
 
 		});

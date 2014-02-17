@@ -19,8 +19,7 @@ define([
 				"click button#closeSettings" : "backToApp",
 			},
 			backToApp : function(){
-				var width = $(window).width();
-				$("#app").animate( { scrollLeft: -width }, 150 );
+				Utils.hideSettings();
 			},
 			serializeData : function(){
 				var jsonObject = new Object();

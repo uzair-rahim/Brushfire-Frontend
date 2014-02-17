@@ -125,7 +125,8 @@ define([
 			var authsession = {
 				firstname : response.attributes.firstname,
 				lastname : response.attributes.lastname,
-				guid : response.attributes.guid
+				guid : response.attributes.guid,
+				employerIds : response.attributes.employerIds
 			}
 			Utils.createSession(authsession);
 		},
