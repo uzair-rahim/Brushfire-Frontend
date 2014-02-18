@@ -172,6 +172,95 @@
 		float: right;
 		line-height: 20px;
 	}
+
+	@media screen and (max-width: 700px){
+		#app-settings{
+			overflow-y: auto;
+		}
+		#closeSettings{
+			position: relative;
+			top:-255px;
+		}
+		#settings-menu{
+			clear: both;
+			width: 100%;
+		}
+		#settings-menu h1{
+			width: 100%;
+			margin:10px 0 0 10px;
+		}
+		#settings-menu .menu-section{
+			margin: 25px 0 0 10px;
+			width: calc(100% - 20px);
+		}
+		#settings-menu .menu-section ul li a{
+			width: 100%;
+		}
+		#settings-menu .menu-section ul li span{
+			width: 100%;
+		}
+		#settings-menu .menu-section button{
+			
+		}
+		#settings-content{
+			clear: both;
+			width: 100%;	
+		}
+		#settings-head{
+			margin-left: 10px;
+		}
+		#settings-body{
+			margin-left: 10px;
+		}
+
+		div.profile-cover div.profile-map{
+			height: auto;
+		}
+
+		div.profile-cover div.profile-map img{
+			width: 100%;
+
+		}
+	}
+	@media screen and (max-width: 500px){
+		div.profile-cover div.profile-info{
+			height: 70px;
+		}
+
+		div.profile-cover div.profile-info div.name,
+		div.profile-cover div.profile-info div.address{
+			width: 250px;
+			font-size: 14px;
+			line-height: 16px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		div.editable-list-container ul.editable-list > li label{
+			clear: both;
+		}
+
+		div.editable-list-container ul.editable-list > li span{
+			clear: both;
+			line-height: 16px;
+		}
+
+		div.editable-list-container ul.editable-list > li a{
+			clear: both;
+			line-height: 16px;
+			margin:10px 0;
+		}
+
+		div.editable-list-container ul.editable-list > li div.edit-mode{
+			clear: both;
+		}
+
+		div.editable-list-container ul.editable-list > li ul{
+			clear: both;
+			margin-left: 4px;
+		}
+	}
 </style>
 <ul class="pills">
 	<li><a class="selected">Profile Info</a></li>

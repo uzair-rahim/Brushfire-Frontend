@@ -27,7 +27,8 @@ define([
 			onShow : function(){
 				var user = Utils.getUser();
 				var employerIds = user.employerIds;
-				if(employerIds === null){
+
+				if(employerIds.length === 0){
 					Utils.showSettings();
 				}
 			},

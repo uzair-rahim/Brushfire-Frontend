@@ -42,14 +42,15 @@ define([
 			this.showHideFields();
 
 			var employer = new Object();
+				employer.id = this.model.id;
 				employer.name = $("#employer-name").val();
 				employer.url = $("#employer-website").val();
 				employer.phone = $("#employer-phone").val();
-				employer.ppa = this.model.ppa;
-				employer.storeHours = this.model.storeHours;
-				employer.preferences = this.model.preferences;
-				employer.admins = this.model.admins;
-				employer.location = this.model.location;
+				//employer.ppa = this.model.ppa;
+				//employer.storeHours = this.model.storeHours;
+				//employer.preferences = this.model.preferences;
+				//employer.admins = this.model.admins;
+				//employer.location = this.model.location;
 
 			var employerProfile = new ModelEmployerProfile({
 				guid : this.model.guid

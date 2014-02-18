@@ -3,12 +3,12 @@ define([
 	],
 	function(Backbone){
 		var EmployerProfile = Backbone.Model.extend({
-			urlRoot : '/brushfire/spring/employer',
+			urlRoot : '/brushfire/services/rest/employer',
 			defaults : {
 				
 			},
 			url : function(){
-				var url = this.urlRoot + "/update?guid="+this.guid;
+				var url = this.urlRoot + "/"+this.guid;
 				return url;
 			},
 			initialize : function(options){
