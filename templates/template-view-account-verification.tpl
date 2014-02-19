@@ -1,4 +1,7 @@
 <style type="text/css">
+	#app-content{
+		overflow-y: auto;
+	}
 	.content-wrapper{
 		display: block;
 		width: 100%;
@@ -101,11 +104,6 @@
 	@media screen and (max-width: 600px){
 
 	}
-	@media screen and (max-height: 480px){
-		#app{
-			overflow-y: auto;
-		}
-	}
 </style>
 <div class="content-wrapper">
 	<h1 id="brushfire">Brushfire</h1>
@@ -114,7 +112,6 @@
 			<div class="head">Account Verification</div>
 			<div class="body">
 				<div class="full">
-					<p>Thank you for signing up!</p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 					<p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
 					<div class="link-container">

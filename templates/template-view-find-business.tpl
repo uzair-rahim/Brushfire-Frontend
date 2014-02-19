@@ -1,5 +1,5 @@
 <style type="text/css">
-	.app-layout{
+	#app-content{
 		overflow-y: auto;
 	}
 	.content-wrapper{
@@ -117,7 +117,7 @@
 		content: "Can't find your business? Add Now";
 	}
 	.panel .foot .right:before{
-		content: "Skip, I am an hourly employee";
+		content: "Skip";
 	}
 	.panel .foot a:hover{
 		color: #555555;
@@ -253,9 +253,6 @@
 		.panel .foot .left:before{
 			content: "Add Business"
 		}
-		.panel .foot .right:before{
-			content: "Skip"
-		}
 	}
 	@media screen and (max-width: 520px){
 		.business-search-result li .action a{
@@ -265,11 +262,6 @@
 		.business-search-result li .action button{
 			margin: 0;
 			margin-top: 14px;
-		}
-	}
-	@media screen and (max-height: 480px){
-		#app{
-			overflow-y: auto;
 		}
 	}
 </style>

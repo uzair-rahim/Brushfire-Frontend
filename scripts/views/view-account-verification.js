@@ -23,7 +23,7 @@ define([
 		},
 
 		continue : function(){
-			App.router.controller.jobs();
+			App.router.controller.logout();
 		},
 		serializeData : function(){
 			var jsonObject = new Object();

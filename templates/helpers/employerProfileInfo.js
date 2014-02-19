@@ -74,7 +74,7 @@ define([
 						returnVal = object.phone;
 					}
 				break;
-			}
+				}
 
 			return returnVal;
 

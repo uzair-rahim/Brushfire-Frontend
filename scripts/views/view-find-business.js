@@ -137,7 +137,7 @@ define([
 			
 		},
 		skip : function(){
-			App.router.controller.jobs();
+			App.router.controller.accountVerification();
 		},
 		serializeData : function(){
 			var jsonObject = new Object();

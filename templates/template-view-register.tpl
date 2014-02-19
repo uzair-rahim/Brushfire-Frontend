@@ -1,4 +1,7 @@
 <style type="text/css">
+	#app-content{
+		overflow-y: auto;
+	}
 	.content-wrapper{
 		display: block;
 		width: 100%;
@@ -163,11 +166,6 @@
 		#modal-hotschedules .modal.window{
 			margin: 0 10px;
 			width: calc(100% - 40px);
-		}
-	}
-	@media screen and (max-height: 480px){
-		#app{
-			overflow-y: auto;
 		}
 	}
 </style>

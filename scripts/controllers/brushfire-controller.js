@@ -122,22 +122,36 @@ define([
 
 			settings : function(){
 
-				var employerProfiles = new CollectionEmployerProfiles({guid : '982C2997-A95A-4625-BCAF-E6D285F162E9'});
-				employerProfiles.fetch({
-					success : function(response){
-						var modelProfiles = response.models;
-						var modelProfile = response.models[0].attributes;
+				var employerGUIDs = Utils.getUser().employerIds;
 
-						var layoutAppSettings = new LayoutAppSettings({model : modelProfiles});
+				if(employerGUIDs.length != 0){
+
+					var employerProfiles = new CollectionEmployerProfiles({guid : employerGUIDs[0]});
+					employerProfiles.fetch({
+						success : function(response){
+							var modelProfiles = response.models;
+							var modelProfile = response.models[0].attributes;
+
+							var layoutAppSettings = new LayoutAppSettings({model : modelProfiles});
+							App.settings.show(layoutAppSettings);
+
+							var viewProfile = new ViewProfile({model : modelProfile});
+							layoutAppSettings.body.show(viewProfile);
+						},
+						error : function(){
+							console.log("Error fetching employer profiles...")
+						}
+					});
+
+				}else{
+					var layoutAppSettings = new LayoutAppSettings();
 						App.settings.show(layoutAppSettings);
 
-						var viewProfile = new ViewProfile({model : modelProfile});
+					var viewProfile = new ViewProfile();
 						layoutAppSettings.body.show(viewProfile);
-					},
-					error : function(){
-						console.log("Error fetching employer profiles...")
-					}
-				});
+				}
+
+				
 			},
 
 			logout : function(){

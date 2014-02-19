@@ -24,14 +24,6 @@ define([
 				"click #settings"		: "settings",
 				"click #logout"			: "logout"
 			},
-			onShow : function(){
-				var user = Utils.getUser();
-				var employerIds = user.employerIds;
-
-				if(employerIds.length === 0){
-					Utils.showSettings();
-				}
-			},
 			changeView : function(event){
 				var menuItem = $(event.target).data("menu");
 				console.log("Change view to "+menuItem+"...");

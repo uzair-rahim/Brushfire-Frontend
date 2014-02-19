@@ -93,7 +93,11 @@ define([
 									break;
 								case 0:
 									that.createSession(response);
-									App.router.controller.jobs();
+									if(response.attributes.employerIds.length != 0){
+										App.router.controller.jobs();
+									}else{
+										App.router.controller.findBusiness();
+									}
 									break;
 								default:
 									break;				
@@ -106,7 +110,6 @@ define([
 								message: "Unable to connect to server",
 								type: "bad"
 							});
-
 						}
 					}
 				);

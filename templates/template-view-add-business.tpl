@@ -1,4 +1,7 @@
 <style type="text/css">
+	#app-content{
+		overflow-y: auto;
+	}
 	.content-wrapper{
 		display: block;
 		width: 100%;
@@ -137,11 +140,6 @@
 		.panel .body .full .field-container.floating{
 			width: calc(100% - 40px);
 			margin: 10px 0 0 10px;
-		}
-	}
-	@media screen and (max-height: 480px){
-		#app{
-			overflow-y: auto;
 		}
 	}
 </style>
