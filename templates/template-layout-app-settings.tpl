@@ -140,7 +140,7 @@
 		<ul>
 			{{#each employerProfiles}}
 				<li>
-					<a class="selected">{{this.attributes.name}}</a>
+					<a id="profile-name" class="selected">{{this.attributes.name}}</a>
 					<span>{{this.attributes.location.address1}}</span>
 				</li>
 			{{/each}}

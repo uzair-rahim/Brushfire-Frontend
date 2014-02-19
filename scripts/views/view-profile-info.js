@@ -46,19 +46,24 @@ define([
 				employer.name = $("#employer-name").val();
 				employer.url = $("#employer-website").val();
 				employer.phone = $("#employer-phone").val();
-				//employer.ppa = this.model.ppa;
-				//employer.storeHours = this.model.storeHours;
-				//employer.preferences = this.model.preferences;
-				//employer.admins = this.model.admins;
-				//employer.location = this.model.location;
+				employer.ppa = this.model.ppa;
+				employer.storeHours = this.model.storeHours;
+				employer.preferences = this.model.preferences;
+				employer.admins = this.model.admins;
+				employer.location = this.model.location;
 
 			var employerProfile = new ModelEmployerProfile({
 				guid : this.model.guid
 			});
 
+			var that = this;
+
 				employerProfile.save(employer, {
-					success : function(){
+					success : function(response){
 						console.log("Employer profile successfully saved");
+						console.log(response);
+						$(".profile-info .name").text(employer.name);
+						$("#profile-name").text(employer.name);
 					},
 					error : function(){
 						console.log("There was an error saving employer profile");
