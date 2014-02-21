@@ -43,10 +43,10 @@ define([
 			$("label[for=phone]").text("Phone");
 
 			var vldtFind = vldt.validate({
-				"#name" 			: "required",
+				"#name" 			: "alphanumeric",
 				"#emailaddress"		: "email",
-				"#streetaddress"	: "required",
-				"#city"				: "required",
+				"#streetaddress"	: "alphanumeric",
+				"#city"				: "alphanumeric",
 				"#state"			: "dropdown",
 				"#country"			: "dropdown",
 				"#zip"				: "zip",
