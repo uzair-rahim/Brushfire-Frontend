@@ -1,4 +1,7 @@
 <style type="text/css">
+	#app-content{
+		overflow-y: auto;
+	}
 	.content-wrapper{
 		display: block;
 		width: 100%;
@@ -157,13 +160,7 @@
 			width: calc(100% - 40px);
 		}
 	}
-	@media screen and (max-height: 480px){
-		.app-layout{
-			overflow-y: auto;
-		}
-	}
 </style>
-<div id="modal-loading" class="loading modal-bg ease-out"></div>
 <div id="modal-hotschedules" class="modal-bg ease-out">
 	<div class="modal window">
 		<h1>Sign In With HotSchedules</h1>
@@ -214,4 +211,3 @@
 		</div>
 	</div>
 </div>
-<div id="app-toasts" class="app-toasts"></div>

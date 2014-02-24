@@ -11,7 +11,7 @@ define([
 
 	var ViewAccountVerification = Marionette.ItemView.extend({
 		tagName : 'div',
-		className : 'app-layout',
+		className : '',
 		template: TemplateAccountVerification,
 		events : {
 			"click #continue" : "continue",
@@ -19,11 +19,11 @@ define([
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Account Verification initialized...");
-			App.setSessionView('accountverification');
+			App.setSessionView('accountVerification');
 		},
 
 		continue : function(){
-			App.router.controller.profile();
+			App.router.controller.logout();
 		},
 		serializeData : function(){
 			var jsonObject = new Object();

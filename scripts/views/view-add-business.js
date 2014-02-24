@@ -12,7 +12,7 @@ define([
 
 	var ViewAddBusiness = Marionette.ItemView.extend({
 		tagName : 'div',
-		className : 'app-layout',
+		className : '',
 		template: TemplateAddBusiness,
 		events : {
 			"click #add-business"	: "addBusiness",
@@ -21,11 +21,11 @@ define([
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Add Business initialized...");
-			App.setSessionView('addbusiness');
+			App.setSessionView('addBusiness');
 		},
 
 		dontAddBusiness : function(){
-			App.router.controller.findbusiness();
+			App.router.controller.findBusiness();
 		},
 
 		addBusiness : function(){
@@ -43,10 +43,10 @@ define([
 			$("label[for=phone]").text("Phone");
 
 			var vldtFind = vldt.validate({
-				"#name" 			: "required",
+				"#name" 			: "alphanumeric",
 				"#emailaddress"		: "email",
-				"#streetaddress"	: "required",
-				"#city"				: "required",
+				"#streetaddress"	: "alphanumeric",
+				"#city"				: "alphanumeric",
 				"#state"			: "dropdown",
 				"#country"			: "dropdown",
 				"#zip"				: "zip",
@@ -111,7 +111,7 @@ define([
 					modelBusiness.save(business, {
 						success : function(){
 							console.log("Business successfully saved...");
-							App.router.controller.accountverification();
+							App.router.controller.accountVerification();
 						},
 						error : function(){
 							console.log("Error saving business...")

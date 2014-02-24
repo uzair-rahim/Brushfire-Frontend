@@ -12,7 +12,7 @@ define([
 
 	var ViewLogin = Marionette.ItemView.extend({
 		tagName : 'div',
-		className : 'app-layout',
+		className : '',
 		template: TemplateViewLogin,
 		events : {
 			"click #login"		: "login",
@@ -93,7 +93,11 @@ define([
 									break;
 								case 0:
 									that.createSession(response);
-									App.router.controller.profile();
+									if(response.attributes.employerIds.length != 0){
+										App.router.controller.jobs();
+									}else{
+										App.router.controller.findBusiness();
+									}
 									break;
 								default:
 									break;				
@@ -106,7 +110,6 @@ define([
 								message: "Unable to connect to server",
 								type: "bad"
 							});
-
 						}
 					}
 				);
@@ -125,7 +128,8 @@ define([
 			var authsession = {
 				firstname : response.attributes.firstname,
 				lastname : response.attributes.lastname,
-				guid : response.attributes.guid
+				guid : response.attributes.guid,
+				employerIds : response.attributes.employerIds
 			}
 			Utils.createSession(authsession);
 		},

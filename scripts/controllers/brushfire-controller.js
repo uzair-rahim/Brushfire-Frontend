@@ -8,14 +8,15 @@ define([
 		'scripts/views/view-find-business',
 		'scripts/views/view-add-business',
 		'scripts/views/view-account-verification',
-		'scripts/views/view-account',
-		'scripts/views/view-profile',
 		'scripts/views/view-jobs',
 		'scripts/views/view-network',
+		'scripts/views/view-profile-info',
 		'scripts/collections/collection-jobs',
-		'scripts/layouts/layout-app'
+		'scripts/collections/collection-employer-profiles',
+		'scripts/layouts/layout-app-content',
+		'scripts/layouts/layout-app-settings',
 	],
-	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewAccount, ViewProfile, ViewJobs, ViewNetwork, CollectionJobs, LayoutApp){
+	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewJobs, ViewNetwork, ViewProfile, CollectionJobs, CollectionEmployerProfiles, LayoutAppContent, LayoutAppSettings){
 		'use strict';
 
 		var AppController = Marionette.Controller.extend({
@@ -30,42 +31,20 @@ define([
 					case 'register':
 						this.register();
 					break;
-					case 'findbusiness':
-						this.findbusiness();
+					case 'findBusiness':
+						this.findBusiness();
 					break;
-					case 'addbusiness':
-						this.addbusiness();
+					case 'addBusiness':
+						this.addBusiness();
 					break;
-					case 'accountverification':
-						this.accountverification();
-					break;
-					case 'account':
-						if(Utils.checkSession()){
-							this.account();
-						}else{
-							this.index();
-						}	
-					break;
-					case 'profile':
-						if(Utils.checkSession()){
-							this.profile();
-						}else{
-							this.index();
-						}	
+					case 'accountVerification':
+						this.accountVerification();
 					break;
 					case 'jobs':
-						if(Utils.checkSession()){
-							this.jobs();
-						}else{
-							this.index();
-						}	
+						this.jobs();
 					break;
 					case 'network':
-						if(Utils.checkSession()){
-							this.network();
-						}else{
-							this.index();
-						}	
+						this.network();
 					break;
 					case undefined:
 						this.index();
@@ -76,68 +55,48 @@ define([
 			index : function(){
 				console.log('Brushfire routed to index...');
 				var view = new ViewLogin();
-				App.body.show(view);
+				App.content.show(view);
 			},
 
 			register : function(){
 				console.log('Brushfire routed to sign up...');
 				var view = new ViewRegister();
-				App.body.show(view);
+				App.content.show(view);
 			},
 
-			findbusiness : function(){
+			findBusiness : function(){
 				console.log('Brushfire routed to find your business...');
 				var view = new ViewFindBusiness();
-				App.body.show(view);
+				App.content.show(view);
 			},
 
-			addbusiness : function(){
+			addBusiness : function(){
 				console.log('Brushfire routed to add your business...');
 				var view = new ViewAddBusiness();
-				App.body.show(view);
+				App.content.show(view);
 			},
 
-			accountverification : function(){
+			accountVerification : function(){
 				console.log('Brushfire routed to account verification...');
 				var view = new ViewAccountVerification();
-				App.body.show(view);
-			},
-
-			account : function(){
-				console.log('Brushfire routed to account...');
-				if(Utils.checkSession()){
-					var layout = new LayoutApp();
-					App.body.show(layout);
-					var view = new ViewAccount();
-					layout.body.show(view);
-				}else{
-					this.index();
-				}
-			},
-
-			profile : function(){
-				console.log('Brushfire routed to profile...');
-				if(Utils.checkSession()){
-					var layout = new LayoutApp();
-					App.body.show(layout);
-					var view = new ViewProfile();
-					layout.body.show(view);
-				}else{
-					this.index();
-				}
+				App.content.show(view);
 			},
 
 			jobs : function(){
 				console.log('Brushfire routed to jobs...');
 				if(Utils.checkSession()){
-					var layout = new LayoutApp();
-					App.body.show(layout);
+
+					var layoutAppContent = new LayoutAppContent();
+					App.content.show(layoutAppContent);
+
+					this.settings();
+
 					var that = this;
 					var jobs = new CollectionJobs();
 						jobs.fetch({
 							success : function(collection, response){
 								var view = new ViewJobs({model:response});
-								layout.body.show(view);			
+								layoutAppContent.appBody.show(view);			
 							}
 						});
 				}else{
@@ -148,13 +107,51 @@ define([
 			network : function(){
 				console.log('Brushfire routed to network...');
 				if(Utils.checkSession()){
-					var layout = new LayoutApp();
-					App.body.show(layout);
+
+					var layoutAppContent = new LayoutAppContent();
+					App.content.show(layoutAppContent);
 					var view = new ViewNetwork();
-					layout.body.show(view);
+					layoutAppContent.appBody.show(view);
+
+					this.settings();
+					
 				}else{
 					this.index();
 				}
+			},
+
+			settings : function(){
+
+				var employerGUIDs = Utils.getUser().employerIds;
+
+				if(employerGUIDs.length != 0){
+
+					var employerProfiles = new CollectionEmployerProfiles({guid : employerGUIDs[0]});
+					employerProfiles.fetch({
+						success : function(response){
+							var modelProfiles = response.models;
+							var modelProfile = response.models[0].attributes;
+
+							var layoutAppSettings = new LayoutAppSettings({model : modelProfiles});
+							App.settings.show(layoutAppSettings);
+
+							var viewProfile = new ViewProfile({model : modelProfile});
+							layoutAppSettings.body.show(viewProfile);
+						},
+						error : function(){
+							console.log("Error fetching employer profiles...")
+						}
+					});
+
+				}else{
+					var layoutAppSettings = new LayoutAppSettings();
+						App.settings.show(layoutAppSettings);
+
+					var viewProfile = new ViewProfile();
+						layoutAppSettings.body.show(viewProfile);
+				}
+
+				
 			},
 
 			logout : function(){

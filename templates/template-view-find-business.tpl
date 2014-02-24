@@ -1,5 +1,5 @@
 <style type="text/css">
-	.app-layout{
+	#app-content{
 		overflow-y: auto;
 	}
 	.content-wrapper{
@@ -117,7 +117,7 @@
 		content: "Can't find your business? Add Now";
 	}
 	.panel .foot .right:before{
-		content: "Skip, I am an hourly employee";
+		content: "Skip";
 	}
 	.panel .foot a:hover{
 		color: #555555;
@@ -253,9 +253,6 @@
 		.panel .foot .left:before{
 			content: "Add Business"
 		}
-		.panel .foot .right:before{
-			content: "Skip"
-		}
 	}
 	@media screen and (max-width: 520px){
 		.business-search-result li .action a{
@@ -267,13 +264,7 @@
 			margin-top: 14px;
 		}
 	}
-	@media screen and (max-height: 480px){
-		.app-layout{
-			overflow-y: auto;
-		}
-	}
 </style>
-<div id="modal-loading" class="loading modal-bg ease-out"></div>
 <div id="modal-claimed" class="modal-bg ease-out">
 	<div class="modal window">
 		<h1>Already Claimed</h1>
@@ -358,4 +349,3 @@
 		</div>
 	</div>
 </div>
-<div id="app-toasts" class="app-toasts"></div>

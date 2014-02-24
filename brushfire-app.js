@@ -21,7 +21,9 @@ define([
 		});
 
 		App.addRegions({
-			body : "body"
+			body 		: "body",
+			content		: "#app-content",
+			settings	: "#app-settings"
 		});
 
 		App.on('initialize:before', function(){
@@ -128,11 +130,20 @@ define([
 			});
 		}
 
+		// Start the App
 		App.startApp = function(){
 			if(Backbone.history){
 				Backbone.history.start();
 			}
 		}
+
+		// Adjust the layout on window resize
+		$(window).resize(function(){
+			if(!$("#app").scrollLeft() == 0){
+				$("#app").scrollLeft($(window).width());
+			}
+		});
+
 
 		return App;
 	}

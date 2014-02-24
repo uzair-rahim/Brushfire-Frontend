@@ -12,7 +12,7 @@ define([
 
 	var ViewRegister = Marionette.ItemView.extend({
 		tagName : 'div',
-		className : 'app-layout',
+		className : '',
 		template: TemplateViewRegister,
 		events : {
 			'click #register' 	: 'register',
@@ -89,7 +89,7 @@ define([
 							}else{
 								console.log("User successfuly registered!");
 								that.createSession(response);
-								App.router.controller.findbusiness();
+								App.router.controller.findBusiness();
 							}
 
 					},

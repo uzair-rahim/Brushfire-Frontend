@@ -10,7 +10,7 @@ define([
 				createdby	: null
 			},
 			initialize : function(){
-				console.log('Job model initialzie...')
+				console.log('Job model initialize...')
 			}
 
 		});

@@ -4,22 +4,21 @@ define([
 	'app',
 	'utils',
 	'marionette',
-	'hbs!templates/template-view-account'
-],function($, Vldt, App, Utils, Marionette, TemplateViewAccount){
+	'hbs!templates/template-view-settings'
+],function($, Vldt, App, Utils, Marionette, TemplateViewSettings){
 	'use strict';
 
-	var ViewAccount = Marionette.ItemView.extend({
+	var ViewSettings = Marionette.ItemView.extend({
 		tagName: 'div',
 		className : '',
-		template : TemplateViewAccount,
+		template : TemplateViewSettings,
 		events : {
 			
 		},
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
-			console.log("View Account initialized...");
+			console.log("View Settings initialized...");
 			App.setSessionView('account');
-			Utils.setBreadcrumb({"Account Settings" : " "});
 		},
 		serializeData : function(){
 			var jsonObject = new Object();
@@ -28,6 +27,6 @@ define([
 		}
 	});
 
-	return ViewAccount;
+	return ViewSettings;
 	
 });

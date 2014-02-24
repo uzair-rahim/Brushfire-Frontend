@@ -73,7 +73,6 @@ br
 #app
 {
  	display: block;
-	position: static;
 	width: 100%;
 	height: 100%;
  	background: #fcfeff;
@@ -81,26 +80,44 @@ br
  	z-index: auto;
 }
 
-#app-body
+#app-layout
 {
-	display: block;
-	position: absolute;
-	overflow: hidden;
-	overflow-y: auto;
-	height: calc(100% - 80px);
-	width: calc(100% - 10px);
-	padding: 5px;
-	background:#fcfeff;
+ 	display: block;
+	width: 200%;
+	height: 100%;
+ 	background: #fcfeff;
+ 	overflow: hidden;
+ 	z-index: auto;
 }
 
-.app-layout
+#app-content
 {
 	display: block;
 	float: left;
-	width: 100%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#app-settings
+{
+	display: block;
+	float: left;
+	width: 50%;
 	height: 100%;
 	overflow: hidden;
 	background: #fcfeff;
+}
+
+#app-body
+{
+	display: block;
+	overflow: hidden;
+	overflow-y: auto;
+	height: calc(100% - 80px);
+	width: calc(100% - 20px);
+	padding: 10px;
+	background:#fcfeff;
 }
 
 .app-toasts

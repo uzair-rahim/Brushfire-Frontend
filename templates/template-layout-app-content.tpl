@@ -6,7 +6,6 @@
 		float: right;
 	}
 </style>
-<div id="modal-loading" class="loading modal-bg ease-out"></div>
 <div id="app-header">
 	<div id="header-nav">
 		<a id="app-logo" class="bf"></a>
@@ -22,10 +21,12 @@
 			<div class="btn-group">
 				<button id="nav-extras" class="dropDown right"><span class="more icon"></span></button>
 				<ul id="nav-extras-dropdown" class="dropDown-menu">
-					<li><a id="account-settings">{{language.accountSettings}}</a></li>
-					<li><a id="profile-settings">{{language.profileSettings}}</a></li>
+					<li><a id="settings">{{language.settings}}</a></li>
 					<li class="divider"></li>
 					<li><a id="logout">{{language.signOut}}</a></li>
+					<li class="divider"></li>
+					<li><a id="help">Help</a></li>
+					<li><a id="report-problem">Report a Problem</a></li>
 				</ul>
 			</div>
 		</div>
@@ -46,4 +47,3 @@
 	</div>
 </div>
 <div id="app-body"></div>
-<div id="app-toasts" class="app-toasts"></div>

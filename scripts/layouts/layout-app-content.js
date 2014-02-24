@@ -3,29 +3,26 @@ define([
 	'app',
 	'utils',
 	'marionette',
-	'scripts/views/view-account',
-	'scripts/views/view-profile',
 	'scripts/views/view-jobs',
 	'scripts/views/view-network',
 	'scripts/collections/collection-jobs',
-	'hbs!templates/template-layout-app'
+	'hbs!templates/template-layout-app-content'
 	],
-	function($, App, Utils, Marionette, ViewAccount, ViewProfile, ViewJobs, ViewNetwork, CollectionJobs, TemplateLayoutApp){
+	function($, App, Utils, Marionette, ViewJobs, ViewNetwork, CollectionJobs, TemplateLayoutAppContent){
 		'use strict';
 
-		var LayoutApp = Marionette.Layout.extend({
+		var LayoutAppContent = Marionette.Layout.extend({
 			tagName : 'div',
-			className : 'app-layout',
-			template : TemplateLayoutApp,
+			className : '',
+			template : TemplateLayoutAppContent,
 			regions : {
-				header  : "#app-header",
-				body	: "#app-body"
+				appHeader 	: "#app-header",
+				appBody 	: "#app-body"
 			},
 			events : {
-				"click #nav-menu li a"		: "changeView",
-				"click #account-settings"	: "accountSettings",
-				"click #profile-settings"	: "profileSettings",
-				"click #logout"				: "logout"
+				"click #nav-menu li a"	: "changeView",
+				"click #settings"		: "settings",
+				"click #logout"			: "logout"
 			},
 			changeView : function(event){
 				var menuItem = $(event.target).data("menu");
@@ -38,24 +35,19 @@ define([
 							jobs.fetch({
 								success : function(collection, response){
 									var view = new ViewJobs({model:response});
-									that.body.show(view);
+									that.appBody.show(view);
 								}
 							});
 					break;
 					case "network":
 						var that = this;
 						var view = new ViewNetwork();
-							this.body.show(view);
+							this.appBody.show(view);
 					break;
 				}
 			},
-			accountSettings : function(){
-				var view = new ViewAccount();
-				this.body.show(view);
-			},
-			profileSettings : function(){
-				var view = new ViewProfile();
-				this.body.show(view);
+			settings : function(){
+				Utils.showSettings();
 			},
 			logout : function(){
 				App.router.controller.logout();
@@ -67,6 +59,6 @@ define([
 			}
 		});
 
-		return LayoutApp;
+		return LayoutAppContent;
 	}
 );
