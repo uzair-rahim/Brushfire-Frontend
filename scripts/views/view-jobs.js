@@ -13,11 +13,10 @@ define([
 		className : '',
 		template : TemplateViewJobs,
 		events : {
-			"click #createajob"				: "createAJob",
-			"click #jobs-table tbody tr"	: "editAJob",
-			"click #modal-cancel"			: "hideModal",
-			"click #tableCheckBox"			: "selectAll",
-			"click #add-shift"				: "addShift"
+			"click #createajob" : "createAJob",
+			"click .jobName"	: "editAJob",
+			"click #hide-card"	: "hideCard",
+			"click #cancel-job"	: "hideCard"
 		},
 		initialize : function(){
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
@@ -26,30 +25,21 @@ define([
 			Utils.setBreadcrumb({"Jobs": " "});
 		},
 		createAJob : function(){
-			$("#modal-job h1").html("Create A Job");
-			$("#modal-job").addClass("show");
+			this.showCard();
 		},
 		editAJob : function(){
-			$("#modal-job h1").html("Edit Job");
-			$("#modal-job").addClass("show");
+			this.showCard();
+			$("#jobs-table tr").removeClass("selected");
+			$(event.target).parent().addClass("selected");
 		},
-		hideModal : function(){
-			$("#modal-job").removeClass("show");
+		showCard : function(){
+			$(".card-container").addClass("expanded");
+			$(".table-container").addClass("collapsed");
 		},
-		selectAll : function(){
-			var checked = $("#tableCheckBox").prop("checked");
-			$("#jobs-table td > input[type='checkbox']").each(function(){
-				$(this).prop("checked", checked)
-			});
-
-			if(!checked){
-				$("#deletejobs").prop("disabled", true);
-			}else{
-				$("#deletejobs").prop("disabled", false);
-			}
-		},
-		addShift : function(){
-			alert("Add shift...");
+		hideCard : function(){
+			$(".card-container").removeClass("expanded");
+			$(".table-container").removeClass("collapsed");
+			$("#jobs-table tr").removeClass("selected");
 		},
 		serializeData : function(){
 			var jsonObject = new Object();
