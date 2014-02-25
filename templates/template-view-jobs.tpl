@@ -64,6 +64,22 @@
 		background-color: #feffd8;
 	}
 
+	#jobs-table tr td{
+		height: 45px;
+	}
+
+	#jobs-table tr td span.bold{
+		font-weight: bold;
+	}
+
+	#jobs-table tr td span.light{
+		display: block;
+		clear: both;
+		font-size: 11px;
+		color: #888888;
+		margin: 0 0 10px 0;
+	}
+
  	#tableCheckBox + label{
  		margin: 4px 0 7px 0;
  	}
@@ -169,6 +185,11 @@
 	{
 		margin-right: 10px;
 	}
+	.dropDown-menu.status{
+		position: fixed;
+		width: 100px;
+		min-width: 100px;
+	}	
 
  </style>
  <div class="toolbar">
@@ -192,39 +213,38 @@
 	 		</tr>
 	 	</thead>
 	 	<tbody>
-	 		<tr>
-	 			<td class="checkbox">
-	 				<input type="checkbox" id="tableCheckBox-1"/>
-	 				<label for="tableCheckBox-1"></label>
-				</td>
-				<td class="jobName">Bar Tender</a></td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-			</tr>
 			{{#each jobs}}
 			<tr>
 	 			<td class="checkbox">
-	 				<input type="checkbox" id="tableCheckBox-1"/>
-	 				<label for="tableCheckBox-1"></label>
+	 				<input type="checkbox" id="tableCheckBox-{{@index}}"/>
+	 				<label for="tableCheckBox-{{@index}}"></label>
 				</td>
 				<td class="jobName">{{jobName}}</a></td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
+				<td>{{{jobShifts shifts}}}</td>
+				<td><span class="bold">2 New</span> of 15</td>
+				<td>
+					<div class="btn-group">
+						<button class="dropDown">Posted</button>
+						<ul class="dropDown-menu status">
+							<li><a>Closed</a></li>
+							<li><a>Posted</a></li>
+							<li><a>Shared</a></li>
+						</ul>					
+					</div>
+				</td>
+				<td>{{createdBy.firstname}} {{createdBy.lastname}}<span class="light">on {{dateConverter created}}</span></td>
+				<td>{{timeSince updated}}</td>
 			</tr>
 			{{/each}}
 	 	</tbody>
 	</table>
 </div>
 <div class="card-container">
+<!--
 	<div class="card-container-header">
 		<div id="hide-card" class="close">X</div>
 	</div>
+-->
 	<div class="card">
 		<div class="card-header">
 			<h2>Bar Tender</h2>
