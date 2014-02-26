@@ -181,7 +181,7 @@ define([
 				job.description = "default description text";
 				job.wage = $("#job-wage").val();
 				job.wageType = $("#wage-frequency").text().toUpperCase();
-				job.shifts = [{startHour : 7, startMin : 30, endHour : 14, endMin : 0, mon : true, tue : true, wed : false, thu : false, fri : false, sat : false, sun : false}]
+				job.shifts = [{startHour : 6, startMin : 0, endHour : 23, endMin : 0, mon : false, tue : false, wed : false, thu : true, fri : true, sat : true, sun : false}]
 
 				//console.log(job);
 

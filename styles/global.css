@@ -953,7 +953,7 @@ input[type="radio"] + label:before
 
 
 button:hover,
-button:focus,
+div:not(.toggle) > button:not(.dropDown):focus,
 input[type="submit"]:hover,
 input[type="submit"]:focus,
 button.dropDown:hover,
@@ -991,7 +991,7 @@ button::-moz-focus-inner
   border: 0;
 }
 
-button:active,
+div:not(.toggle) > button:not(:disabled):not(.dropDown):active,
 .modal button:active,
 input[type="submit"]:active,
 input[type="checkbox"] + label:active:before,
@@ -1089,7 +1089,7 @@ input[type="submit"].primary,
 }
 
 button.primary:hover,
-button.primary:focus,
+div:not(.toggle) > button.primary:focus,
 input[type="submit"].primary:hover,
 input[type="submit"].primary:focus
 {
@@ -1104,7 +1104,7 @@ input[type="submit"].primary:focus
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3eaada', endColorstr='#2978c4',GradientType=0 ); /* IE6-9 */
 }
 
-button.primary:active,
+div:not(.toggle) > button.primary:not(:disabled):active,
 input[type="submit"].primary:active
 {
 	border-color: #1872a1;
@@ -1151,7 +1151,7 @@ input[type="submit"].destroy,
 }
 
 button.destroy:hover,
-button.destroy:focus,
+div:not(.toggle) > button.destroy:focus,
 input[type="submit"].destroy:hover,
 input[type="submit"].destroy:focus
 {
@@ -1167,7 +1167,7 @@ input[type="submit"].destroy:focus
 
 }
 
-button.destroy:active,
+div:not(.toggle) > button.destroy:not(:disabled):active,
 input[type="submit"].destroy.active
 {
 	border-color: #830d0a;
@@ -1215,7 +1215,7 @@ input[type="submit"].green,
 }
 
 button.green:hover,
-button.green:focus,
+div:not(.toggle) > button.green:focus,
 input[type="submit"].green:hover,
 input[type="submit"].green:focus
 {
@@ -1230,7 +1230,7 @@ input[type="submit"].green:focus
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3dd957', endColorstr='#29c443',GradientType=0 ); /* IE6-9 */
 }
 
-button.green:active,
+div:not(.toggle) > button.green:not(:disabled):active,
 input[type="submit"].green:active
 {
 	border-color: #18a12f;
@@ -1448,9 +1448,9 @@ button.secondary.dropDown
 }
 
 button.dropDown:focus,
-.toggle button:not(.action):focus,
-.toggle button:not(.action).active,
-.modal button.dropDown:focus
+.modal button.dropDown:focus,
+.toggle button:not(:disabled):active,
+.toggle button.active
 {
 	color: #626970;
 	border-color: #a8a9aa #c4c6c6 #c4c6c6;
@@ -1486,8 +1486,9 @@ table .dropDown:focus + ul
 
 
 button.dropDown:focus:hover,
-.toggle button:not(.action):focus:hover,
-.toggle button:not(.action).active,
+.toggle button.dropDown:focus:hover,
+.toggle button:not(:disabled):active,
+.toggle button.active,
 .modal button.dropDown:focus:hover
 {
 	border-color: #1e8dc6;
@@ -1649,22 +1650,24 @@ ul.dropDown-menu li.divider
 
 .toggle button:hover + button,
 .toggle button:hover + .btn-group button.cap,
-.toggle button:focus + .btn-group button.cap
+.toggle button:focus + .btn-group button.cap,
+.toggle button.active + button:not(.active)
 {
 	border-left-width: 0;
 }
 
 .toggle button:hover + button,
 .toggle button:hover + .btn-group button.cap,
-.toggle button:focus + .btn-group button.cap
+.toggle button:focus + .btn-group button.cap,
+.toggle button.active + button:not(.active)
 {
 	margin-left: 0;
 }
 
-/* .toggle button:hover + button
+ .toggle button:hover + button.secondary
 {
 	min-width: 39px; /** This fixes a random 1px quirk with icon toggles. **/
-/* } */
+}
 
 .toggle button:focus + .btn-group button.cap:hover
 {
@@ -1678,7 +1681,7 @@ ul.dropDown-menu li.divider
 	box-shadow: inset 0 1px 0 0 #fff, inset 0 -1px 0 0 #f5f7f7, inset 0 0 0 1px rgba(255,255,255,0.7), 1px 0 0 0 #fff, 0 1px 0 0 #fff, 0 -1px 0 0 #fff;
 }
 
-.toggle button:not(:first-child):focus,
+.toggle button:not(:first-child):active,
 .toggle button:not(:first-child).active,
 .toggle button.cap:focus,
 .toggle button.cap.active
@@ -1686,8 +1689,9 @@ ul.dropDown-menu li.divider
 	box-shadow: inset 0 0 0 1px #eaeced, 1px 0 0 0 #fff, 0 1px 0 0 #fff, 0 -1px 0 0 #fff;
 }
 
-.toggle button:not(.action):focus,
-.toggle button:not(.action).active
+.toggle button.dropDown:focus,
+.toggle button:not(:disabled):active,
+.toggle button:not(:disabled).active
 {
 	color: #2d3c4b;
 }

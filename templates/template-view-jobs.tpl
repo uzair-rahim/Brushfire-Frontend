@@ -217,10 +217,7 @@
 		min-width: 100px;
 	}
 
-	.toggle button:not(.action):focus:hover,
-	.toggle button:not(.action).active{
-		border-color: #a8a9aa #c4c6c6 #c4c6c6;	
-	}
+	
  </style>
  <div class="toolbar">
 	 <button class="primary" id="createajob">{{language.newJob}}</button>
