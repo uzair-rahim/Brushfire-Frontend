@@ -5,8 +5,9 @@ define([
 	'utils',
 	'marionette',
 	'scripts/models/model-job',
+	'scripts/models/model-job-types',
 	'hbs!templates/template-view-jobs'
-],function($, Vldt, App, Utils, Marionette, ModelJob, TemplateViewJobs){
+],function($, Vldt, App, Utils, Marionette, ModelJob, ModelJobTypes, TemplateViewJobs){
 	'use strict';
 
 	var ViewJobs = Marionette.ItemView.extend({
@@ -35,6 +36,20 @@ define([
 					$(this).addClass("active");
 				}
 			});
+
+
+			var modelJobTypes = new ModelJobTypes();
+			var that = this;
+				modelJobTypes.fetch({
+				success : function(response){
+					console.log(response.attributes[0].guid);
+					that.jobtypeguid = response.attributes[0].guid
+				},
+				error : function(){
+					console.log("There was an error trying to fetch the job types");
+				}
+			});
+
 		},
 		createAJob : function(){
 
@@ -162,7 +177,7 @@ define([
 				job.ownerGuid = Utils.getUser().employerIds[0];
 				job.userGuid = Utils.getGUID();
 				job.jobName = $("#job-position").text();
-				job.typeGuid = $("#job-position").data("guid");
+				job.typeGuid = this.jobtypeguid;
 				job.description = "default description text";
 				job.wage = $("#job-wage").val();
 				job.wageType = $("#wage-frequency").text().toUpperCase();
