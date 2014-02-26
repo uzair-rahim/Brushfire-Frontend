@@ -14,15 +14,16 @@ define([
 
             if(delta<=59){
                 ps = (delta>1) ? "s": "";
-                return delta+" second"+ps
+                return Math.floor(delta)+" second"+ps
             }
 
             if(delta>=60 && delta<=3599){
                 min = Math.floor(delta/60);
-                sec = delta-(min*60);
+                sec = Math.floor(delta-(min*60));
                 pm = (min>1) ? "s": "";
                 ps = (sec>1) ? "s": "";
-                return min+" minute"+pm+" "+sec+" second"+ps;
+
+                return min+" minute"+pm;//+" "+sec+" second"+ps;
             }
 
             if(delta>=3600 && delta<=86399){

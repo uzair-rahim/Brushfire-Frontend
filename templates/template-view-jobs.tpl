@@ -40,13 +40,39 @@
  		width: 100%;
  	}
 
+ 	.card-container-header ul.pills{
+		clear: none;
+		margin: 0 0 10px 0;
+	}
+
+	.card-container-header ul.pills li{
+		margin: 0;
+	}
+
+	.card-container-header ul.pills li a{
+		display: block;
+		float: left;
+		line-height: 24px;
+		padding: 0 12px;
+		color: #2d3c4b;
+	}
+
+	.card-container-header ul.pills li a span{
+		color: #888888;
+	}
+
+	.card-container-header ul.pills li a.selected{
+		color: #fcfeff;
+		background-color: #2d3c4b;
+		border-radius: 2px;
+	}
+
  	.card-container .card-container-header .close{
  		display: block;
  		float: right;
- 		clear: both;
  		width: 10px;
  		height: 10px;
- 		margin: 12px 0 0 0;
+ 		margin: 15px 0 0 0;
  		font-size: 10px;
  		color: #9ea3aa;
  	}
@@ -189,8 +215,12 @@
 		position: fixed;
 		width: 100px;
 		min-width: 100px;
-	}	
+	}
 
+	.toggle button:not(.action):focus:hover,
+	.toggle button:not(.action).active{
+		border-color: #a8a9aa #c4c6c6 #c4c6c6;	
+	}
  </style>
  <div class="toolbar">
 	 <button class="primary" id="createajob">{{language.newJob}}</button>
@@ -220,7 +250,15 @@
 	 				<label for="tableCheckBox-{{@index}}"></label>
 				</td>
 				<td class="jobName">{{jobName}}</a></td>
-				<td>{{{jobShifts shifts}}}</td>
+				<td>
+					{{#if_eq shifts.length 0}}
+						<span style="color:#bbbbbb;">-</span>
+					{{else}}
+						{{#each shifts}}
+							{{{jobShifts this}}}
+						{{/each}}
+					{{/if_eq}}
+				</td>
 				<td><span class="bold">2 New</span> of 15</td>
 				<td>
 					<div class="btn-group">
@@ -240,11 +278,13 @@
 	</table>
 </div>
 <div class="card-container">
-<!--
 	<div class="card-container-header">
+		<ul class="pills">
+			<li><a class="selected">Job Info</a></li>
+			<li><a>Applicants <span>(2)</span></a></li>
+		</ul>
 		<div id="hide-card" class="close">X</div>
 	</div>
--->
 	<div class="card">
 		<div class="card-header">
 			<h2>Bar Tender</h2>
@@ -253,16 +293,13 @@
 			<div class="input">
 				<label for="job-position" class="required">Position</label>
 				<div class="btn-group">
-					<button id="job-position" class="dropDown">Bar Tender</button>
+					<button id="job-position" class="dropDown" data-guid="2586c123-b321-4daf-ab22-9cc38712938c">Bar Tender</button>
 					<ul class="dropDown-menu">
-						<li><a>Bar Back</a></li>
 						<li class="current"><a>Bar Tender</a></li>
-						<li><a>Busser</a></li>
 						<li><a>Cook</a></li>
-						<li><a>Dishwasher</a></li>
+						<li><a>Dish Washer</a></li>
 						<li><a>Host</a></li>
 						<li><a>Server</a></li>
-						<li><a>Store Manager</a></li>	
 					</ul>					
 				</div>
 			</div>
@@ -272,10 +309,10 @@
 				<input type="text" id="job-wage" class="wage" value="9.50"/>
 				<span>$</span>
 				<div class="btn-group">
-					<button class="dropDown">Hourly</button>
+					<button id="wage-frequency" class="dropDown">Hourly</button>
 					<ul class="dropDown-menu">
 						<li class="current"><a>Hourly</a></li>
-						<li><a>Weely</a></li>
+						<li><a>Weekly</a></li>
 						<li><a>Bi-Weekly</a></li>
 						<li><a>Monthly</a></li>	
 						<li><a>Annually</a></li>	
@@ -301,7 +338,7 @@
 			<a href="#">Add Description</a>
 		</div>
 		<div class="card-footer">
-			<button class="primary">Save</button><button id="cancel-job">Cancel</button>
+			<button class="primary" id="save-job">Save</button><button id="cancel-job">Cancel</button>
 		</div>
 	</div>
  </div>

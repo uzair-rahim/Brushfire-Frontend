@@ -3,11 +3,13 @@ define([
 	],
 	function(Backbone){
 		var Job = Backbone.Model.extend({
-			url : '',
+			urlRoot : '/brushfire/services/rest/job/',
 			defaults : {
-				name		: null,
-				shifts		: null,
-				createdby	: null
+				
+			},
+			url : function(){
+				var url = this.urlRoot;
+				return url;
 			},
 			initialize : function(){
 				console.log('Job model initialize...')
