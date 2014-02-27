@@ -116,6 +116,9 @@
 		line-height: 52px;
 		margin-left: 10px;
 		font-weight: normal;
+		background-image: url(images/icon-share.png);
+		background-position: right;
+		background-repeat: no-repeat;
 	}
 
 	.card-container .card
