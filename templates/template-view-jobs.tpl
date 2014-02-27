@@ -263,7 +263,6 @@
 						<ul class="dropDown-menu status">
 							<li><a>Closed</a></li>
 							<li><a>Posted</a></li>
-							<li><a>Shared</a></li>
 						</ul>					
 					</div>
 				</td>
