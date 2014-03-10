@@ -21,7 +21,6 @@
 		clear: both;
 		margin: 34px 0 0 20px;
 		width: 140px;
-		height: 100%;
 	}
 	#settings-menu .menu-section label{
 		display: block;
@@ -94,6 +93,7 @@
 		float: left;
 		width: calc(100% - 190px);
 		height: 100%;
+		overflow: auto;
 	}
 	#settings-head{
 		display: block;

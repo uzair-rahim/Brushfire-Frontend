@@ -10,7 +10,7 @@ define([
 
 		var LayoutAppSettings = Marionette.Layout.extend({
 			tagName : 'div',
-			className : '',
+			className : 'app-settings-body',
 			template : TemplateLayoutAppSettings,
 			regions : {
 				body : "#settings-body"

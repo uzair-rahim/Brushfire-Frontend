@@ -2,10 +2,8 @@ define([
 	'Handlebars'
 ],
 	function (Handlebars){
-		function jobShifts(context){
+		function jobShiftHours(context){
 
-			
-			
 			if(context.length === 0){
 				return "-"
 			}else{
@@ -31,12 +29,19 @@ define([
 						shiftEndMin = "0"+shiftEndMin;
 					}
 
+				var mon = context.mon;
+				var tue = context.tue;
+				var wed = context.wed;
+				var thu = context.thu;
+				var fri = context.fri;
+				var sat = context.sat;
+				var sun = context.sun;
 
-				return "<div style='line-height:16px; float:left; clear:both; font-size: 12px;'><span style='font-weight:bold;'>M - F:</span> " + shiftStartHour + ":" + shiftStartMin + " " + startDayPart + " - " + shiftEndHour + ":" + shiftEndMin + " " + endDayPart+"</div>";
+				return  shiftStartHour + ":" + shiftStartMin + " " + startDayPart + " - " + shiftEndHour + ":" + shiftEndMin + " " + endDayPart;
 			}
 
 		}
 	
-	Handlebars.registerHelper('jobShifts', jobShifts);
-	return jobShifts;
+	Handlebars.registerHelper('jobShiftHours', jobShiftHours);
+	return jobShiftHours;
 });	

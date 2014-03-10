@@ -13,7 +13,7 @@ define([
 
 		var LayoutAppContent = Marionette.Layout.extend({
 			tagName : 'div',
-			className : '',
+			className : 'app-content-body',
 			template : TemplateLayoutAppContent,
 			regions : {
 				appHeader 	: "#app-header",
