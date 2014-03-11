@@ -11,12 +11,13 @@ define([
 		'scripts/views/view-jobs',
 		'scripts/views/view-network',
 		'scripts/views/view-profile-info',
+		'scripts/models/model-job-types',
 		'scripts/collections/collection-jobs',
 		'scripts/collections/collection-employer-profiles',
 		'scripts/layouts/layout-app-content',
 		'scripts/layouts/layout-app-settings',
 	],
-	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewJobs, ViewNetwork, ViewProfile, CollectionJobs, CollectionEmployerProfiles, LayoutAppContent, LayoutAppSettings){
+	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewJobs, ViewNetwork, ViewProfile, ModelJobTypes, CollectionJobs, CollectionEmployerProfiles, LayoutAppContent, LayoutAppSettings){
 		'use strict';
 
 		var AppController = Marionette.Controller.extend({
@@ -93,12 +94,28 @@ define([
 
 					var that = this;
 					var jobs = new CollectionJobs();
+					var jobTypes = new ModelJobTypes();
+					var models = new Object();
+					
+					$.when(
 						jobs.fetch({
-							success : function(collection, response){
-								var view = new ViewJobs({model:response});
-								layoutAppContent.appBody.show(view);			
+							success : function(collection, jobsResponse){
+								models.jobs = jobsResponse;
 							}
-						});
+						}),
+						jobTypes.fetch({
+							success : function(jobTypesResponse){
+								models.jobTypes = jobTypesResponse.attributes;
+							}
+						})
+					).then(function(){
+						var view = new ViewJobs({model : models});
+							layoutAppContent.appBody.show(view);
+						}
+					);
+						
+
+					
 				}else{
 					this.index();
 				}

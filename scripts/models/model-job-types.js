@@ -2,8 +2,8 @@ define([
 	'backbone'
 	],
 	function(Backbone){
-		var Job = Backbone.Model.extend({
-			urlRoot : '/brushfire/services/rest/job/',
+		var JobTypes = Backbone.Model.extend({
+			urlRoot : '/brushfire/services/rest/jobtypes',
 			defaults : {
 				
 			},
@@ -12,11 +12,11 @@ define([
 				return url;
 			},
 			initialize : function(){
-				console.log('Job model initialize...')
+				console.log('Job types model initialize...')
 			}
 
 		});
 
-		return Job;
+		return JobTypes;
 	}
 );

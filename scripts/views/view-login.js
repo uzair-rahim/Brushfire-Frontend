@@ -60,13 +60,9 @@ define([
 				return false;
 			}else{
 				var that = this;
-				var modellogin = new ModelLogin();
+				var modellogin = new ModelLogin({  email : $("#emailaddress").val(), password	 : $("#password").val() });
 
-				modellogin.save(
-					{
-						emailaddress : $("#emailaddress").val(),
-						password	 : $("#password").val()
-					},
+				modellogin.fetch(
 					{
 						success : function(response){
 							var errorCode = response.get("errorCode");

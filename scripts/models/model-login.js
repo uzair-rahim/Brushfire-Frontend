@@ -3,12 +3,18 @@ define([
 	],
 	function(Backbone){
 		var Login = Backbone.Model.extend({
-			url : '/brushfire/spring/authenticate/login',
+			urlRoot : '/brushfire/services/rest/auth/login',
 			defaults : {
-				emailaddress: null,
+				email 		: null,
 				password 	: null
 			},
-			initialize : function(){
+			url : function(){
+				var url = this.urlRoot + "/" + this.email + "/" + this.password;
+				return url;
+			},
+			initialize : function(options){
+				this.email = options.email;
+				this.password = options.password;
 				console.log('Login model initialize...')
 			}
 

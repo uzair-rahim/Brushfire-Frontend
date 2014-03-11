@@ -178,8 +178,7 @@
 			overflow-y: auto;
 		}
 		#closeSettings{
-			position: relative;
-			top:-255px;
+			
 		}
 		#settings-menu{
 			clear: both;
@@ -219,6 +218,11 @@
 
 		div.profile-cover div.profile-map img{
 			width: 100%;
+
+		}
+
+		.app-settings-body{
+			height: auto;
 
 		}
 	}
