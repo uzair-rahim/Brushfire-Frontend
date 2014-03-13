@@ -144,6 +144,10 @@
 		margin-left: 10px;
 		font-weight: normal;
 		text-transform: capitalize;
+
+		background-image: url(images/icon-share.png);
+		background-position: right;
+		background-repeat: no-repeat;
 	}
 
 	.card-container .card
@@ -273,13 +277,21 @@
 			clear: both;
 			width: calc(100% - 2px);
 			height: 400px;
-			margin: 10px 0 0 0;
+			margin: 23px 0 0 0;
 		}
 
 		.card-container.expanded{
 			width: calc(100% - 2px);
 			height: calc(100% - 264px);
+			margin: 23px 0 0 0;
 		}
+	}
+
+	@media screen and (max-height: 700px){
+		.app-body-content{
+			overflow-y: auto;
+		}
+
 	}
 
 </style>
