@@ -170,7 +170,7 @@
 		</div>
 		<div class="field-container">
 			<label for="hspassword">Password</label>
-			<input type="text" id="hspassword" placeholder="Password"/>
+			<input type="password" id="hspassword" placeholder="Password"/>
 		</div>
 		<div class="link-container">
 			<button id="cancelHS">Cancel</button>

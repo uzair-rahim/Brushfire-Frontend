@@ -32,7 +32,8 @@
 		</div>
 		<ul id="nav-menu">
 			<li><a id="jobs" data-menu="jobs">{{language.jobs}}</a></li>
-			<li><a id="jobs" data-menu="network">{{language.network}}</a></li>
+			<li><a id="network" data-menu="network">{{language.network}}</a></li>
+			<li><a id="applicants" data-menu="applicants">{{language.applicants}}</a></li>
 		</ul>
 	</div>
 	<div id="header-actions">

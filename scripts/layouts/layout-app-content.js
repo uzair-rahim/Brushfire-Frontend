@@ -30,19 +30,13 @@ define([
 
 				switch(menuItem){
 					case "jobs":
-						var that = this;
-						var jobs = new CollectionJobs({owner:Utils.getGUID()});
-							jobs.fetch({
-								success : function(collection, response){
-									var view = new ViewJobs({model:response});
-									that.appBody.show(view);
-								}
-							});
+						App.router.controller.jobs();
 					break;
 					case "network":
-						var that = this;
-						var view = new ViewNetwork();
-							this.appBody.show(view);
+						App.router.controller.network();
+					break;
+					case "applicants":
+						App.router.controller.applicants();
 					break;
 				}
 			},
