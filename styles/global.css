@@ -1798,6 +1798,9 @@ label.required:after
 
 textarea,
 input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
 input[type="password"],
 input[type="checkbox"]:checked + label:before,
 input[type="radio"]:checked + label:before
@@ -1817,6 +1820,9 @@ input[type="radio"]:checked + label:before
 
 textarea:hover,
 input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="url"]:hover,
+input[type="number"]:hover,
 input[type="password"]:hover
 {
 	border: 1px solid #4ea6e5;
@@ -1825,6 +1831,10 @@ input[type="password"]:hover
 
 textarea:focus,
 input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="text"],
 input[type="password"]:focus,
 input[type="checkbox"]:checked:focus + label:before,
 input[type="radio"]:checked:focus + label:before
@@ -1841,6 +1851,12 @@ textarea[disabled],
 textarea[disabled]:hover,
 input[type="text"][disabled],
 input[type="text"][disabled]:hover,
+input[type="email"][disabled],
+input[type="email"][disabled]:hover,
+input[type="url"][disabled],
+input[type="url"][disabled]:hover,
+input[type="number"][disabled],
+input[type="number"][disabled]:hover,
 input[type="password"][disabled],
 input[type="password"][disabled]:hover
 {
@@ -1857,6 +1873,9 @@ input[type="password"][disabled]:hover
 
 textarea.error,
 input[type="text"].error,
+input[type="email"].error,
+input[type="url"].error,
+input[type="number"].error,
 input[type="password"].error
 {
 	color: #bf2b1b;
@@ -1865,8 +1884,14 @@ input[type="password"].error
 
 textarea.error:hover,
 input[type="text"].error:hover,
+input[type="email"].error:hover,
+input[type="url"].error:hover,
+input[type="number"].error:hover,
 input[type="password"].error:hover,
 input[type="text"].error:focus,
+input[type="email"].error:focus,
+input[type="url"].error:focus,
+input[type="number"].error:focus,
 input[type="password"].error:focus
 {
 	border: 1px solid #ff4040;
@@ -2110,8 +2135,14 @@ input[type="radio"]:checked + label:focus:after
 }
 
 input[type="text"]:hover + .error.inlineMessage,
+input[type="email"]:hover + .error.inlineMessage,
+input[type="number"]:hover + .error.inlineMessage,
+input[type="url"]:hover + .error.inlineMessage,
 input[type="password"]:hover + .error.inlineMessage,
 input[type="text"]:focus + .error.inlineMessage,
+input[type="email"]:focus + .error.inlineMessage,
+input[type="url"]:focus + .error.inlineMessage,
+input[type="number"]:focus + .error.inlineMessage,
 input[type="password"]:focus + .error.inlineMessage
 {
 	color: #ff4040;
@@ -3364,7 +3395,7 @@ input[type="password"]:focus + .error.inlineMessage
 #nav-menu > li > a
 {
 	display: block;
-	margin-left: -1px;
+	margin-left: -2px;
 	color: #e1e7eb;
 	font-weight: bold;
 	font-size: 13px;
@@ -4016,7 +4047,7 @@ label.bad{
 }
 
 a{
-	color: #628195;
+	color: #4585b2;
 }
 
 .modal-bg{
@@ -4026,4 +4057,8 @@ a{
 
 .show.modal-bg{
 	pointer-events: auto;
+}
+
+#nav-menu > li > a{
+	font-size: 12px;
 }

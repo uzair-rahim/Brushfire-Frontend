@@ -326,7 +326,7 @@
 			<label>Phone</label>
 			<span class='{{employerProfileInfo employerProfile "phone"}}'>{{employerProfileInfo employerProfile "phone" "value"}}</span>
 			<div class="edit-mode">
-				<input type="text" id="employer-phone" value='{{employerProfileInfo employerProfile "phone" "value"}}'/>
+				<input type="number" id="employer-phone" value='{{employerProfileInfo employerProfile "phone" "value"}}'/>
 				<button class="primary save-changes">Save</button>
 				<button class="cancel-edit">Cancel</button>
 			</div>

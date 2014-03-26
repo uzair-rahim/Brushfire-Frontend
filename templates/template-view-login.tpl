@@ -187,7 +187,7 @@
 				<div class="manual">
 					<div class="field-container">
 						<label for="emailaddress">{{language.emailAddress}}</label>
-						<input type="text" placeholder="Email Address" id="emailaddress"/>
+						<input type="email" placeholder="Email Address" id="emailaddress"/>
 					</div>
 					<div class="field-container">
 						<label for="password">{{language.password}}</label>

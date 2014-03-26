@@ -227,7 +227,7 @@
 					</div>
 					<div class="field-container floating">
 						<label for="zip">Zip</label>
-						<input type="text" placeholder="Zip" id="zip"/>
+						<input type="number" placeholder="Zip" id="zip"/>
 					</div>
 					<div class="field-container floating">
 						<label for="country">Country</label>
@@ -240,7 +240,7 @@
 					</div>
 					<div class="field-container floating">
 						<label for="phone">Phone</label>
-						<input type="text" placeholder="Phone" id="phone"/>
+						<input type="number" placeholder="Phone" id="phone"/>
 					</div>
 					<div class="link-container">
 						<button class="primary" id="add-business">Add My Business</button>

@@ -12,7 +12,7 @@ define([
 				'index' 				: 'index',
 				'jobs'					: 'jobs',
 				'network'				: 'network',
-				'applicants'			: 'applicants',
+				'candidates'			: 'candidates',
 				'register'				: 'register',
 				'findBusiness'			: 'findBusiness',
 				'addBusiness'			: 'addBusiness',

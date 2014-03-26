@@ -225,6 +225,15 @@ define([
 			hideSettings : function(){
 				var width = $(window).width();
 				$("#app").animate( { scrollLeft: -width }, 150 );
+			},
+
+			// Enable/Disable Filter
+			enableFilter : function(){
+				$("#header-actions #filter").prop('disabled', false);
+			},
+
+			disableFilter : function(){
+				$("#header-actions #filter").prop('disabled', true);
 			}
 
 		});

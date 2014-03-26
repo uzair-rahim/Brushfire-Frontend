@@ -31,6 +31,8 @@ define([
 			Utils.setBreadcrumb({"Jobs": " "});
 		},
 		onShow : function(){
+			Utils.disableFilter();
+
 			//DataTables
 			var jobsTable = $('#jobs-table').dataTable({
 				"bPaginate": false,
@@ -111,7 +113,7 @@ define([
 			$("#jobs-table tr").removeClass("selected");
 			$(event.target).parent().addClass("selected");
 
-			//Show Applicants tab
+			//Show candidates tab
 			$(".card-container-header .pills li:eq(1)").show();
 
 			var index = $(event.target).parent().index();

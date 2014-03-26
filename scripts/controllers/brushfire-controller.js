@@ -10,7 +10,7 @@ define([
 		'scripts/views/view-account-verification',
 		'scripts/views/view-jobs',
 		'scripts/views/view-network',
-		'scripts/views/view-applicants',
+		'scripts/views/view-candidates',
 		'scripts/views/view-profile-info',
 		'scripts/models/model-job-types',
 		'scripts/collections/collection-jobs',
@@ -18,7 +18,7 @@ define([
 		'scripts/layouts/layout-app-content',
 		'scripts/layouts/layout-app-settings',
 	],
-	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewJobs, ViewNetwork, ViewApplicants, ViewProfile, ModelJobTypes, CollectionJobs, CollectionEmployerProfiles, LayoutAppContent, LayoutAppSettings){
+	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewJobs, ViewNetwork, Viewcandidates, ViewProfile, ModelJobTypes, CollectionJobs, CollectionEmployerProfiles, LayoutAppContent, LayoutAppSettings){
 		'use strict';
 
 		var AppController = Marionette.Controller.extend({
@@ -48,8 +48,8 @@ define([
 					case 'network':
 						this.network();
 					break;
-					case 'applicants':
-						this.applicants();
+					case 'candidates':
+						this.candidates();
 					break;
 					case undefined:
 						this.index();
@@ -141,13 +141,13 @@ define([
 				}
 			},
 
-			applicants : function(){
-				console.log('Brushfire routed to applicants...');
+			candidates : function(){
+				console.log('Brushfire routed to candidates...');
 				if(Utils.checkSession()){
 
 					var layoutAppContent = new LayoutAppContent();
 					App.content.show(layoutAppContent);
-					var view = new ViewApplicants();
+					var view = new Viewcandidates();
 					layoutAppContent.appBody.show(view);
 
 					this.settings();

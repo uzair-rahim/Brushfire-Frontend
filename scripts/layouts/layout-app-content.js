@@ -35,8 +35,8 @@ define([
 					case "network":
 						App.router.controller.network();
 					break;
-					case "applicants":
-						App.router.controller.applicants();
+					case "candidates":
+						App.router.controller.candidates();
 					break;
 				}
 			},

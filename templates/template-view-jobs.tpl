@@ -309,7 +309,7 @@
 				</th>
 	            <th>Job</th>
 	 			<th>Shifts</th>
-	 			<th>Applicants</th>
+	 			<th>candidates</th>
 	 			<th>Status</th>
 	 			<th>Created By</th>
 	 			<th>Last Modified</th>
@@ -357,7 +357,7 @@
 	<div class="card-container-header">
 		<ul class="pills">
 			<li><a class="selected">Job Info</a></li>
-			<li><a>Applicants <span>(0)</span></a></li>
+			<li><a>candidates <span>(0)</span></a></li>
 		</ul>
 		<div id="hide-card" class="close">X</div>
 	</div>
@@ -369,7 +369,7 @@
 			<div class="input">
 				<label for="job-position" class="required">Position</label>
 				<div class="btn-group">
-					<button id="job-position" class="dropDown">{{jobTypes.[0].name}}</button>
+					<button id="job-position" class="dropDown" data-dropdown="{{jobTypes.[0].guid}}">{{jobTypes.[0].name}}</button>
 					<ul class="dropDown-menu">
 						{{#each jobTypes}}
 							<li><a id="{{guid}}">{{name}}</a></li>
