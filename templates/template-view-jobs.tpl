@@ -309,7 +309,7 @@
 				</th>
 	            <th>Job</th>
 	 			<th>Shifts</th>
-	 			<th>candidates</th>
+	 			<th>Candidates</th>
 	 			<th>Status</th>
 	 			<th>Created By</th>
 	 			<th>Last Modified</th>
@@ -357,13 +357,13 @@
 	<div class="card-container-header">
 		<ul class="pills">
 			<li><a class="selected">Job Info</a></li>
-			<li><a>candidates <span>(0)</span></a></li>
+			<li><a>Candidates <span>(0)</span></a></li>
 		</ul>
 		<div id="hide-card" class="close">X</div>
 	</div>
 	<div class="card">
 		<div class="card-header">
-			<h2>{{jobTypes.[0].name}}</h2>
+			<h2 data-guid="">{{jobTypes.[0].name}}</h2>
 		</div>
 		<div class="card-required">
 			<div class="input">

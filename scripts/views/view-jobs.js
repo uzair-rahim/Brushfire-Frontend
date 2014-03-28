@@ -124,7 +124,8 @@ define([
 			//Job name in header and dropdown 
 			$(".card-header h2").text(jobInfo.jobName);
 			$("#job-position").text(jobInfo.jobName);
-			$("#job-position").attr("data-dropdown", jobInfo.guid);
+			$("#job-position").attr("data-dropdown", jobInfo.jobType.guid);
+			$(".card-header h2").attr("data-guid", jobInfo.guid);
 
 			//Job Wage
 			$("#job-wage").val(jobInfo.wage+".00");
@@ -252,46 +253,48 @@ define([
 
 			var job = new Object();
 
-				if(this.mode === "update"){
-					job.id = this.selectedJobIndex;
-				}
+			if(this.mode === "update"){
+				job.id = this.selectedJobIndex;
+				job.guid = $(".card-header h2").attr("data-guid");
+			}
 
-				job.employer = new Object();
-				job.employer.guid = Utils.getUser().employerIds[0];
+			job.employer = new Object();
+			job.employer.guid = Utils.getUser().employerIds[0];
 				
-				job.updatedBy = new Object();
-				job.updatedBy.guid = Utils.getGUID();
+			job.updatedBy = new Object();
+			job.updatedBy.guid = Utils.getGUID();
 
-				if(this.mode === "create"){
-					job.createdBy = new Object();
-					job.createdBy.guid = Utils.getGUID();
-				}
+			if(this.mode === "create"){
+				job.createdBy = new Object();
+				job.createdBy.guid = Utils.getGUID();
+			}
 
-				job.jobName = $("#job-position").text();
+			job.jobName = $("#job-position").text();
 
-				job.jobType = new Object();
-				job.jobType.guid = $("#job-position").attr("data-dropdown");
+			job.jobType = new Object();
+			job.jobType.guid = $("#job-position").attr("data-dropdown");
 
-				job.description = $("#job-description").val();
-				job.wage = $("#job-wage").val();
-				job.wageType = wageType;
-				job.shifts = [{startHour : 3, startMin : 0, endHour : 15, endMin : 0, mon : shiftDays[0], tue : shiftDays[1], wed : shiftDays[2], thu : shiftDays[3], fri : shiftDays[4], sat : shiftDays[5], sun : shiftDays[6]}];
+			job.description = $("#job-description").val();
+			job.wage = $("#job-wage").val();
+			job.wageType = wageType;
+			job.shifts = [{startHour : 3, startMin : 0, endHour : 15, endMin : 0, mon : shiftDays[0], tue : shiftDays[1], wed : shiftDays[2], thu : shiftDays[3], fri : shiftDays[4], sat : shiftDays[5], sun : shiftDays[6]}];
 
-				var that = this;
+			var that = this;
 
-				var modelJob = new ModelJob();
+			var modelJob = new ModelJob();
 				
-					modelJob.save(job,{
-						success : function(){
-							App.router.controller.jobs();
-							console.log("Job successfully saved");
-						},
-						error : function(){
-							console.log("There was an error trying to save the job");
-						}
-					});
-
-				console.log(job);
+			modelJob.save(job,{
+				headers : {
+					'token' : Utils.getUser().brushfireToken
+				},
+				success : function(){
+					App.router.controller.jobs();
+					console.log("Job successfully saved");
+				},
+				error : function(){
+					console.log("There was an error trying to save the job");
+				}
+			});
 
 		},
 		addJobDescription : function(){
