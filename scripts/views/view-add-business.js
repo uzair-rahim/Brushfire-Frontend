@@ -109,6 +109,9 @@ define([
 					var modelBusiness = new ModelBusiness();
 					
 					modelBusiness.save(business, {
+						headers : {
+							'token' : Utils.getUser().brushfireToken
+						},
 						success : function(){
 							console.log("Business successfully saved...");
 							App.router.controller.accountVerification();

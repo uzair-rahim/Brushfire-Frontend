@@ -103,11 +103,17 @@ define([
 					
 					$.when(
 						jobs.fetch({
+							headers : {
+								'token' : Utils.getUser().brushfireToken
+							},
 							success : function(collection, jobsResponse){
 								models.jobs = jobsResponse;
 							}
 						}),
 						jobTypes.fetch({
+							headers : {
+								'token' : Utils.getUser().brushfireToken
+							},
 							success : function(jobTypesResponse){
 								models.jobTypes = jobTypesResponse.attributes;
 							}
@@ -165,6 +171,9 @@ define([
 
 					var employerProfiles = new CollectionEmployerProfiles({guid : employerGUIDs[0]});
 					employerProfiles.fetch({
+						headers : {
+							'token' : Utils.getUser().brushfireToken
+						},
 						success : function(response){
 							var modelProfiles = response.models;
 							var modelProfile = response.models[0].attributes;

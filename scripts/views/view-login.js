@@ -125,7 +125,8 @@ define([
 				firstname : response.attributes.firstname,
 				lastname : response.attributes.lastname,
 				guid : response.attributes.guid,
-				employerIds : response.attributes.employerIds
+				employerIds : response.attributes.employerIds,
+				brushfireToken : response.attributes.brushfireToken
 			}
 			Utils.createSession(authsession);
 		},

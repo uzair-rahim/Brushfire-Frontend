@@ -59,6 +59,9 @@ define([
 			var that = this;
 
 				employerProfile.save(employer, {
+					headers : {
+						'token' : Utils.getUser().brushfireToken
+					},
 					success : function(response){
 						console.log("Employer profile successfully saved");
 						console.log(response);

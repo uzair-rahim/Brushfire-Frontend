@@ -3,7 +3,7 @@ define([
 	],
 	function(Backbone){
 		var User = Backbone.Model.extend({
-			url : '/brushfire/spring/register/register',
+			url : '/brushfire/services/rest/registration/registerUser',
 			defaults : {
 				firstname	: null,
 				lastname 	: null,

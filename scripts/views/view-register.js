@@ -80,6 +80,9 @@ define([
 						password		: $("#password").val()
 					},
 					{
+						headers : {
+							'token' : Utils.getUser().brushfireToken
+						},
 						success : function(response){
 							var errorCode = response.get("errorCode");
 							if( errorCode === -1){
@@ -118,7 +121,8 @@ define([
 			var authsession = {
 				firstname : response.attributes.firstname,
 				lastname : response.attributes.lastname,
-				guid : response.attributes.guid
+				guid : response.attributes.guid,
+				brushfireToken : response.attributes.brushfireToken
 			}
 			Utils.createSession(authsession);
 		},

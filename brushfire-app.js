@@ -120,6 +120,9 @@ define([
 			var ln = navigator.language;
 			var modelLanguage = new ModelLanguage({language : ln});
 			modelLanguage.fetch({
+				headers : {
+					'token' : Utils.getUser().brushfireToken
+				},
 				success : function(response){
 					App.Language = response.attributes.items;
 					App.startApp();

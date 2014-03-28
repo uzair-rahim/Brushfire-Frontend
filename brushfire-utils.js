@@ -95,10 +95,11 @@ define([
 				console.log("Create session...");
 
 				var defaults = {
-					firstname	: " ",
-					lastname	: " ",
-					guid 		: " ",
-					employerIds : " "
+					firstname		: " ",
+					lastname		: " ",
+					guid 			: " ",
+					employerIds 	: " ",
+					brushfireToken	: " "
 				}
 
 				for(var key in defaults){
