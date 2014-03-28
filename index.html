@@ -10,6 +10,10 @@
     <link rel="stylesheet" type="text/css" href="styles/reset.css"/>
     <link rel="stylesheet" type="text/css" href="styles/global.css"/>
     <script src="libraries/thirdparty/require.js" data-main="brushfire-config"></script>
+    <script>
+      var doc = document.documentElement;
+          doc.setAttribute("data-useragent", navigator.userAgent);
+    </script>
   </head>
   <body>
     <div id="modal-loading" class="loading modal-bg ease-out"></div>
