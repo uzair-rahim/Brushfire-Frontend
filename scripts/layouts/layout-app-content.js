@@ -16,11 +16,13 @@ define([
 			className : 'app-content-body',
 			template : TemplateLayoutAppContent,
 			regions : {
+				appFilter	: "#app-filter", 
 				appHeader 	: "#app-header",
 				appBody 	: "#app-body"
 			},
 			events : {
 				"click #nav-menu li a"	: "changeView",
+				"click #filter"			: "showHideFilter",
 				"click #settings"		: "settings",
 				"click #logout"			: "logout"
 			},
@@ -38,6 +40,13 @@ define([
 					case "candidates":
 						App.router.controller.candidates();
 					break;
+				}
+			},
+			showHideFilter : function(){
+				if($("#app-filter").hasClass("show")){
+					$("#app-filter").removeClass("show");
+				}else{
+					$("#app-filter").addClass("show");
 				}
 			},
 			settings : function(){

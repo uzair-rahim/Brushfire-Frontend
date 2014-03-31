@@ -15,7 +15,7 @@ define([
 		className : 'app-body-content',
 		template : TemplateViewJobs,
 		mode : "create",
-		selectedJobIndex : null,
+		selectedJobIndex : 0,
 		events : {
 			"click #createajob" 		 : "createAJob",
 			"click .jobName"			 : "editAJob",
@@ -58,6 +58,21 @@ define([
 			});
 
 		},
+		getMode : function(){
+			return this.mode;
+		},
+		setMode : function(state){
+			this.mode = state;
+		},
+		isUpdate : function(){
+			return this.getMode() == "update";
+		},
+		getSelectedJobIndex : function(){
+			return this.selectedJobIndex;
+		},
+		setSelectedJobIndex : function(index){
+			this.selectedJobIndex = index;
+		},
 		showCard : function(){
 			$(".table-container").addClass("collapsed");
 			$(".card-container").addClass("expanded");
@@ -67,12 +82,12 @@ define([
 			$(".card-container").removeClass("expanded");
 			$("#jobs-table tr").removeClass("selected");
 		},
+		addJobDescription : function(){
+			$(".card-description").css("display" , "block");
+			$("#add-job-description").css("display", "none");
+		},
 		createAJob : function(){
 			console.log("Create a new job");
-
-			$(".card-description").css("display" , "none");
-			$("#job-description").val("");
-			$("#add-job-description").css("display", "block");
 
 			$("#jobs-table tr").removeClass("selected");
 
@@ -84,8 +99,6 @@ define([
 
 			// Position
 			$("#job-position").text($("#job-position").next().find("li:eq(0) a").text());
-			$("#job-position").next().find("li").removeClass("current");
-			$("#job-position").next().find("li:eq(0)").addClass("current");
 
 			// Wage
 			$("#job-wage").val("");
@@ -101,189 +114,137 @@ define([
 			//Shift Time
 			$(".shift-time").val("3:00 AM - 3:00 PM");
 
-			this.mode = "create";
+			//Description
+			$("#job-description").val("");
+			$(".card-description").css("display" , "none");
+			$("#add-job-description").css("display", "block");
 
+			this.setMode("create");
 			this.showCard();
 		},
 		editAJob : function(){
-
 			console.log("Edit a job");
+
+			this.setSelectedJobIndex($(event.target).parent().index());
 
 			//Highlight Selected Job
 			$("#jobs-table tr").removeClass("selected");
-			$(event.target).parent().addClass("selected");
+			$("#jobs-table tr:eq("+(this.getSelectedJobIndex()+1)+")").addClass("selected");
 
 			//Show candidates tab
 			$(".card-container-header .pills li:eq(1)").show();
 
-			var index = $(event.target).parent().index();
-			var jobInfo = this.model.jobs[index];
+			var jobInfo = this.model.jobs[this.getSelectedJobIndex()];
 
-			this.selectedJobIndex = index;
-
-			//Job name in header and dropdown 
+			//Job Name
 			$(".card-header h2").text(jobInfo.jobName);
+
+			//Job Position
 			$("#job-position").text(jobInfo.jobName);
 			$("#job-position").attr("data-dropdown", jobInfo.jobType.guid);
-			$(".card-header h2").attr("data-guid", jobInfo.guid);
 
 			//Job Wage
 			$("#job-wage").val(jobInfo.wage+".00");
 
-			var wageFrequency = "Hourly";
-
-			switch(jobInfo.wageType){
-				case 0:
-					wageFrequency = "Hourly";
-				break;
-				case 1:
-					wageFrequency = "Weekly";
-				break;
-				case 2:
-					wageFrequency = "Bi-Weekly";
-				break;
-				case 3:
-					wageFrequency = "Monthly";
-				break;
-				case 4:
-					wageFrequency = "Annually";
-				break;
-			}
-
 			//Job Wage Frequency
-			$("#wage-frequency").text(wageFrequency);
-
-			$(".card-shift .btn-group.toggle button").removeClass("active");
+			var jobWageType = jobInfo.wageType.toLowerCase();
+			$("#wage-frequency").text(jobWageType.charAt(0).toUpperCase() + jobWageType.substring(1));
 
 			//Job Shift
+			$(".card-shift .btn-group.toggle button").removeClass("active");
 			if(jobInfo.shifts.length > 0){
 
-				if(jobInfo.shifts[0].mon){
-					$(".card-shift .btn-group.toggle button:eq(0)").addClass("active");
-				}
-				if(jobInfo.shifts[0].tue){
-					$(".card-shift .btn-group.toggle button:eq(1)").addClass("active");
-				}
-				if(jobInfo.shifts[0].wed){
-					$(".card-shift .btn-group.toggle button:eq(2)").addClass("active");
-				}
-				if(jobInfo.shifts[0].thu){
-					$(".card-shift .btn-group.toggle button:eq(3)").addClass("active");
-				}
-				if(jobInfo.shifts[0].fri){
-					$(".card-shift .btn-group.toggle button:eq(4)").addClass("active");
-				}
-				if(jobInfo.shifts[0].sat){
-					$(".card-shift .btn-group.toggle button:eq(5)").addClass("active");
-				}
-				if(jobInfo.shifts[0].sun){
-					$(".card-shift .btn-group.toggle button:eq(6)").addClass("active");
-				}
+				if(jobInfo.shifts[0].mon){ $(".card-shift .btn-group.toggle button:eq(0)").addClass("active"); }
+				if(jobInfo.shifts[0].tue){ $(".card-shift .btn-group.toggle button:eq(1)").addClass("active"); }
+				if(jobInfo.shifts[0].wed){ $(".card-shift .btn-group.toggle button:eq(2)").addClass("active"); }
+				if(jobInfo.shifts[0].thu){ $(".card-shift .btn-group.toggle button:eq(3)").addClass("active"); }
+				if(jobInfo.shifts[0].fri){ $(".card-shift .btn-group.toggle button:eq(4)").addClass("active"); }
+				if(jobInfo.shifts[0].sat){ $(".card-shift .btn-group.toggle button:eq(5)").addClass("active"); }
+				if(jobInfo.shifts[0].sun){ $(".card-shift .btn-group.toggle button:eq(6)").addClass("active"); }
 
 				var startDayPart = "AM";
-				var shiftStartHour = jobInfo.shifts[0].startHour;
-					if(shiftStartHour > 12){
-						shiftStartHour = shiftStartHour - 12;
-						startDayPart = "PM"
-					}
-				var shiftStartMin = jobInfo.shifts[0].startMin;
-					if(shiftStartMin < 10){
-						shiftStartMin = "0"+shiftStartMin;
-					}
 				var endDayPart = "AM";
+				var shiftStartHour = jobInfo.shifts[0].startHour;
+				var shiftStartMin = jobInfo.shifts[0].startMin;
 				var shiftEndHour = jobInfo.shifts[0].endHour;
-					if(shiftEndHour > 12){
-						shiftEndHour = shiftEndHour - 12;
-						endDayPart = "PM"
-					}
 				var shiftEndMin = jobInfo.shifts[0].endMin;
-					if(shiftEndMin < 10){
-						shiftEndMin = "0"+shiftEndMin;
-					}
-
+				if(shiftStartHour > 12){ shiftStartHour = shiftStartHour - 12; startDayPart = "PM"; }
+				if(shiftStartMin < 10){ shiftStartMin = "0"+shiftStartMin; }
+				if(shiftEndHour > 12){ shiftEndHour = shiftEndHour - 12; endDayPart = "PM"; }
+				if(shiftEndMin < 10){ shiftEndMin = "0"+shiftEndMin; }
 				$(".shift-time").val(shiftStartHour + ":" + shiftStartMin + " " + startDayPart + " - " + shiftEndHour + ":" + shiftEndMin + " " + endDayPart);	
 
 			}else{
 				$(".shift-time").val("");
 			}
 
-			if(jobInfo.description != "" || jobInfo.description != null){
-				$(".card-description").css("display" , "block").val(jobInfo.description);
+			//Job Description
+			if(jobInfo.description != "" && jobInfo.description != null){
+				$(".card-description").css("display" , "block");
 				$("#job-description").val(jobInfo.description);
 				$("#add-job-description").css("display", "none");
 			}
-
-			this.mode = "update";
-
-			//Show Job Card
+			
+			this.setMode("update");
 			this.showCard();
-
 		},
 		saveJob : function(){
+			console.log("Save a job");
+			var requestType = "post";
 
-			var wageType = $("#wage-frequency").text().toUpperCase();
-
-			switch(wageType){
-				case "HOURLY":
-					wageType = 0;
-				break;
-				case "WEEKLY":
-					wageType = 1;
-				break;
-				case "BI-WEEKLY":
-					wageType = 2;
-				break;
-				case "MONTHLY":
-					wageType = 3;
-				break;
-				case "ANNUALLY":
-					wageType = 4;
-				break;
-			}
-
+			//Job Shifts
 			var shiftDays = [];
-
 			$(".card-shift .btn-group.toggle button").each(function(){
-				if($(this).hasClass("active")){
-					shiftDays.push(true);
-				}else{
-					shiftDays.push(false);
-				}
+				if( $(this).hasClass("active") ){ shiftDays.push(true); }
+				else{ shiftDays.push(false); }
 			});
 
-			var job = new Object();
+			//Job Name
+			var name = $("#job-position").text();
 
-			if(this.mode === "update"){
-				job.id = this.selectedJobIndex;
-				job.guid = $(".card-header h2").attr("data-guid");
-			}
+			var job = this.model.jobs[this.getSelectedJobIndex()];
 
-			job.employer = new Object();
-			job.employer.guid = Utils.getUser().employerIds[0];
-				
-			job.updatedBy = new Object();
-			job.updatedBy.guid = Utils.getGUID();
+			var jobObject = new Object();
+				jobObject.shifts = new Object();
+				jobObject.jobType = new Object();
+				jobObject.employer = new Object();
+				jobObject.updatedBy = new Object();
+				jobObject.createdBy = new Object();
 
-			if(this.mode === "create"){
-				job.createdBy = new Object();
-				job.createdBy.guid = Utils.getGUID();
-			}
+				jobObject.id = 0;
+				jobObject.jobType.id = 0;
+				jobObject.employer.id = 0;
+				jobObject.updatedBy.id = 0;
+				jobObject.createdBy.id = 0;
+				jobObject.createdBy.guid = Utils.getGUID();
+				jobObject.employer.guid = Utils.getUser().employerIds[0];
 
-			job.jobName = $("#job-position").text();
+				if(this.isUpdate()){
+					requestType = "put"
+					jobObject.id = job.id;
+					jobObject.guid = job.guid;
+					jobObject.jobType.id = job.jobType.id;
+					jobObject.employer.id = job.employer.id;
+					jobObject.employer.guid = job.employer.guid;
+					jobObject.updatedBy.id = job.updatedBy.id;
+					jobObject.createdBy.id = job.createdBy.id;
+					jobObject.createdBy.guid = job.createdBy.guid;
+				}
 
-			job.jobType = new Object();
-			job.jobType.guid = $("#job-position").attr("data-dropdown");
+				jobObject.jobName = name.charAt(0).toUpperCase() + name.substring(1);
+				jobObject.jobType.guid = $("#job-position").attr("data-dropdown");
+				jobObject.wage = $("#job-wage").val();
+				jobObject.wageType = $("#wage-frequency").text().toUpperCase();
+				jobObject.description = $("#job-description").val();
+				jobObject.updatedBy.guid = Utils.getGUID();
+				jobObject.shifts = [{id: 0, startHour : 3, startMin : 0, endHour : 15, endMin : 0, mon : shiftDays[0], tue : shiftDays[1], wed : shiftDays[2], thu : shiftDays[3], fri : shiftDays[4], sat : shiftDays[5], sun : shiftDays[6]}];	
 
-			job.description = $("#job-description").val();
-			job.wage = $("#job-wage").val();
-			job.wageType = wageType;
-			job.shifts = [{startHour : 3, startMin : 0, endHour : 15, endMin : 0, mon : shiftDays[0], tue : shiftDays[1], wed : shiftDays[2], thu : shiftDays[3], fri : shiftDays[4], sat : shiftDays[5], sun : shiftDays[6]}];
+			console.log(jobObject);
 
 			var that = this;
-
-			var modelJob = new ModelJob();
-				
-			modelJob.save(job,{
+			var modelJob = new ModelJob();				
+			modelJob.save(jobObject,{
+				type : requestType,
 				headers : {
 					'token' : Utils.getUser().brushfireToken
 				},
@@ -295,11 +256,6 @@ define([
 					console.log("There was an error trying to save the job");
 				}
 			});
-
-		},
-		addJobDescription : function(){
-			$(".card-description").css("display" , "block");
-			$("#add-job-description").css("display", "none");
 		},
 		serializeData : function(){
 			var jsonObject = new Object();

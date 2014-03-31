@@ -5,6 +5,24 @@
 	#nav-menu{
 		float: right;
 	}
+	.filter-section{
+		display: block;
+		float: left;
+		clear: both;
+	}
+
+	.flyout h1{
+		display: block;
+		float: left;
+		clear: both;
+		margin: 10px;
+		font-size: 14px;
+		line-height: 14px;
+		color: #444444;
+	}
+	.filter-section label{
+		font-weight: bold;
+	}
 </style>
 <div id="app-header">
 	<div id="header-nav">
@@ -45,6 +63,12 @@
 			<!-- <button disabled><span class="search icon"></span></button> -->
 			<!-- <button><span class="expand icon"></span></button> -->
 		</div>
+	</div>
+</div>
+<div id="app-filter" class="flyout">
+	<h1>9 total matches</h1>
+	<div class="filter-section">
+		<label>Position</label>	
 	</div>
 </div>
 <div id="app-body"></div>

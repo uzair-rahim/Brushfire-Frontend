@@ -385,9 +385,9 @@
 				<div class="btn-group">
 					<button id="wage-frequency" class="dropDown">Hourly</button>
 					<ul class="dropDown-menu">
-						<li class="current"><a>Hourly</a></li>
+						<li><a>Hourly</a></li>
 						<li><a>Weekly</a></li>
-						<li><a>Bi-Weekly</a></li>
+						<li><a>BiWeekly</a></li>
 						<li><a>Monthly</a></li>	
 						<li><a>Annually</a></li>	
 					</ul>			

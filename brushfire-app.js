@@ -91,13 +91,13 @@ define([
 		// Show load animation
 		App.showLoadAnimation = function(){
 			console.log("Show load animation...");
-			$("#modal-loading").addClass("show");
+			$("#app-modal").addClass("show");
 		}
 
 		// Hide load animation
 		App.hideLoadAnimation = function(){
 			console.log("Hide load animation...");
-			$("#modal-loading").removeClass("show");
+			$("#app-modal").removeClass("show");
 		}
 
 		// Get the last viewed view
