@@ -122,7 +122,7 @@ define([
 			this.setMode("create");
 			this.showCard();
 		},
-		editAJob : function(){
+		editAJob : function(event){
 			console.log("Edit a job");
 
 			this.setSelectedJobIndex($(event.target).parent().index());
@@ -144,7 +144,7 @@ define([
 			$("#job-position").attr("data-dropdown", jobInfo.jobType.guid);
 
 			//Job Wage
-			$("#job-wage").val(jobInfo.wage+".00");
+			$("#job-wage").val(jobInfo.wage);
 
 			//Job Wage Frequency
 			var jobWageType = jobInfo.wageType.toLowerCase();

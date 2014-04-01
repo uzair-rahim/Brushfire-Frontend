@@ -21,10 +21,15 @@ define([
 				appBody 	: "#app-body"
 			},
 			events : {
-				"click #nav-menu li a"	: "changeView",
-				"click #filter"			: "showHideFilter",
-				"click #settings"		: "settings",
-				"click #logout"			: "logout"
+				"click #nav-menu li a"		: "changeView",
+				"click #filter"				: "showHideFilter",
+				"click #filter-clear-all"	: "clearAllFilter",
+				"click #auto-apply"			: "autoApplyFilter",
+				"click #rating-filter li" 	: "ratingFilter",
+				"click #cancel-filter"		: "cancelFilter",
+				"click #search-filter"		: "searchFilter",
+				"click #settings"			: "settings",
+				"click #logout"				: "logout"
 			},
 			changeView : function(event){
 				var menuItem = $(event.target).data("menu");
@@ -49,6 +54,27 @@ define([
 					$("#app-filter").addClass("show");
 				}
 			},
+			clearAllFilter : function(){
+				$(".filter-section .checkbox-group input").each(function(){
+					$(this).prop("checked", false);
+				});
+			},
+			autoApplyFilter : function(event){
+				if($(event.target).prop("checked")){
+					$("#button-group").hide();
+				}else{
+					$("#button-group").show();
+				}
+			},
+			ratingFilter : function(event){
+				var stars = $(event.target).index();
+			},
+			cancelFilter : function(){
+				this.showHideFilter();
+			},
+			searchFilter : function(){
+				this.showHideFilter();
+			},
 			settings : function(){
 				Utils.showSettings();
 			},
@@ -58,6 +84,10 @@ define([
 			serializeData : function(){
 				var jsonObject = new Object();
 					jsonObject.language = App.Language;
+					if(typeof this.model !== "undefined"){
+						jsonObject.jobTypes = this.model.jobTypes;
+					}
+					
 				return jsonObject;
 			}
 		});

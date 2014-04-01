@@ -8,10 +8,14 @@
 	.filter-section{
 		display: block;
 		float: left;
+		width: 100%;
 		clear: both;
+		border-bottom: 1px solid #ced2d9;
+		padding: 0 0 10px 0;
+		box-shadow: 0 1px #ffffff;
 	}
 
-	.flyout h1{
+	.flyout.candidates h1{
 		display: block;
 		float: left;
 		clear: both;
@@ -20,8 +24,66 @@
 		line-height: 14px;
 		color: #444444;
 	}
-	.filter-section label{
+	.flyout.candidates label{
 		font-weight: bold;
+		margin: 10px;
+	}
+	.flyout.candidates a.clear-all{
+		display: block;
+		float: left;
+		clear: both;
+		margin: 4px 10px 10px 10px;
+	}
+	.flyout.candidates .auto-apply{
+		display: block;
+		float: left;
+		clear: both;
+		margin: 4px 10px 0 0;
+	}
+	.flyout.candidates .auto-apply label{
+		font-weight: normal;
+	}
+
+	.flyout.candidates .checkbox-group label{
+		text-transform: capitalize;
+		margin: 2px 10px;
+		font-weight: normal;
+	}
+	.filter-section label{
+		float: left;
+		clear: both;
+	}
+
+	.filter-section ul.rating{
+		display: block;
+		float: left;
+		clear: both;
+		margin: 0px 0px 0px 6px;
+	}
+
+	.filter-section ul.rating li{
+		display: block;
+		float: left;
+		width: 26px;
+		height: 24px;
+		margin: 0px;
+		background-image: url("images/icon-stars.png");
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-size: 248px 24px
+	}
+
+	#button-group{
+		display: block;
+		float: left;
+		clear: both;
+		margin: 10px;
+	}
+	@media screen and (max-width: 400px){
+		.flyout{
+			height: 380px;
+			overflow: auto;
+		}
 	}
 </style>
 <div id="app-header">
@@ -65,10 +127,56 @@
 		</div>
 	</div>
 </div>
-<div id="app-filter" class="flyout">
+<div id="app-filter" class="flyout candidates">
 	<h1>9 total matches</h1>
+	<a id="filter-clear-all" class="clear-all">Clear All</a>
+	<div class="auto-apply">
+		<input id="auto-apply" type="checkbox"/>
+		<label for="auto-apply">Auto Apply Selection</label>
+	</div>
 	<div class="filter-section">
-		<label>Position</label>	
+		<label>Position</label>
+		<ul class="checkbox-group">
+			{{#each jobTypes}}
+				<input id="{{guid}}" type="checkbox"/>
+				<label for="{{guid}}">{{name}}</label>
+			{{/each}}
+		</ul>
+	</div>
+	<!--
+	<div class="filter-section">
+		<label>Tip Percentage</label>
+	</div>
+	<div class="filter-section">
+		<label>Match Percentage</label>
+		<ul id="rating-filter" class="rating">
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+		</ul>
+	</div>
+	<div class="filter-section">
+		<ul class="checkbox-group" style="margin-top:6px;">
+			<li>
+				<input id="referred" type="checkbox"/>
+				<label for="referred">Referred Candidates</label>		
+			</li>
+			<li>
+				<input id="application" type="checkbox"/>
+				<label for="application">Application Request Sent</label>		
+			</li>
+			<li>
+				<input id="interview" type="checkbox"/>
+				<label for="interview">Interview Request Sent</label>		
+			</li>
+		</ul>
+	</div>
+	-->
+	<div id="button-group">
+		<button class="primary" id="search-filter">Search</button>
+		<a id="cancel-filter">Cancel</a>
 	</div>
 </div>
 <div id="app-body"></div>

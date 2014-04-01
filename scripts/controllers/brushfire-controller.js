@@ -151,10 +151,28 @@ define([
 				console.log('Brushfire routed to candidates...');
 				if(Utils.checkSession()){
 
-					var layoutAppContent = new LayoutAppContent();
-					App.content.show(layoutAppContent);
-					var view = new Viewcandidates();
-					layoutAppContent.appBody.show(view);
+					var that = this;
+					var jobTypes = new ModelJobTypes();
+					var models = new Object();
+					
+					$.when(
+						jobTypes.fetch({
+							headers : {
+								'token' : Utils.getUser().brushfireToken
+							},
+							success : function(jobTypesResponse){
+								models.jobTypes = jobTypesResponse.attributes;
+							}
+						})
+					).then(function(){
+
+						var layoutAppContent = new LayoutAppContent({model : models});
+							App.content.show(layoutAppContent);
+
+						var view = new Viewcandidates();
+							layoutAppContent.appBody.show(view);
+						}
+					);
 
 					this.settings();
 					

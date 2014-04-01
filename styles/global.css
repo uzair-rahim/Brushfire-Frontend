@@ -4074,23 +4074,24 @@ a{
 .flyout
 {
 	display: none;
+	float: left;
 	position: fixed;
 	top: 74px;
 	right: -400px;
-	height: 300px;
-	min-width: 200px;
+	min-width: 310px;
 	padding: 0;
 	border: 1px solid #ced2d9;
 	border-radius: 3px;
 	box-shadow: inset 1px 0 0 0 rgba(255,255,255, 0.5);
 	background: #f7f8f8;
 	background-clip: padding-box;
+	z-index: 999999;
 }
 
 .flyout.show
 {
 	display: block;
-	right: 4px;
+	right: 5px;
 }
 
 #app-filter.flyout{

@@ -84,6 +84,9 @@ define([
 				var businesses = new CollectionBusinesses({name : businessName, address : businessAddress});
 
 				businesses.fetch({
+					headers : {
+						'token' : Utils.getUser().brushfireToken
+					},
 					success : function(response){
 						that.model = response.models[0].attributes.businesses;
 						that.render();
