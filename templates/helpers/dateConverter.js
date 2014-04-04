@@ -5,7 +5,7 @@ define([
 		function dateConverter(context){
 
 			var date = new Date(context);
-			var	retval = date.getDay()+"/"+date.getDate()+"/"+date.getFullYear();
+			var	retval = (date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear();
 			
 			return retval;
 		}

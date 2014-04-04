@@ -46,6 +46,7 @@ define([
 				employer.name = $("#employer-name").val();
 				employer.url = $("#employer-website").val();
 				employer.phone = $("#employer-phone").val();
+				employer.email = $("#employer-email").val();
 				employer.ppa = this.model.ppa;
 				employer.storeHours = this.model.storeHours;
 				employer.preferences = this.model.preferences;

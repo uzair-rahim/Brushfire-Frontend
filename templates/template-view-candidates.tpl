@@ -125,6 +125,20 @@
 		}
 	}
 
+	.candidates-section ul.candidates-list li .comment{
+		display: block;
+		float: left;
+		margin: 18px 0 0 14px;
+		font-style: italic;
+		color: #666666;
+	}
+
+	@media screen and (max-width: 700px){
+		.candidates-section ul.candidates-list li .comment{
+			display: none;
+		}
+	}
+
 	.candidates-section ul.candidates-list li .rating{
 		display: block;
 		float: right;
@@ -174,6 +188,22 @@
 	}
 
 	.candidates-section ul.candidates-list li .archive:hover{
+		background-image: url("images/icon-archive-hover.png");
+	}
+
+	.candidates-section ul.candidates-list li .unarchive{
+		display: block;
+		float: right;
+		width: 16px;
+		height: 16px;
+		margin: 12px 10px 0 0;
+		background-image: url("images/icon-unarchive.png");
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-size: 16px 16px;
+	}
+
+	.candidates-section ul.candidates-list li .unarchive:hover{
 		background-image: url("images/icon-archive-hover.png");
 	}
 
@@ -233,143 +263,127 @@
 
 </style>
 
-<div class="toolbar">
-	<button class="primary" id="request">Send Message</button>
-	<button id="email">Archive</button>
-</div>
-<div class="candidates-list-container">
-	<div class="candidates-section">
-		<div class="section-header">Recent Candidates (6 New)</div>
-		<ul class="candidates-list">
-			<li>
-				<div class="checkbox">
-					<input type="checkbox" id="chk1"/>
-					<label for="chk1"></label>
-				</div>
-				<div class="picture">
-					<img src="images/Christi.jpg"/>
-				</div>
-				<div class="info">
-					<div class="name">Brittney Smith</div>
-					<div class="position">Cook @ Roaring Fork</div>
-				</div>
-				<div class="archive"></div>
-				<div class="rating zero"></div>
-				<div class="actions">
-					<a class="message">Send Message</a>
-					<a class="connections">20 (4 shared)</a>
-					<a class="referrer">Refered by Dennis Laughin for Bartender</a>
-					<a class="interest">Showed Interest on 3/21/2014</a>
-				</div>
-			</li>
-			<li>
-				<div class="checkbox">
-					<input type="checkbox" id="chk2"/>
-					<label for="chk2"></label>
-				</div>
-				<div class="picture">
-					<img src="images/Jake.jpg"/>
-				</div>
-				<div class="info">
-					<div class="name">Cliff Williams</div>
-					<div class="position">Cook @ Roaring Fork</div>
-				</div>
-				<div class="archive"></div>
-				<div class="rating one"></div>
-				<div class="actions">
-					<a class="message">Send Message</a>
-					<a class="connections">25 (0 shared)</a>
-					<a class="referrer">Refered by Dennis Laughin for Bartender</a>
-					<a class="interest">Showed Interest on 3/21/2014</a>
-				</div>
-			</li>
-			<li>
-				<div class="checkbox">
-					<input type="checkbox" id="chk3"/>
-					<label for="chk3"></label>
-				</div>
-				<div class="picture">
-					<img src="images/default-avatar.png"/>
-				</div>
-				<div class="info">
-					<div class="name">Dave Evans</div>
-					<div class="position">Bartender @ P.F. Changs</div>
-				</div>
-				<div class="archive"></div>
-				<div class="rating two"></div>
-				<div class="actions">
-					<a class="message">Send Message</a>
-					<a class="connections">5 (0 shared)</a>
-					<a class="interest">Showed Interest on 3/21/2014</a>
-				</div>
-			</li>
-		</ul>
+{{#anyCandidates candidates}}
+	<div class="toolbar">
+		<button class="primary" id="request">Send Message</button>
+		<button id="archive-bulk">Archive</button>
 	</div>
+	<div class="candidates-list-container">
+		{{#each candidates}}
+			{{#if_not_eq this.candidates.length 0}}
+				<div class="candidates-section">
+					<div class="section-header">{{jobName}}</div>
+					<ul class="candidates-list"  data-job="{{guid}}">
+						{{#each this.candidates}}
+							{{#if_eq archived false}}
+								<li>
+									<div class="checkbox">
+										<input type="checkbox" id="chk-{{guid}}"/>
+										<label for="chk-{{guid}}"></label>
+									</div>
+									<div class="picture">
+										{{#if_eq this.user.picture undefined}}
+											<img src="images/default-avatar.png"/>
+										{{else}}
+											<img src="{{this.user.picture}}"/>
+										{{/if_eq}}
+									</div>
+									<div class="info">
+										<div class="name">{{this.user.firstname}} {{this.user.lastname}}</div>
+										<div class="position">{{#if_eq this.user.position undefined}}Not Available{{else}}{{this.user.position}}@{{this.user.employer}}{{/if_eq}}</div>
+									</div>
+									<div class="comment">"Candidate's comment goes here"</div>
+									<div class="archive" data-id="{{id}}" data-guid="{{guid}}"></div>
+									<div class="rating {{this.user.rating}}"></div>
+									<div class="actions">
+										<a class="message">Send Message</a>
+										<a class="interest">Showed Interest on {{dateConverter created}}</a>
+									</div>
+								</li>
+							{{/if_eq}}
+						{{/each}}
+					</ul>
+				</div>
+				<!--
+				<div class="candidates-section">
+					<div class="section-header">Recent Candidates (6 New)</div>
+					<ul class="candidates-list">
+						<li>
+							<div class="checkbox">
+								<input type="checkbox" id="chk1"/>
+								<label for="chk1"></label>
+							</div>
+							<div class="picture">
+								<img src="images/Christi.jpg"/>
+							</div>
+							<div class="info">
+								<div class="name">Brittney Smith</div>
+								<div class="position">Cook @ Roaring Fork</div>
+							</div>
+							<div class="archive"></div>
+							<div class="rating zero"></div>
+							<div class="actions">
+								<a class="message">Send Message</a>
+								<a class="connections">20 (4 shared)</a>
+								<a class="referrer">Refered by Dennis Laughin for Bartender</a>
+								<a class="interest">Showed Interest on 3/21/2014</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+				-->
 
-	<div class="candidates-section">
-		<div class="section-header">Servers MWF 2:00PM - 8:00PM</div>
-		<ul class="candidates-list">
-			<li>
-				<div class="checkbox">
-					<input type="checkbox" id="chk4"/>
-					<label for="chk4"></label>
+				{{/if_not_eq}}
+			{{/each}}
+			
+				<div class="candidates-section">
+					<div class="section-header">Archived</div>
+					<ul class="candidates-list">
+					{{#each candidates}}
+						{{#each this.candidates}}
+							{{#if_eq archived true}}
+								<li>
+									<div class="checkbox">
+										<input type="checkbox" id="chk-{{guid}}"/>
+										<label for="chk-{{guid}}"></label>
+									</div>
+									<div class="picture">
+										{{#if_eq this.user.picture undefined}}
+											<img src="images/default-avatar.png"/>
+										{{else}}
+											<img src="{{this.user.picture}}"/>
+										{{/if_eq}}
+									</div>
+									<div class="info">
+										<div class="name">{{this.user.firstname}} {{this.user.lastname}}</div>
+										<div class="position">{{#if_eq this.user.position undefined}}Not Available{{else}}{{this.user.position}}@{{this.user.employer}}{{/if_eq}}</div>
+									</div>
+									<div class="comment">"Candidate's comment goes here"</div>
+									<div class="unarchive" data-id="{{id}}" data-guid="{{guid}}" data-job="{{../../guid}}"></div>
+									<div class="rating {{this.user.rating}}"></div>
+									<div class="actions">
+										<a class="message">Send Message</a>
+										<a class="interest">Showed Interest on {{dateConverter created}}</a>
+									</div>
+								</li>
+							{{/if_eq}}
+						{{/each}}
+					{{/each}}
+					</ul>
 				</div>
-				<div class="picture">
-					<img src="images/Christi.jpg"/>
-				</div>
-				<div class="info">
-					<div class="name">Smamatha McLean</div>
-					<div class="position">Cook @ Roaring Fork</div>
-				</div>
-				<div class="archive"></div>
-				<div class="rating three"></div>
-				<div class="actions">
-					<a class="message">Send Message</a>
-					<a class="connections">12 (2 shared)</a>
-					<a class="referrer">Refered by Dennis Laughin for Bartender</a>
-					<a class="interest">Showed Interest on 3/21/2014</a>
-				</div>
-			</li>
-			<li>
-				<div class="checkbox">
-					<input type="checkbox" id="chk5"/>
-					<label for="chk5"></label>
-				</div>
-				<div class="picture">
-					<img src="images/Jake.jpg"/>
-				</div>
-				<div class="info">
-					<div class="name">Fred Tarbucks</div>
-					<div class="position">Cook @ Roaring Fork</div>
-				</div>
-				<div class="archive"></div>
-				<div class="rating four"></div>
-				<div class="actions">
-					<a class="message">Send Message</a>
-					<a class="connections">12 (0 shared)</a>
-					<a class="interest">Showed Interest on 3/21/2014</a>
-				</div>
-			</li>
-			<li>
-				<div class="checkbox">
-					<input type="checkbox" id="chk3"/>
-					<label for="chk3"></label>
-				</div>
-				<div class="picture">
-					<img src="images/default-avatar.png"/>
-				</div>
-				<div class="info">
-					<div class="name">Dave Evans</div>
-					<div class="position">Bartender @ P.F. Changs</div>
-				</div>
-				<div class="archive"></div>
-				<div class="rating five"></div>
-				<div class="actions">
-					<a class="message">Send Message</a>
-					<a class="connections">5 (0 shared)</a>
-					<a class="interest">Showed Interest on 3/21/2014</a>
-				</div>
-			</li>
-		</ul>
-	</div>
-</div>
+			
+		</div>
+	{{else}}
+		<div class="candidates-list-container">
+			<div class="candidates-section">
+				<ul class="candidates-list">
+					<li>
+						<div class="info">
+							<div class="name">No Candidates</div>
+							<div class="position">Do something about it</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	{{/anyCandidates}}

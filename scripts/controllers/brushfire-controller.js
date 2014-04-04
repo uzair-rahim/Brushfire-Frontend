@@ -15,10 +15,11 @@ define([
 		'scripts/models/model-job-types',
 		'scripts/collections/collection-jobs',
 		'scripts/collections/collection-employer-profiles',
+		'scripts/collections/collection-candidates',
 		'scripts/layouts/layout-app-content',
 		'scripts/layouts/layout-app-settings',
 	],
-	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewJobs, ViewNetwork, Viewcandidates, ViewProfile, ModelJobTypes, CollectionJobs, CollectionEmployerProfiles, LayoutAppContent, LayoutAppSettings){
+	function($, App, Utils, Marionette, ViewLogin, ViewRegister, ViewFindBusiness, ViewAddBusiness, ViewAccountVerification, ViewJobs, ViewNetwork, Viewcandidates, ViewProfile, ModelJobTypes, CollectionJobs, CollectionEmployerProfiles, CollectionCandidates, LayoutAppContent, LayoutAppSettings){
 		'use strict';
 
 		var AppController = Marionette.Controller.extend({
@@ -94,8 +95,6 @@ define([
 					var layoutAppContent = new LayoutAppContent();
 					App.content.show(layoutAppContent);
 
-					this.settings();
-
 					var that = this;
 					var jobs = new CollectionJobs();
 					var jobTypes = new ModelJobTypes();
@@ -124,7 +123,7 @@ define([
 						}
 					);
 						
-
+					this.settings();
 					
 				}else{
 					this.index();
@@ -152,8 +151,10 @@ define([
 				if(Utils.checkSession()){
 
 					var that = this;
+					var jobs = new CollectionJobs();
 					var jobTypes = new ModelJobTypes();
 					var models = new Object();
+					var candidates = new Object();
 					
 					$.when(
 						jobTypes.fetch({
@@ -163,13 +164,21 @@ define([
 							success : function(jobTypesResponse){
 								models.jobTypes = jobTypesResponse.attributes;
 							}
+						}),
+						jobs.fetch({
+							headers : {
+								'token' : Utils.getUser().brushfireToken
+							},
+							success : function(collection, jobsResponse){
+								candidates = jobsResponse;
+							}
 						})
 					).then(function(){
 
 						var layoutAppContent = new LayoutAppContent({model : models});
 							App.content.show(layoutAppContent);
 
-						var view = new Viewcandidates();
+						var view = new Viewcandidates({model : candidates});
 							layoutAppContent.appBody.show(view);
 						}
 					);

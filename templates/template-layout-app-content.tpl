@@ -143,6 +143,14 @@
 			{{/each}}
 		</ul>
 	</div>
+	<div class="filter-section">
+		<ul class="checkbox-group" style="margin-top:6px;">
+			<li>
+				<input id="archived-candidates" type="checkbox"/>
+				<label for="archived-candidates">Archived Candidates</label>		
+			</li>
+		</ul>
+	</div>
 	<!--
 	<div class="filter-section">
 		<label>Tip Percentage</label>

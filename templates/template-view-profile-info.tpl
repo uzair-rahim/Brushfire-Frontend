@@ -317,9 +317,14 @@
 			</div>
 			<a>Edit</a>
 		</li>
-		<li>
+		<li class="editable">
 			<label>Email</label>
 			<span class='{{employerProfileInfo employerProfile "email"}}'>{{employerProfileInfo employerProfile "email" "value"}}</span>
+			<div class="edit-mode">
+				<input type="text" id="employer-email" value='{{employerProfileInfo employerProfile "email" "value"}}'/>
+				<button class="primary save-changes">Save</button>
+				<button class="cancel-edit">Cancel</button>
+			</div>
 			<a>Edit</a>
 		</li>
 		<li class="editable">
