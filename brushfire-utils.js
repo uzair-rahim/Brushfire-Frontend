@@ -122,6 +122,8 @@ define([
 			deleteSession : function(){
 				console.log("Delete session...");
 				$.removeCookie("brushfiresession");
+				$.removeCookie("brushfiresession", {path : "/"});
+
 			},
 
 			// Get User
@@ -165,6 +167,7 @@ define([
 			// Delete Search Terms
 			deleteSearchTerms : function(){
 				$.removeCookie("brushfiresearch");
+				$.removeCookie("brushfiresearch", { path : '/' });
 			},
 
 			// Set subheader breadcrumb

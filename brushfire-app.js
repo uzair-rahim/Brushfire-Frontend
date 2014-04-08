@@ -113,6 +113,8 @@ define([
 		// Remove last viewed view
 		App.removeSessionView = function(){
 			$.removeCookie("brushfireview");
+			$.removeCookie("brushfireview", { path : "/" });
+
 		}
 
 		// Load Language Pack

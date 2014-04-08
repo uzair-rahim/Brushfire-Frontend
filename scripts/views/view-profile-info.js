@@ -23,18 +23,18 @@ define([
 			_.bindAll.apply(_, [this].concat(_.functions(this)));
 			console.log("View Profile initialized...");
 		},
-		editMode : function(){
+		editMode : function(event){
 			this.showHideFields();
 			var listItem = $(event.target).parent();
 			$(listItem).find("span").hide();
 			$(listItem).find("div.edit-mode").show();
 		},
-		cancelEdit : function(){
+		cancelEdit : function(event){
 			var cancelButton = $(event.target).parent().parent();
 			$(cancelButton).find("span").show();
 			$(cancelButton).find("div.edit-mode").hide();
 		},
-		saveChanges : function(){
+		saveChanges : function(event){
 
 			var saveButton = $(event.target);
 			var newValue = $(saveButton).prev().val();		
