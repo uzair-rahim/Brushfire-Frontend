@@ -92,7 +92,37 @@ define([
 
 			});
 
-			console.log(bulk);
+			this.bulkUpdate(bulk);
+
+		},
+		bulkUpdate : function(bulkArray){
+			var numberOfCalls = bulkArray.length-1;
+
+			for(var i = numberOfCalls; i >= 0; i--){
+
+				var request = new Object();
+				request.jobGuid = bulkArray[i].jobGuid;
+				request.candidateGuid = bulkArray[i].guid;
+				request.action = "update";
+
+				var update = new Object();
+				update.id = bulkArray[i].id;
+				update.archived = true;
+				update.seen = true;
+
+				var candidate = new ModelCandidate(request);
+
+				candidate.save(update, {
+					headers : {
+						'token' : Utils.getUser().brushfireToken
+					},
+					success : function(response){
+						App.router.controller.candidates();
+					}
+				});
+				
+			}
+
 		},
 		serializeData : function(){
 			var jsonObject = new Object();
