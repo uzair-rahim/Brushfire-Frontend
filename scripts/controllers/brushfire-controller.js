@@ -171,6 +171,7 @@ define([
 							},
 							success : function(collection, jobsResponse){
 								candidates = jobsResponse;
+								models.jobs = jobsResponse;
 							}
 						})
 					).then(function(){

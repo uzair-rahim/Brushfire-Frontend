@@ -44,6 +44,13 @@
 		font-weight: normal;
 	}
 
+	.flyout.candidates .checkbox-group,
+	.flyout.candidates .checkbox-group li{
+		display: block;
+		float: left;
+		clear: both;
+	}
+
 	.flyout.candidates .checkbox-group label{
 		text-transform: capitalize;
 		margin: 2px 10px;
@@ -128,18 +135,23 @@
 	</div>
 </div>
 <div id="app-filter" class="flyout candidates">
-	<h1>9 total matches</h1>
+	<!--<h1>countCandidates jobs total matches</h1>-->
+	<h1>Filter Candidates</h1>
 	<a id="filter-clear-all" class="clear-all">Clear All</a>
+	<!--
 	<div class="auto-apply">
 		<input id="auto-apply" type="checkbox"/>
 		<label for="auto-apply">Auto Apply Selection</label>
 	</div>
+	-->
 	<div class="filter-section">
 		<label>Position</label>
 		<ul class="checkbox-group">
 			{{#each jobTypes}}
-				<input id="{{guid}}" type="checkbox"/>
-				<label for="{{guid}}">{{name}}</label>
+				<li>
+					<input id="{{guid}}" type="checkbox"/>
+					<label for="{{guid}}">{{name}}</label>
+				</li>
 			{{/each}}
 		</ul>
 	</div>

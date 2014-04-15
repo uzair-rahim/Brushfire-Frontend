@@ -271,9 +271,9 @@
 	<div class="candidates-list-container">
 		{{#each candidates}}
 			{{#if_not_eq this.candidates.length 0}}
-				<div class="candidates-section">
+				<div class="candidates-section" data-job="{{guid}}" data-jobtype="{{jobType.guid}}">
 					<div class="section-header">{{jobName}}</div>
-					<ul class="candidates-list"  data-job="{{guid}}">
+					<ul class="candidates-list">
 						{{#each this.candidates}}
 							{{#if_eq archived false}}
 								<li>
@@ -336,17 +336,13 @@
 				{{/if_not_eq}}
 			{{/each}}
 			
-				<div class="candidates-section">
+				<div id="archived-candidates-section" class="candidates-section">
 					<div class="section-header">Archived</div>
 					<ul class="candidates-list">
 					{{#each candidates}}
 						{{#each this.candidates}}
 							{{#if_eq archived true}}
 								<li>
-									<div class="checkbox">
-										<input type="checkbox" id="chk-{{guid}}"/>
-										<label for="chk-{{guid}}"></label>
-									</div>
 									<div class="picture">
 										{{#if_eq this.user.picture undefined}}
 											<img src="images/default-avatar.png"/>

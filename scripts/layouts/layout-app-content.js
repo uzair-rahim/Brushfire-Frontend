@@ -73,6 +73,21 @@ define([
 				this.showHideFilter();
 			},
 			searchFilter : function(){
+
+				if($(".checkbox-group li input[type='checkbox']:checked").length > 0){
+					$(document).find(".candidates-list-container .candidates-section").hide();
+					$(".checkbox-group li input[type='checkbox']:checked").each(function(){	
+						var id = $(this).attr("id");
+						$(document).find(".candidates-list-container .candidates-section[data-jobtype='"+id+"']").show();
+					});
+				}else{
+					$(document).find(".candidates-list-container .candidates-section").show();
+				}
+
+				if($("#archived-candidates:checked").length > 0){
+					$("#archived-candidates-section").show();
+				}
+
 				this.showHideFilter();
 			},
 			settings : function(){
@@ -86,8 +101,8 @@ define([
 					jsonObject.language = App.Language;
 					if(typeof this.model !== "undefined"){
 						jsonObject.jobTypes = this.model.jobTypes;
-					}
-					
+						jsonObject.jobs = this.model.jobs;
+					}					
 				return jsonObject;
 			}
 		});

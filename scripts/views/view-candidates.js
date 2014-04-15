@@ -13,6 +13,7 @@ define([
 		tagName: 'div',
 		className : 'app-body-content',
 		template : Template,
+		numberOfCalls : 0,
 		events : {
 			"click .candidates-list li .archive"	: "archiveUser",
 			"click .candidates-list li .unarchive"	: "unarchiveUser",
@@ -30,8 +31,8 @@ define([
 		},
 		archiveUser : function(event){
 			var request = new Object();
-			request.jobGuid = $(event.target).parent().parent().attr("data-job");
-			request.candidateGuid = $(event.target).attr("data-guid");
+			request.jobGuid = $(event.target).parent().parent().parent().attr("data-job");
+			request.guid = $(event.target).attr("data-guid");
 			request.action = "update";
 
 			var update = new Object();
@@ -53,7 +54,7 @@ define([
 		unarchiveUser : function(event){
 			var request = new Object();
 			request.jobGuid = $(event.target).attr("data-job");
-			request.candidateGuid = $(event.target).attr("data-guid");
+			request.guid = $(event.target).attr("data-guid");
 			request.action = "update";
 
 			var update = new Object();
@@ -73,56 +74,42 @@ define([
 				});
 		},
 		archiveBulk : function(){
-
-			var bulk = new Array();
-
-			$(".candidates-list input[type='checkbox']:checked").each(function(){
-				var jobGuid = $(this).parent().parent().parent().attr("data-job");
-				var id = $(this).parent().parent().find(".archive").attr("data-id");
-				var guid = $(this).parent().parent().find(".archive").attr("data-guid");
-
-				var update = new Object();
-					update.id = id;
-					update.jobGuid = jobGuid;
-					update.guid = guid;
-					update.action = "bulkArchive";
-					update.archived = true;
-					update.seen = true;
-				bulk.push(update)
-
-			});
-
-			this.bulkUpdate(bulk);
-
+			this.numberOfCalls = $(".candidates-list input[type='checkbox']:checked").length;
+			this.bulkUpdate();
 		},
-		bulkUpdate : function(bulkArray){
-			var numberOfCalls = bulkArray.length-1;
+		bulkUpdate : function(){
+			if(this.numberOfCalls > 0){
 
-			for(var i = numberOfCalls; i >= 0; i--){
+				var element = $(".candidates-list input[type='checkbox']:checked:eq("+(this.numberOfCalls-1)+")");
+				var jobGuid = $(element).closest(".candidates-section").attr("data-job");
+				var id =  $(element).parent().parent().find(".archive").attr("data-id");
+				var guid =  $(element).parent().parent().find(".archive").attr("data-guid");
 
 				var request = new Object();
-				request.jobGuid = bulkArray[i].jobGuid;
-				request.candidateGuid = bulkArray[i].guid;
-				request.action = "update";
+					request.jobGuid = jobGuid;
+					request.guid = guid;
+					request.action = "update";
 
 				var update = new Object();
-				update.id = bulkArray[i].id;
-				update.archived = true;
-				update.seen = true;
+					update.id = id;	
+					update.archived = true;
+					update.seen = true;
 
 				var candidate = new ModelCandidate(request);
+				var that = this;
 
-				candidate.save(update, {
-					headers : {
-						'token' : Utils.getUser().brushfireToken
-					},
-					success : function(response){
-						App.router.controller.candidates();
-					}
-				});
-				
+					candidate.save(update, {
+						headers : {
+							'token' : Utils.getUser().brushfireToken
+						},
+						success : function(response){
+							that.numberOfCalls--;
+							that.bulkUpdate();
+						}
+					});
+			}else{
+				App.router.controller.candidates();
 			}
-
 		},
 		serializeData : function(){
 			var jsonObject = new Object();

@@ -14,7 +14,7 @@ define([
 				var url = this.urlRoot;
 
 				if(this.attributes.action === "update"){
-					url += this.attributes.jobGuid+"/candidates/"+this.attributes.candidateGuid;
+					url += this.attributes.jobGuid+"/candidates/"+this.attributes.guid;
 				}
 				  
 				return url;
