@@ -115,17 +115,24 @@ define([
 		},
 		claimBusiness : function(event){
 			var business = $(event.target).next(".data-yelp");
-			var businessObject 				= new Object();
-				businessObject.userGuid 	= Utils.getGUID();
-				businessObject.sourceName 	= $(business).find("input[name='name']").val();
-				businessObject.sourceId 	= $(business).find("input[name='id']").val();
-				businessObject.address1 	= $(business).find("input[name='address1']").val();
-				businessObject.address2 	= $(business).find("input[name='address2']").val();
-				businessObject.city 		= $(business).find("input[name='city']").val();
-				businessObject.state 		= $(business).find("input[name='state']").val();
-				businessObject.zip 			= $(business).find("input[name='zip']").val();
-				businessObject.phone 		= $(business).find("input[name='phone']").val();
-				businessObject.country 		= $(business).find("input[name='country']").val();
+			
+			// Employer
+			var businessObject   = new Object();
+			businessObject.name  = $(business).find("input[name='name']").val();
+			businessObject.phone = $(business).find("input[name='phone']").val();
+			
+			// Employer admin
+			businessObject.admins = [ {user: {guid: Utils.getGUID()}} ];
+			
+			// Employer Location
+			businessObject.location             = new Object();
+			businessObject.location.address1	= $(business).find("input[name='address1']").val();
+			businessObject.location.address2	= $(business).find("input[name='address2']").val();
+			businessObject.location.city 		= $(business).find("input[name='city']").val();
+			businessObject.location.state 	    = $(business).find("input[name='state']").val();
+			businessObject.location.zip 		= $(business).find("input[name='zip']").val();
+			businessObject.location.sourceId 	= $(business).find("input[name='id']").val();
+			businessObject.location.country 	= $(business).find("input[name='country']").val();
 			
 			var modelBusiness = new ModelBusiness();	
 				modelBusiness.save(businessObject, {
@@ -140,7 +147,6 @@ define([
 						console.log("Error saving business...");
 					}
 				});
-			
 		},
 		skip : function(){
 			App.router.controller.accountVerification();

@@ -78,6 +78,10 @@
 		border-radius: 20px;
 		background-color: #dddddd;
 		overflow: hidden;
+		background-image: url("images/default-avatar.png");
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-size: 40px 40px;
 	}
 
 	.candidates-section ul.candidates-list li .picture img{
@@ -282,11 +286,9 @@
 										<label for="chk-{{guid}}"></label>
 									</div>
 									<div class="picture">
-										{{#if_eq this.user.picture undefined}}
-											<img src="images/default-avatar.png"/>
-										{{else}}
-											<img src="{{this.user.picture}}"/>
-										{{/if_eq}}
+										{{#hasPhoto this.user.photo}}
+											<img src="{{this.user.photo.url}}"/>
+										{{/hasPhoto}}
 									</div>
 									<div class="info">
 										<div class="name">{{this.user.firstname}} {{this.user.lastname}}</div>
@@ -344,11 +346,9 @@
 							{{#if_eq archived true}}
 								<li>
 									<div class="picture">
-										{{#if_eq this.user.picture undefined}}
-											<img src="images/default-avatar.png"/>
-										{{else}}
-											<img src="{{this.user.picture}}"/>
-										{{/if_eq}}
+										{{#hasPhoto this.user.photo}}
+											<img src="{{this.user.photo.url}}"/>
+										{{/hasPhoto}}
 									</div>
 									<div class="info">
 										<div class="name">{{this.user.firstname}} {{this.user.lastname}}</div>
