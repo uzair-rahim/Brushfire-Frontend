@@ -96,7 +96,7 @@ define([
 							}
 
 					},
-						error : function(){
+					error : function(){
 						console.log("Unable to connect to server...");
 						Utils.showToast({
 							message: "Unable to connect to server",

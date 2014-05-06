@@ -60,7 +60,7 @@ define([
 			var update = new Object();
 			update.id = $(event.target).attr("data-id");
 			update.archived = false;
-			update.seen = true;
+			update.seen = false;
 
 			var candidate = new ModelCandidate(request);
 

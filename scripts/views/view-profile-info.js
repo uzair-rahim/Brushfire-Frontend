@@ -78,6 +78,7 @@ define([
 			var jsonObject = new Object();
 				jsonObject.employerProfile = this.model;
 				jsonObject.language = App.Language;
+				console.log(jsonObject);
 			return jsonObject;
 		},
 		showHideFields : function(){
